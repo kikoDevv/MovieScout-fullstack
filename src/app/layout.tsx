@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/UI/header";
+import Footer from "@/components/UI/footer";
 import { Work_Sans } from "next/font/google";
 
 const workSans = Work_Sans({
@@ -24,6 +25,7 @@ export default function RootLayout({
 			<body className={workSans.className}>
 				<Header />
 				{children}
+				<Footer />
 			</body>
 		</html>
 	);

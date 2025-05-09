@@ -1,0 +1,225 @@
+.footer {
+	margin-top: 200px;
+	position: relative;
+	font-family: Poppins, "Segoe UI", sans-serif;
+	display: flex;
+	flex-direction: column;
+	background-color: #3586ff;
+	padding-bottom: 1.5rem;
+}
+
+.waves {
+	position: relative;
+}
+
+.wave {
+	position: absolute;
+	top: -100px;
+	left: 0;
+	width: 100%;
+	height: 100px;
+	background: url("/wave.png");
+	background-size: 1000px 100px;
+}
+
+.wave#wave1 {
+	z-index: 1000;
+	opacity: 1;
+	bottom: 0;
+	animation: animateWave1 8s linear infinite forwards;
+}
+
+.wave#wave2 {
+	z-index: 999;
+	opacity: 0.9;
+	bottom: 10px;
+	animation: animateWave2 5s linear infinite forwards;
+}
+
+.wave#wave3 {
+	z-index: 1000;
+	opacity: 0.7;
+	bottom: 15px;
+	animation: animateWave1 4s linear infinite forwards;
+}
+
+.wave#wave4 {
+	z-index: 999;
+	opacity: 0.5;
+	bottom: 20px;
+	animation: animateWave2 4s linear infinite forwards;
+}
+
+.containerMedia {
+	padding-top: 70px;
+}
+
+.socialsContainer {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	justify-content: center;
+	margin: 0 auto;
+	padding: 0 1rem;
+	max-width: 450px;
+}
+
+.socialsContainer a {
+	background-color: white;
+	border-radius: 50%;
+	height: 50px;
+	width: 50px;
+	box-sizing: border-box;
+	flex-shrink: 0;
+	display: grid;
+	place-items: center;
+	box-shadow: black 0px 0px 6px 0.3px;
+	position: relative;
+	transition: transform 0.2s ease-in-out, background-color 0.2s ease;
+}
+
+.socialsContainer a::before {
+	content: attr(data-social);
+	position: absolute;
+	background-color: var(--accent-color);
+	padding: 5px 10px;
+	border-radius: 100px;
+	color: white;
+	text-decoration: none;
+	transform: translateY(-30px) rotate(25deg);
+	opacity: 0;
+	transition: 200ms cubic-bezier(0.42, 0, 0.44, 1.68);
+}
+
+.socialsContainer a::after {
+	content: "";
+	position: absolute;
+	height: 0;
+	width: 0;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	border-top: 10px solid var(--accent-color);
+	transition: 200ms cubic-bezier(0.42, 0, 0.44, 1.68);
+	opacity: 0;
+}
+
+.socialsContainer a:hover {
+	background-color: var(--accent-color);
+	fill: white;
+	transform: translateY(-5px);
+}
+
+.socialsContainer a:hover::before {
+	transform: translateY(-60px) rotate(0);
+	opacity: 1;
+}
+
+.socialsContainer a:hover::after {
+	transform: translateY(-42px) rotate(0);
+	opacity: 1;
+}
+
+.socialsContainer svg {
+	height: 32px;
+}
+
+.linksContainer {
+	display: flex;
+	justify-content: center;
+	margin-top: 10px;
+	flex-wrap: wrap;
+}
+
+.linksContainer li {
+	list-style: none;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.linksContainer a {
+	color: white;
+	text-decoration: none;
+	font-size: 1.5em;
+	padding: 0.5rem 1rem;
+	transition: color 0.3s ease, transform 0.2s ease;
+	position: relative;
+}
+
+.linksContainer a:hover {
+	color: #f0f0f0;
+	transform: translateY(-3px);
+}
+
+.linksContainer a::after {
+	content: "";
+	position: absolute;
+	width: 0;
+	height: 2px;
+	bottom: 0;
+	left: 50%;
+	background-color: white;
+	transition: all 0.3s ease-in-out;
+	transform: translateX(-50%);
+}
+
+.linksContainer a:hover::after {
+	width: 70%;
+}
+
+.copyrightContainer {
+	margin-top: 5px;
+	padding: 0 1rem;
+}
+
+.copyrightContainer hr {
+	border: none;
+	height: 1px;
+	background-color: rgba(255, 255, 255, 0.3);
+	margin-bottom: 1rem;
+}
+
+.copyrightContainer p {
+	text-align: center;
+	color: white;
+	font-size: 0.9rem;
+	opacity: 0.8;
+}
+
+@media screen and (max-width: 768px) {
+	.linksContainer a {
+		font-size: 1.2em;
+		padding: 0.3rem 0.8rem;
+	}
+
+	.socialsContainer {
+		gap: 15px;
+	}
+
+	.socialsContainer a {
+		height: 45px;
+		width: 45px;
+	}
+
+	.socialsContainer svg {
+		height: 28px;
+	}
+}
+
+@keyframes animateWave1 {
+	0% {
+		background-position-x: 1000px;
+	}
+	100% {
+		background-position-x: 0px;
+	}
+}
+
+@keyframes animateWave2 {
+	0% {
+		background-position-x: 0px;
+	}
+	100% {
+		background-position-x: 1000px;
+	}
+}
