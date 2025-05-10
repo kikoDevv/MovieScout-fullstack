@@ -43,13 +43,13 @@ export default function SearchBar() {
 	return (
 		<>
 			{/* Sentinel element that will trigger the sticky behavior */}
-			<div ref={sentinelRef} className="sentinel absolute top-75"></div>
+			<div ref={sentinelRef} className="sentinel absolute top-73"></div>
 
 			{/* Search section that will become sticky */}
 			<motion.section
 				ref={searchSectionRef}
-				className={`inline-flex whitespace-nowrap bg-red-500 ${
-					isSticky ? "fixed top-0 bg-red-500" : "absolute top-75"
+				className={`inline-flex whitespace-nowrap ${
+					isSticky ? "fixed top-1.5" : "absolute top-75"
 				}`}
 				style={{
 					left: "50%",
