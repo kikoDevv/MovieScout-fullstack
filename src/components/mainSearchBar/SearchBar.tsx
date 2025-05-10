@@ -1,44 +1,90 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function SearchBar() {
+	const [isSticky, setIsSticky] = useState(false);
+	const sentinelRef = useRef<HTMLDivElement>(null);
+	const searchSectionRef = useRef<HTMLElement>(null);
 	const { scrollY } = useScroll();
 
-	// Transform scroll value to border radius (0px to 30px)
-	// We'll consider the search bar at "top" when scrollY is around 100-200px
+	// Transform scroll value for border radios
 	const borderRadius = useTransform(scrollY, [10, 600], [10, 30]);
+	// Transform scroll value to width 480px to 320px of searchbar
+	const width = useTransform(scrollY, [0, 600], [480, 320]); // w-120 (480px) to w-80 (320px)
+
+	//Intersection Observer for sticky behavior
+	useEffect(() => {
+		const sentinel = sentinelRef.current;
+		const searchSection = searchSectionRef.current;
+
+		if (!sentinel || !searchSection) return;
+
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (!entry.isIntersecting) {
+						setIsSticky(true);
+					} else {
+						setIsSticky(false);
+					}
+				});
+			},
+			{ threshold: 0.1 }
+		);
+
+		observer.observe(sentinel);
+
+		return () => {
+			observer.disconnect();
+		};
+	}, []);
 
 	return (
-		<section className="absolute top-75 w-full flex justify-center overflow-hidden">
-			<motion.div
-				className="relative max-w-md w-full mx-4 overflow-hidden"
-				style={{ borderRadius }}
-				transition={{ type: "spring", stiffness: 300, damping: 30 }}
+		<>
+			{/* Sentinel element that will trigger the sticky behavior */}
+			<div ref={sentinelRef} className="sentinel absolute top-75"></div>
+
+			{/* Search section that will become sticky */}
+			<motion.section
+				ref={searchSectionRef}
+				className={`inline-flex whitespace-nowrap bg-red-500 ${
+					isSticky ? "fixed top-0 bg-red-500" : "absolute top-75"
+				}`}
+				style={{
+					left: "50%",
+					transform: "translateX(-50%)",
+					width,
+				}}
 			>
-				<motion.input
-					type="text"
-					placeholder="Search for movies"
-					className="w-full py-3 px-4 pr-12 bg-white/90 backdrop-blur-sm focus:outline-none focus:shadow-md transition-shadow"
+				<motion.div
+					className="relative w-full mx-0 overflow-hidden"
 					style={{ borderRadius }}
-				/>
-				<button className="absolute right-1.5 bottom-1.5 bg-blue-600 rounded-full p-2 text-white hover:bg-blue-900 transition-colors cursor-pointer">
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						fill="none"
-						viewBox="0 0 24 24"
-						strokeWidth={2}
-						stroke="currentColor"
-						className="w-5 h-5"
-					>
-						<path
-							strokeLinecap="round"
-							strokeLinejoin="round"
-							d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
-						/>
-					</svg>
-				</button>
-			</motion.div>
-		</section>
+					transition={{ type: "spring", stiffness: 300, damping: 30 }}
+				>
+					<input
+						type="text"
+						placeholder="Search for movies"
+						className="w-full py-3 px-4 pr-12 bg-white/90 backdrop-blur-sm focus:outline-none"
+					/>
+					<button className="absolute right-1.5 bottom-1.5 bg-blue-600 rounded-full p-2 text-white hover:bg-blue-900 transition-colors cursor-pointer">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							strokeWidth={2}
+							stroke="currentColor"
+							className="w-5 h-5"
+						>
+							<path
+								strokeLinecap="round"
+								strokeLinejoin="round"
+								d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+							/>
+						</svg>
+					</button>
+				</motion.div>
+			</motion.section>
+		</>
 	);
 }
