@@ -54,7 +54,6 @@ export default function Home() {
 					</div>
 				</div>
 			</section>
-			<div className="h-500"></div>
 		</main>
 	);
 }

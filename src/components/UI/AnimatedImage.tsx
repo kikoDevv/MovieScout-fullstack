@@ -26,43 +26,46 @@ export default function AnimatedImage({
 	useEffect(() => {
 		const handleScroll = () => {
 			if (!imageRef.current) return;
-
 			const rect = imageRef.current.getBoundingClientRect();
-			const windowHeight = window.innerHeight;
-
-			let progress = 1 - rect.bottom / (windowHeight + rect.height);
-
-			progress = Math.max(0, Math.min(1, progress));
-
+			const progress = Math.max(
+				0,
+				Math.min(1, 1 - rect.bottom / (window.innerHeight + rect.height))
+			);
 			setScrollProgress(progress);
 		};
 
 		handleScroll();
 
-		window.addEventListener("scroll", handleScroll, { passive: true });
+		let rafId: number;
+		const scrollListener = () => {
+			if (rafId) {
+				cancelAnimationFrame(rafId);
+			}
+			rafId = requestAnimationFrame(handleScroll);
+		};
+
+		window.addEventListener("scroll", scrollListener, { passive: true });
 
 		return () => {
-			window.removeEventListener("scroll", handleScroll);
+			window.removeEventListener("scroll", scrollListener);
+			if (rafId) {
+				cancelAnimationFrame(rafId);
+			}
 		};
 	}, []);
 
-	const calculateTransform = () => {
-		// These values can be adjusted to change the animation effect
-		const rotateAmount =
-			scrollProgress * 30 * animationIntensity - 15 * animationIntensity;
-		const translateY = scrollProgress * -120 * animationIntensity;
+	const translateY = scrollProgress * -120 * animationIntensity;
+	const rotate =
+		scrollProgress * 30 * animationIntensity - 15 * animationIntensity;
 
-		return `translateY(${translateY}px) rotate(${rotateAmount}deg)`;
+	const transformStyle = {
+		transform: `translateY(${translateY}px) rotate(${rotate}deg)`,
+		transition: "transform 0.1s ease-out",
 	};
 
 	return (
 		<div ref={imageRef}>
-			<div
-				style={{
-					transform: calculateTransform(),
-					transition: "transform 0.1s ease-out",
-				}}
-			>
+			<div style={transformStyle}>
 				<Image
 					src={src}
 					alt={alt}

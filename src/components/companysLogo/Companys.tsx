@@ -53,20 +53,16 @@ const renderLogoImages = (studios: StudioLogo[], isFirstSet = false) => {
 export default function Companys() {
 	return (
 		<section className="overflow-x-hidden">
-			{/* Top Scrolling Row - Left to Right */}
 			<div className="logo-container mx-auto w-[90%] md:w-[86%] h-[100px] mb-4 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
 				<div className="logo-track">
-					{/* We need exactly 3 identical sets for the endless loop animation */}
 					{renderLogoImages(studiosUp, true)}
 					{renderLogoImages(studiosUp)}
 					{renderLogoImages(studiosUp)}
 				</div>
 			</div>
 
-			{/* Bottom Scrolling Row - Right to Left */}
 			<div className="logo-container mx-auto w-[90%] md:w-[86%] h-[100px] [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
 				<div className="logo-track-reverse">
-					{/* We need exactly 3 identical sets for the endless loop animation */}
 					{renderLogoImages(studiosDown, true)}
 					{renderLogoImages(studiosDown)}
 					{renderLogoImages(studiosDown)}
