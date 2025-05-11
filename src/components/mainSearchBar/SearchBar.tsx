@@ -11,7 +11,7 @@ export default function SearchBar() {
 	// Transform scroll value for border radios
 	const borderRadius = useTransform(scrollY, [10, 600], [10, 30]);
 	// Transform scroll value to width 480px to 320px of searchbar
-	const width = useTransform(scrollY, [0, 600], [480, 320]); // w-120 (480px) to w-80 (320px)
+	const width = useTransform(scrollY, [0, 600], [480, 320]);
 
 	//Intersection Observer for sticky behavior
 	useEffect(() => {
