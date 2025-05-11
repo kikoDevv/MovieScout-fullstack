@@ -18,7 +18,7 @@ export default function Home() {
 				/>
 				<div className="absolute w-full text-center" style={{ top: "10%" }}>
 					<div className="px-6 py-4">
-						<h1 className="text-white font-bold tracking-wider uppercase text-xl md:text-2xl lg:text-3xl">
+						<h1 className="text-xl font-bold tracking-wider text-white uppercase md:text-2xl lg:text-3xl">
 							<span className="block">Immerse yourself in the cinematic</span>
 							<span className="block">universe</span>
 						</h1>
@@ -37,7 +37,11 @@ export default function Home() {
 					unoptimized
 					className="w-full"
 				/>
-				<div className="absolute top-100 left-3/5 transform -translate-x-1/2">
+				{/*-----------Companys logos------------*/}
+				<div className="absolute inset-0 top-150">
+					<Companys />
+				</div>
+				<div className="absolute transform -translate-x-1/2 top-100 left-3/5">
 					<AnimatedImage
 						src="/spiderman.png"
 						alt="Spiderman logo"
@@ -47,9 +51,6 @@ export default function Home() {
 						animationIntensity={1.5}
 					/>
 				</div>
-			</section>
-			<section>
-				<Companys/>
 			</section>
 			<div className="h-100"></div>
 		</main>

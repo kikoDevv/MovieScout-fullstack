@@ -51,12 +51,7 @@ const renderLogoImages = (studios: StudioLogo[], isFirstSet = false) => {
 
 export default function Companys() {
 	return (
-		<section className="relative grid py-8 text-white scrollingSections">
-			<h1 className="my-6 md:my-10 place-self-center font-['Work_Sans'] select-none text-center text-xl sm:text-2xl">
-				All the movies you can imagine, from every movie studio you can think
-				of! 🎬✨
-			</h1>
-
+		<section>
 			{/* Top Scrolling Row - Left to Right */}
 			<div className="logo-container mx-auto w-[90%] md:w-[86%] h-[100px] mb-4 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
 				<div className="logo-track">

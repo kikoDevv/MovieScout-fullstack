@@ -43,12 +43,12 @@ export default function SearchBar() {
 	return (
 		<>
 			{/* Sentinel element that will trigger the sticky behavior */}
-			<div ref={sentinelRef} className="sentinel absolute top-73"></div>
+			<div ref={sentinelRef} className="absolute sentinel top-73"></div>
 
 			{/* Search section that will become sticky */}
 			<motion.section
 				ref={searchSectionRef}
-				className={`inline-flex whitespace-nowrap ${
+				className={`inline-flex whitespace-nowrap z-10 ${
 					isSticky ? "fixed top-1.5" : "absolute top-75"
 				}`}
 				style={{
@@ -65,7 +65,7 @@ export default function SearchBar() {
 					<input
 						type="text"
 						placeholder="Search for movies"
-						className="w-full py-3 px-4 pr-12 bg-white/90 backdrop-blur-sm focus:outline-none"
+						className="w-full px-4 py-3 pr-12 bg-white/90 backdrop-blur-sm focus:outline-none"
 					/>
 					<button className="absolute right-1.5 bottom-1.5 bg-blue-600 rounded-full p-2 text-white hover:bg-blue-900 transition-colors cursor-pointer">
 						<svg
