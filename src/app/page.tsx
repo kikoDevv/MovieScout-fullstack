@@ -38,21 +38,23 @@ export default function Home() {
 					className="w-full"
 				/>
 				{/*-----------Companys logos------------*/}
-				<div className="absolute inset-0 top-150">
-					<Companys />
-				</div>
-				<div className="absolute transform -translate-x-1/2 top-100 left-3/5">
-					<AnimatedImage
-						src="/spiderman.png"
-						alt="Spiderman logo"
-						width={400}
-						height={800}
-						className="w-1/2 md:w-1/3 lg:w-1/4"
-						animationIntensity={1.5}
-					/>
+				<div className="relative">
+					<div className="absolute bottom-20">
+						<Companys />
+					</div>
+					<div className="absolute transform -translate-x-1/2 bottom-[10rem] left-[60%]">
+						<AnimatedImage
+							src="/spiderman.png"
+							alt="Spiderman logo"
+							width={400}
+							height={800}
+							className="w-1/2 md:w-1/3 lg:w-1/4"
+							animationIntensity={1}
+						/>
+					</div>
 				</div>
 			</section>
-			<div className="h-100"></div>
+			<div className="h-500"></div>
 		</main>
 	);
 }
