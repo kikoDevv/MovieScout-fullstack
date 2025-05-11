@@ -1,6 +1,7 @@
 import Image from "next/image";
 import SearchBar from "@/components/mainSearchBar/SearchBar";
 import AnimatedImage from "@/components/UI/AnimatedImage";
+import Companys from "@/components/companysLogo/Companys";
 
 export default function Home() {
 	return (
@@ -46,6 +47,9 @@ export default function Home() {
 						animationIntensity={1.5}
 					/>
 				</div>
+			</section>
+			<section>
+				<Companys/>
 			</section>
 			<div className="h-100"></div>
 		</main>

@@ -34,6 +34,57 @@ body {
 	}
 }
 
+/* Company Logo Animations */
+.logo-container {
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+}
+
+.logo-track {
+	display: flex;
+	width: max-content;
+	animation: marquee 25s linear infinite;
+}
+
+.logo-track-reverse {
+	display: flex;
+	width: max-content;
+	animation: marquee-reverse 25s linear infinite;
+}
+
+.logo-item {
+	flex-shrink: 0;
+	height: 90px;
+	width: 150px;
+	margin: 0 20px;
+	border-radius: 10px;
+	transition: transform 0.3s ease;
+}
+
+.logo-item:hover {
+	transform: scale(1.1);
+	z-index: 10;
+}
+
+@keyframes marquee {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(calc(-50%));
+	}
+}
+
+@keyframes marquee-reverse {
+	0% {
+		transform: translateX(calc(-50%));
+	}
+	100% {
+		transform: translateX(0);
+	}
+}
+
 /* Animation classes */
 .animate-float {
 	animation: float 6s ease-in-out infinite;
