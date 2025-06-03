@@ -39,13 +39,15 @@ export default function Header() {
 				</div>
 				<div className={styles.logoNavbar}>
 					<div className={styles.logo}>
-						<Image
-							className={styles.movieScoutLogo}
-							src="/MovieScout.svg"
-							alt="Main logo not found!"
-							width={200}
-							height={200}
-						/>
+						<Link href="/">
+							<Image
+								className={styles.movieScoutLogo}
+								src="/MovieScout.svg"
+								alt="Main logo not found!"
+								width={200}
+								height={200}
+							/>
+						</Link>
 					</div>
 				</div>
 				<div className={styles.navTitleContainer}>

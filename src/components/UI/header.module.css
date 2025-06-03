@@ -1,5 +1,6 @@
 .gradientHeader {
 	display: flex;
+	justify-content: center;
 	padding: 5px 20px;
 	background: linear-gradient(45deg, #d2001a, #7462ff, #f48e21, #23d5ab);
 	background-size: 300% 300%;
@@ -47,6 +48,7 @@
 .logoNavbar {
 	display: flex;
 	justify-content: center;
+	max-width: fit-content;
 }
 
 .logo {
@@ -145,9 +147,6 @@
 
 /*--------------Desktop------------*/
 @media screen and (min-width: 1025px) {
-	.gradientHeader {
-		justify-content: space-between;
-	}
 
 	.navTitleContainer {
 		width: 40%;
