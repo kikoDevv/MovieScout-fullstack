@@ -58,7 +58,7 @@ export default function SearchBar() {
 				}}
 			>
 				<motion.div
-					className="relative w-full mx-0 overflow-hidden"
+					className="relative w-full mx-0 overflow-hidden hidden sm:block"
 					style={{ borderRadius }}
 					transition={{ type: "spring", stiffness: 300, damping: 30 }}
 				>
