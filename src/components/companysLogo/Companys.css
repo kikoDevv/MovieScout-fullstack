@@ -1,57 +1,37 @@
-body {
-	overflow-x: hidden;
-}
-
-.logo-container {
-	overflow: hidden;
-	position: relative;
-	display: flex;
-	align-items: center;
-	max-width: 100%;
-}
-
-.logo-track {
-	display: flex;
-	animation: scroll 20s linear infinite;
-	width: max-content;
-	min-width: 100%;
-}
-
-.logo-track-reverse {
-	display: flex;
-	animation: scroll-reverse 20s linear infinite;
-	width: max-content;
-	min-width: 100%;
-}
-
-.logo-item {
-	flex-shrink: 0;
-	padding: 0 1rem;
-	opacity: 0.8;
-	margin: 0;
-}
-
-
-@media (min-width: 1280px) {
-	.logo-item {
-		padding: 0 1.5rem;
-	}
-}
-
-@keyframes scroll {
+@keyframes scroll-left {
 	0% {
 		transform: translateX(0);
 	}
 	100% {
-		transform: translateX(calc(-33.333%));
+		transform: translateX(-50%);
 	}
 }
 
-@keyframes scroll-reverse {
+@keyframes scroll-right {
 	0% {
-		transform: translateX(calc(-33.333%));
+		transform: translateX(-50%);
 	}
 	100% {
 		transform: translateX(0);
+	}
+}
+
+.logos-slider-left {
+	animation: scroll-left 30s linear infinite;
+	width: fit-content;
+	display: flex;
+}
+
+.logos-slider-right {
+	animation: scroll-right 30s linear infinite;
+	width: fit-content;
+	display: flex;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+	.logos-slider-left,
+	.logos-slider-right {
+		animation-duration: 20s;
 	}
 }

@@ -1,71 +1,66 @@
 "use client";
-
 import Image from "next/image";
 import "./Companys.css";
 
-const studiosUp = [
-	{
-		id: "universal",
-		src: "/logos/universal.png",
-		alt: "Universal Studios logo",
-	},
-	{ id: "warner", src: "/logos/warner.png", alt: "Warner Bros logo" },
-	{ id: "paramount", src: "/logos/paramount.png", alt: "Paramount logo" },
-	{ id: "prime", src: "/logos/prime.png", alt: "Prime Video logo" },
-	{ id: "disney", src: "/logos/disney.png", alt: "Disney logo" },
-	{ id: "dreamworks", src: "/logos/dreamworks.png", alt: "Dreamworks logo" },
-	{ id: "pixa", src: "/logos/pixa.png", alt: "Pixar logo" },
-	{ id: "hbo", src: "/logos/hbo.png", alt: "HBO logo" },
-];
-
-const studiosDown = [
-	{ id: "netflix", src: "/logos/netflix.png", alt: "Netflix logo" },
-	{ id: "marvel", src: "/logos/marvel.png", alt: "Marvel logo" },
-	{ id: "lucas", src: "/logos/lucas.png", alt: "Lucasfilm logo" },
-	{ id: "disney2", src: "/logos/disney.png", alt: "Disney logo" },
-	{ id: "newcinema", src: "/logos/newcinema.png", alt: "New Cinema logo" },
-	{ id: "paramount2", src: "/logos/paramount.png", alt: "Paramount logo" },
-	{ id: "legendary", src: "/logos/legendary.png", alt: "Legendary logo" },
-	{ id: "universal2", src: "/logos/universal.png", alt: "Universal logo" },
-];
-
-interface StudioLogo {
-	id: string;
-	src: string;
-	alt: string;
+interface CompanysProps {
+  direction?: 'left' | 'right';
+  showTitle?: boolean;
 }
 
-const renderLogoImages = (studios: StudioLogo[], isFirstSet = false) => {
-	return studios.map((studio) => (
-		<Image
-			key={`${isFirstSet ? "first" : "second"}-${studio.id}`}
-			className="logo-item"
-			src={studio.src}
-			alt={studio.alt}
-			width={150}
-			height={90}
-			style={{ objectFit: "contain" }}
-			priority={isFirstSet}
-		/>
-	));
-};
+export default function Companys({ direction = 'left', showTitle = true }: CompanysProps) {
+	const logos = [
+		{ src: "/logos/disney.png", alt: "Disney logo" },
+		{ src: "/logos/dreamworks.png", alt: "Dreamworks logo" },
+		{ src: "/logos/hbo.png", alt: "HBO logo" },
+		{ src: "/logos/legendary.png", alt: "Legendary logo" },
+		{ src: "/logos/lucas.png", alt: "Lucas Films logo" },
+		{ src: "/logos/marvel.png", alt: "Marvel logo" },
+		{ src: "/logos/netflix.png", alt: "Netflix logo" },
+		{ src: "/logos/paramount.png", alt: "Paramount logo" },
+		{ src: "/logos/pixar.png", alt: "Pixar logo" },
+		{ src: "/logos/prime.png", alt: "Prime Video logo" },
+		{ src: "/logos/universal.png", alt: "Universal logo" },
+		{ src: "/logos/warner.png", alt: "Warner Bros logo" },
+	];
 
-export default function Companys() {
 	return (
-		<section className="overflow-x-hidden">
-			<div className="logo-container mx-auto w-[90%] md:w-[86%] h-[100px] mb-4 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-				<div className="logo-track">
-					{renderLogoImages(studiosUp, true)}
-					{renderLogoImages(studiosUp)}
-					{renderLogoImages(studiosUp)}
-				</div>
-			</div>
-
-			<div className="logo-container mx-auto w-[90%] md:w-[86%] h-[100px] [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-				<div className="logo-track-reverse">
-					{renderLogoImages(studiosDown, true)}
-					{renderLogoImages(studiosDown)}
-					{renderLogoImages(studiosDown)}
+		<section className="py-6">
+			{showTitle && (
+				<h2 className="text-center text-2xl font-bold text-gray-800 mb-8">
+					Our Partners
+				</h2>
+			)}
+			<div className="relative overflow-hidden">
+				<div className={`flex ${direction === 'left' ? 'logos-slider-left' : 'logos-slider-right'}`}>
+					{logos.map((logo, index) => (
+						<div
+							key={index}
+							className="mx-5 flex items-center justify-center min-w-[120px]"
+						>
+							<Image
+								src={logo.src}
+								alt={logo.alt}
+								width={150}
+								height={80}
+								className="object-contain h-16 transition duration-300"
+							/>
+						</div>
+					))}
+					{/* Duplicate logos for infinite scroll effect */}
+					{logos.map((logo, index) => (
+						<div
+							key={`dup-${index}`}
+							className="mx-5 flex items-center justify-center min-w-[120px]"
+						>
+							<Image
+								src={logo.src}
+								alt={logo.alt}
+								width={150}
+								height={80}
+								className="object-contain h-16 transition duration-300"
+							/>
+						</div>
+					))}
 				</div>
 			</div>
 		</section>

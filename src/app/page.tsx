@@ -1,6 +1,6 @@
 import Image from "next/image";
 import SearchBar from "@/components/mainSearchBar/SearchBar";
-import AnimatedImage from "@/components/UI/AnimatedImage";
+import AnimatedImage from "@/components/UI/spidermanImage";
 import Companys from "@/components/companysLogo/Companys";
 
 export default function Home() {
@@ -28,7 +28,7 @@ export default function Home() {
 				<SearchBar />
 			</div>
 			{/*------------Spiderman poster section----------*/}
-			<section className="relative">
+			<section className="relative mb-200">
 				<Image
 					src="/spidermanBackground.png"
 					alt="Spiderman background not found!"
@@ -37,20 +37,24 @@ export default function Home() {
 					unoptimized
 					className="w-full"
 				/>
-				{/*-----------Companys logos------------*/}
-				<div className="relative">
-					<div className="absolute bottom-20">
-						<Companys />
+				{/*-----------Spider image------------*/}
+				<div className="absolute transform -translate-x-1/2 bottom-[10rem] left-[60%] z-2">
+					<AnimatedImage
+						src="/spiderman.png"
+						alt="Spiderman logo not found"
+						width={600}
+						height={1200}
+						className="w-3/5 md:w-2/5 lg:w-1/3"
+						animationIntensity={1}
+					/>
+				</div>
+				{/*---------company logos---------------*/}
+				<div className="absolute bottom-10 w-full">
+					<div className="py-2">
+						<Companys direction="left" showTitle={false} />
 					</div>
-					<div className="absolute transform -translate-x-1/2 bottom-[10rem] left-[60%]">
-						<AnimatedImage
-							src="/spiderman.png"
-							alt="Spiderman logo"
-							width={400}
-							height={800}
-							className="w-1/2 md:w-1/3 lg:w-1/4"
-							animationIntensity={1}
-						/>
+					<div className="pt-20">
+						<Companys direction="right" showTitle={false} />
 					</div>
 				</div>
 			</section>
