@@ -29,16 +29,17 @@ export default function Home() {
 			</div>
 			{/*------------Spiderman poster section----------*/}
 			<section className="relative mb-200">
+				{/*--------Background image-------*/}
 				<Image
 					src="/spidermanBackground.png"
 					alt="Spiderman background not found!"
 					width={300}
 					height={300}
 					unoptimized
-					className="w-full"
+					className="w-full hidden sm:block"
 				/>
-				{/*-----------Spider image------------*/}
-				<div className="absolute transform -translate-x-1/2 bottom-[10rem] left-[60%] z-2">
+				{/*-----------Spider------------*/}
+				<div className="absolute transform -translate-x-1/2 bottom-[10rem] left-[60%] z-2 hidden sm:block">
 					<AnimatedImage
 						src="/spiderman.png"
 						alt="Spiderman logo not found"
@@ -49,11 +50,11 @@ export default function Home() {
 					/>
 				</div>
 				{/*---------company logos---------------*/}
-				<div className="absolute bottom-10 w-full">
-					<div className="py-2">
+				<div className="relative w-full sm:absolute sm:bottom-10">
+					<div className="py-2 bg-amber-50 sm:bg-transparent">
 						<Companys direction="left" showTitle={false} />
 					</div>
-					<div className="pt-20">
+					<div className="pt-2 bg-amber-50 sm:pt-20 sm:bg-transparent">
 						<Companys direction="right" showTitle={false} />
 					</div>
 				</div>
