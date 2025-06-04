@@ -58,7 +58,7 @@ export default function Home() {
 				{/*---------company logos---------------*/}
 				<div className="relative w-full sm:absolute sm:bottom-40">
 					<div className="py-2 sm:bg-transparent">
-						<Companys direction="left" showTitle={false} />
+						<Companys direction="left" />
 					</div>
 				</div>
 			</section>
