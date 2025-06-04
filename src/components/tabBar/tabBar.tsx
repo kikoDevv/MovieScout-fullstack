@@ -53,7 +53,7 @@ export default function TabBar() {
 										transition-all duration-200 ease-out
 										${activeTab === tab.id
 											? "transform translate-y-0"
-											: "transform group-hover:translate-y-[-2px]"
+											: "transform sm:group-hover:translate-y-[-2px]"
 										}
 									`}>
 										{tab.icon && (

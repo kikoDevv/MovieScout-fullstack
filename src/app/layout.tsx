@@ -4,6 +4,7 @@ import Header from "@/components/UI/header";
 import Footer from "@/components/UI/footer";
 import { Work_Sans } from "next/font/google";
 import SideBar from "@/components/sideBar/sideBar";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const workSans = Work_Sans({
 	subsets: ["latin"],
@@ -23,12 +24,14 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={workSans.className}>
-				<Header />
-				{children}
-				{/* <SideBar/> */}
-				<Footer />
-			</body>
+			<ClerkProvider>
+				<body className={workSans.className}>
+					<Header />
+					{children}
+					{/* <SideBar/> */}
+					<Footer />
+				</body>
+			</ClerkProvider>
 		</html>
 	);
 }
