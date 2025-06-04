@@ -3,11 +3,16 @@ import Image from "next/image";
 import "./Companys.css";
 
 interface CompanysProps {
-  direction?: 'left' | 'right';
-  showTitle?: boolean;
+	direction?: "left" | "right";
+	showTitle?: boolean;
+	noRotate?: boolean;
 }
 
-export default function Companys({ direction = 'left', showTitle = true }: CompanysProps) {
+export default function Companys({
+	direction = "left",
+	showTitle = true,
+	noRotate = false,
+}: CompanysProps) {
 	const logos = [
 		{ src: "/logos/disney.png", alt: "Disney logo" },
 		{ src: "/logos/dreamworks.png", alt: "Dreamworks logo" },
@@ -31,7 +36,15 @@ export default function Companys({ direction = 'left', showTitle = true }: Compa
 				</h2>
 			)}
 			<div className="relative overflow-hidden">
-				<div className={`flex ${direction === 'left' ? 'logos-slider-left' : 'logos-slider-right'}`}>
+				<div
+					className={`flex ${
+						noRotate
+							? ""
+							: direction === "left"
+							? "logos-slider-left"
+							: "logos-slider-right"
+					}`}
+				>
 					{logos.map((logo, index) => (
 						<div
 							key={index}

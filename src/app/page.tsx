@@ -29,15 +29,19 @@ export default function Home() {
 			</div>
 			{/*------------Spiderman poster section----------*/}
 			<section className="relative mb-200">
-				{/*--------Background image-------*/}
-				<Image
-					src="/spidermanBackground.png"
-					alt="Spiderman background not found!"
-					width={300}
-					height={300}
-					unoptimized
-					className="w-full hidden sm:block"
-				/>
+				{/*--------Background image with fade effect-------*/}
+				<div className="relative hidden sm:block">
+					<Image
+						src="/spidermanBackground.png"
+						alt="Spiderman background not found!"
+						width={300}
+						height={300}
+						unoptimized
+						className="w-full"
+					/>
+					{/* Fade overlay */}
+					<div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-black to-transparent"></div>
+				</div>
 				{/*-----------Spider------------*/}
 				<div className="absolute transform -translate-x-1/2 bottom-[10rem] left-[60%] z-2 hidden sm:block">
 					<AnimatedImage
@@ -55,7 +59,7 @@ export default function Home() {
 						<Companys direction="left" showTitle={false} />
 					</div>
 					<div className="pt-2 bg-amber-50 sm:pt-20 sm:bg-transparent">
-						<Companys direction="right" showTitle={false} />
+						
 					</div>
 				</div>
 			</section>
