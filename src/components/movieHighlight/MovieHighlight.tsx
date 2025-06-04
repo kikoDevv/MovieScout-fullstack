@@ -50,8 +50,8 @@ export default function MovieHighlight({
 	];
 
 	return (
-		<section className="py-6">
-			<div className="relative overflow-hidden">
+		<section className="py-4">
+			<div className="relative w-full overflow-hidden">
 				<div
 					className={`flex ${
 						noRotate
@@ -62,33 +62,27 @@ export default function MovieHighlight({
 					}`}
 				>
 					{movies.map((movie, index) => (
-						<div
-							key={index}
-							className="mx-3 my-2 movie-highlight"
-							style={{ minWidth: "180px" }}
-						>
+						<div key={index} className="movie-highlight mx-2">
 							<Image
 								src={movie.src}
 								alt={movie.alt}
-								width={180}
-								height={270}
-								className="object-cover rounded-lg h-full"
+								width={1080}
+								height={1170}
+								unoptimized
+								className="object-cover rounded-lg h-full min-w-90 max-h-38"
 							/>
 						</div>
 					))}
 					{/* Duplicate movies for infinite scroll effect */}
 					{movies.map((movie, index) => (
-						<div
-							key={`dup-${index}`}
-							className="mx-3 my-2 movie-highlight"
-							style={{ minWidth: "180px", minHeight: "100%" }}
-						>
+						<div key={`dup-${index}`} className="movie-highlight mx-2">
 							<Image
 								src={movie.src}
 								alt={movie.alt}
-								width={180}
-								height={270}
-								className="object-cover rounded-lg h-full"
+								width={1080}
+								height={1170}
+								unoptimized
+								className="object-cover rounded-lg h-full min-w-90 max-h-38"
 							/>
 						</div>
 					))}

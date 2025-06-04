@@ -61,8 +61,8 @@ export default function Home() {
 					</div>
 				</div>
 			</section>
-			<div className="relative mb-200">
-				<div className="absolute sm:top-[-100]">
+			<div className="relative w-full my-12 mb-100">
+				<div className="absolute top-[-150] max-w-full">
 					<MovieHighlight
 					direction="right"
 					/>
