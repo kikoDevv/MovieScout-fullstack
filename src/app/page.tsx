@@ -3,6 +3,7 @@ import SearchBar from "@/components/mainSearchBar/SearchBar";
 import AnimatedImage from "@/components/UI/spidermanImage";
 import Companys from "@/components/companysLogo/Companys";
 import MovieHighlight from "@/components/movieHighlight/MovieHighlight";
+import TabBar from "@/components/tabBar/tabBar";
 
 export default function Home() {
 	return (
@@ -61,15 +62,21 @@ export default function Home() {
 					</div>
 				</div>
 			</section>
-			<div className="relative w-full my-12 mb-100">
+			{/*-----------movie highlight-------------*/}
+			<div className="relative w-full my-12 ">
 				<div className="absolute top-[-150] max-w-full">
-					<MovieHighlight
-					direction="right"
-					/>
+					<MovieHighlight direction="right" />
 				</div>
 			</div>
-
-			{/*---------Top Movies section---------------*/}
+			{/*--------- tabs bar section ----------*/}
+			<section className="py-10 relative overflow-hidden">
+				<div className="container mx-auto relative z-10">
+					<h2 className="text-2xl md:text-3xl font-bold text-center text-white mb-6">
+						Explore Categories
+					</h2>
+					<TabBar />
+				</div>
+			</section>
 		</main>
 	);
 }
