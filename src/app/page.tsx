@@ -2,6 +2,7 @@ import Image from "next/image";
 import SearchBar from "@/components/mainSearchBar/SearchBar";
 import AnimatedImage from "@/components/UI/spidermanImage";
 import Companys from "@/components/companysLogo/Companys";
+import MovieHighlight from "@/components/movieHighlight/MovieHighlight";
 
 export default function Home() {
 	return (
@@ -28,7 +29,7 @@ export default function Home() {
 				<SearchBar />
 			</div>
 			{/*------------Spiderman poster section----------*/}
-			<section className="relative mb-200">
+			<section className="relative">
 				{/*--------Background image with fade effect-------*/}
 				<div className="relative hidden sm:block">
 					<Image
@@ -52,17 +53,23 @@ export default function Home() {
 						className="w-3/5 md:w-2/5 lg:w-1/3"
 						animationIntensity={1}
 					/>
-				</div>
+				</div>{" "}
 				{/*---------company logos---------------*/}
-				<div className="relative w-full sm:absolute sm:bottom-10">
+				<div className="relative w-full sm:absolute sm:bottom-40">
 					<div className="py-2 bg-amber-50 sm:bg-transparent">
 						<Companys direction="left" showTitle={false} />
 					</div>
-					<div className="pt-2 bg-amber-50 sm:pt-20 sm:bg-transparent">
-						
-					</div>
 				</div>
 			</section>
+			<div className="relative mb-200">
+				<div className="absolute sm:top-[-100]">
+					<MovieHighlight
+					direction="right"
+					/>
+				</div>
+			</div>
+
+			{/*---------Top Movies section---------------*/}
 		</main>
 	);
 }
