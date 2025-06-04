@@ -69,13 +69,13 @@ export default function Home() {
 				</div>
 			</div>
 			{/*--------- tabs bar section ----------*/}
-			<section className="py-10 relative overflow-hidden">
+			<section className="py-10 relative overflow-hidden mt-20">
 				<div className="container mx-auto relative z-10">
 					<h2 className="text-2xl md:text-3xl font-bold text-center text-white mb-6">
 						Explore Categories
 					</h2>
-					<p className="text-center text-white mb-6">
-						Our database features top movies across all categories, ensuring a diverse and high-quality selection for every viewer.
+					<p className="text-center text-white mb-30">
+						Our database features top movies across all categories from every genre.
 					</p>
 					<TabBar />
 				</div>
