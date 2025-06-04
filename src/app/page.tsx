@@ -74,6 +74,9 @@ export default function Home() {
 					<h2 className="text-2xl md:text-3xl font-bold text-center text-white mb-6">
 						Explore Categories
 					</h2>
+					<p className="text-center text-white mb-6">
+						Our database features top movies across all categories, ensuring a diverse and high-quality selection for every viewer.
+					</p>
 					<TabBar />
 				</div>
 			</section>

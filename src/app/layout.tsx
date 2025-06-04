@@ -3,7 +3,7 @@ import "./globals.css";
 import Header from "@/components/UI/header";
 import Footer from "@/components/UI/footer";
 import { Work_Sans } from "next/font/google";
-import Toolbar from "@/components/toolbar/toolbar";
+import SideBar from "@/components/sideBar/sideBar";
 
 const workSans = Work_Sans({
 	subsets: ["latin"],
@@ -26,7 +26,7 @@ export default function RootLayout({
 			<body className={workSans.className}>
 				<Header />
 				{children}
-				{/* <Toolbar/> */}
+				{/* <SideBar/> */}
 				<Footer />
 			</body>
 		</html>

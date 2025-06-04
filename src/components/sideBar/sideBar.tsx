@@ -1,13 +1,13 @@
 import React from "react";
-import styles from "./toolbar.module.css";
+import styles from "./sideBar.module.css";
 import { FaTimes } from "react-icons/fa";
 import { FaFilm, FaTv, FaEnvelope, FaSignInAlt, FaHome } from "react-icons/fa";
 import Link from "next/link";
 
-export default function Toolbar({ onClose }: { onClose?: () => void }) {
+export default function SideBar({ onClose }: { onClose?: () => void }) {
 	return (
 		<div
-			className={`${styles.toolbar} bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 shadow-2xl`}
+			className={`${styles.sideBar} bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 shadow-2xl`}
 		>
 			<div className="flex text-white justify-between items-center p-5 border-b border-gray-700">
 				<h1 className="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
@@ -21,7 +21,6 @@ export default function Toolbar({ onClose }: { onClose?: () => void }) {
 			</div>
 			<section className="py-6 px-3">
 				<nav className="flex flex-col gap-2">
-
 					<Link
 						href="/login"
 						className="mt-4 flex items-center gap-3 p-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-lg transition-all duration-200"

@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./header.module.css";
 import { FaBars } from "react-icons/fa";
-import Toolbar from "@/components/toolbar/toolbar";
+import SideBar from "@/components/sideBar/sideBar";
 
 export default function Header() {
 	const [menuOpen, setMenuOpen] = useState(false);
@@ -21,10 +21,10 @@ export default function Header() {
 					onClick={toggleMenu}
 				></div>
 			)}
-			{menuOpen && <Toolbar onClose={toggleMenu} />}
+			{menuOpen && <SideBar onClose={toggleMenu} />}
 
 			<header className={styles.gradientHeader}>
-				<div className={styles.toolbarBtn} onClick={toggleMenu}>
+				<div className={styles.sideBarBtn} onClick={toggleMenu}>
 					<FaBars size={24} />
 				</div>
 				<div className={styles.navTitleContainer}>

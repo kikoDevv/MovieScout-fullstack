@@ -66,9 +66,8 @@ export default function MovieHighlight({
 							<Image
 								src={movie.src}
 								alt={movie.alt}
-								width={1080}
-								height={1170}
-								unoptimized
+								width={680}
+								height={670}
 								className="object-cover rounded-lg h-full min-w-90 max-h-38"
 							/>
 						</div>
@@ -79,9 +78,8 @@ export default function MovieHighlight({
 							<Image
 								src={movie.src}
 								alt={movie.alt}
-								width={1080}
-								height={1170}
-								unoptimized
+								width={680}
+								height={670}
 								className="object-cover rounded-lg h-full min-w-90 max-h-38"
 							/>
 						</div>
