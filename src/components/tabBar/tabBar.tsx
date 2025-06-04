@@ -21,13 +21,13 @@ export default function TabBar() {
 	];
 
 	return (
-		<div className="flex justify-center w-full">
-			<div className="max-w-4xl w-fit overflow-x-auto scrollbar-hide backdrop-blur-md">
-				<div className="relative px-2 w-fit">
-					<div className="flex items-center justify-center relative">
-						<div className="tab-backdrop absolute inset-0 bg-black/30 backdrop-blur-md rounded-full"></div>
+		<div className="flex justify-center w-fit">
+			<div className="max-w-4xl w-fit backdrop-blur-md">
+				<div className="relative w-fit">
+					<div className="flex items-center justify-center relative p-1">
 
-						<div className="flex space-x-1 sm:space-x-3 p-1.5 relative z-10">
+
+						<div className="flex space-x-1 sm:space-x-3 relative z-10">
 							{tabs.map((tab) => (
 								<button
 									key={tab.id}
