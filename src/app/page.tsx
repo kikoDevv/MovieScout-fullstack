@@ -57,24 +57,24 @@ export default function Home() {
 				</div>{" "}
 				{/*---------company logos---------------*/}
 				<div className="relative w-full sm:absolute sm:bottom-40">
-					<div className="py-2 bg-amber-50 sm:bg-transparent">
+					<div className="py-2 sm:bg-transparent">
 						<Companys direction="left" showTitle={false} />
 					</div>
 				</div>
 			</section>
 			{/*-----------movie highlight-------------*/}
-			<div className="relative w-full my-12 ">
-				<div className="absolute top-[-150] max-w-full">
+			<div className="relative w-full sm:my-12">
+				<div className="sm:absolute top-[-150] max-w-full">
 					<MovieHighlight direction="right" />
 				</div>
 			</div>
 			{/*--------- tabs bar section ----------*/}
-			<section className="py-10 relative overflow-hidden mt-20">
+			<section className="py-10 relative overflow-hidden sm:mt-20">
 				<div className="container mx-auto relative z-10">
 					<h2 className="text-2xl md:text-3xl font-bold text-center text-white mb-6">
 						Explore Categories
 					</h2>
-					<p className="text-center text-white mb-30">
+					<p className="text-center text-white sm:mb-30 mb-5">
 						Our database features top movies across all categories from every genre.
 					</p>
 					<TabBar />

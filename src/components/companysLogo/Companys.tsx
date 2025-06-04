@@ -4,13 +4,11 @@ import "./Companys.css";
 
 interface CompanysProps {
 	direction?: "left" | "right";
-	showTitle?: boolean;
 	noRotate?: boolean;
 }
 
 export default function Companys({
 	direction = "left",
-	showTitle = true,
 	noRotate = false,
 }: CompanysProps) {
 	const logos = [
@@ -30,11 +28,6 @@ export default function Companys({
 
 	return (
 		<section className="py-6">
-			{showTitle && (
-				<h2 className="text-center text-2xl font-bold text-gray-800 mb-8">
-					Our Partners
-				</h2>
-			)}
 			<div className="relative overflow-hidden">
 				<div
 					className={`flex ${
