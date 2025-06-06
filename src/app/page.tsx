@@ -4,6 +4,7 @@ import AnimatedImage from "@/components/UI/spidermanImage";
 import Companys from "@/components/companysLogo/Companys";
 import MovieHighlight from "@/components/movieHighlight/MovieHighlight";
 import TabBar from "@/components/tabBar/tabBar";
+import SubscriptionBox from "@/components/subscriptionBox/subscrib";
 
 export default function Home() {
 	return (
@@ -54,7 +55,7 @@ export default function Home() {
 						className="w-3/5 md:w-2/5 lg:w-1/3"
 						animationIntensity={1}
 					/>
-				</div>{" "}
+				</div>
 				{/*---------company logos---------------*/}
 				<div className="relative w-full sm:absolute sm:bottom-40">
 					<div className="py-2 sm:bg-transparent">
@@ -86,6 +87,11 @@ export default function Home() {
 			{/*--------- tabs bar ----------*/}
 			{/* <div className="overflow-x-auto scrollbar-hide tab-backdrop inset-0 bg-black/30 backdrop-blur-md mx-2 rounded-full sm:w-fit sm:place-self-center"></div> */}
 			<TabBar />
+
+			{/*--------- subscription box ----------*/}
+			<div className="container mx-auto px-4 my-16">
+				<SubscriptionBox />
+			</div>
 		</main>
 	);
 }

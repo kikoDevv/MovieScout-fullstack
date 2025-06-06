@@ -65,7 +65,7 @@ export default function TabsMovies({ activeTab }: TabsMoviesProps) {
 				return `${TMDB_BASE_URL}/tv/popular?api_key=${TMDB_API_KEY}`;
 			case "children":
 				return `${TMDB_BASE_URL}/discover/movie?api_key=${TMDB_API_KEY}&with_genres=16,10751&certification.lte=G`;
-			case "newReleases":
+			case "Upcoming":
 				return `${TMDB_BASE_URL}/movie/now_playing?api_key=${TMDB_API_KEY}`;
 			case "comedy":
 				return `${TMDB_BASE_URL}/discover/movie?api_key=${TMDB_API_KEY}&with_genres=35`;

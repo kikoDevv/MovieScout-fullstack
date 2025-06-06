@@ -1,0 +1,302 @@
+import React from "react";
+import Link from "next/link";
+import Image from "next/image";
+
+export default function SubscriptionBox() {
+	return (
+		<div className="relative w-full mx-auto my-16 overflow-hidden">
+			{/*--------- Main container with backdrop blur matching page theme ----------*/}
+			<div className="relative bg-black/40 backdrop-blur-md rounded-3xl shadow-2xl overflow-hidden border border-white/10">
+				<div className="absolute inset-0 opacity-100">
+					<Image
+						src="/seat.jpg"
+						alt="Cinema seats image not found"
+						className="w-full h-full object-cover"
+            fill
+					/>
+					<div className="absolute inset-0 bg-gradient-to-r from-black via-black/50 to-black"></div>
+				</div>
+        {/*--------- Animated background effects matching page colors ----------*/}
+				<div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 via-black/20 to-blue-600/10"></div>
+				<div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-purple-500/20 to-pink-500/15 rounded-full blur-3xl -translate-y-48 translate-x-48"></div>
+				<div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-blue-500/15 to-cyan-500/20 rounded-full blur-3xl translate-y-40 -translate-x-40"></div>
+
+				<div className="relative z-10 px-8 py-12 lg:px-16 lg:py-16">
+					<div className="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
+						{/* Left side - Content */}
+						<div className="text-white space-y-8">
+							{/* Badge */}
+							<div className="inline-flex items-center space-x-2 px-4 py-2 bg-black/30 backdrop-blur-sm rounded-full border border-purple-500/20">
+								<div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+								<span className="text-sm font-medium">
+									Free Account Benefits
+								</span>
+							</div>
+
+							{/*--------- Main heading ----------*/}
+							<div className="space-y-4">
+								<h2 className="text-4xl lg:text-6xl font-bold leading-tight">
+									Unlock Your{" "}
+									<span className="bg-gradient-to-r from-purple-400 via-pink-500 to-blue-400 bg-clip-text text-transparent">
+										Movie Journey
+									</span>
+								</h2>
+								<p className="text-xl text-gray-300 leading-relaxed">
+									Join thousands of movie lovers and discover your next favorite
+									film. Create your account today and unlock exclusive features.
+								</p>
+							</div>
+
+							{/*--------- Features list ----------*/}
+							<div className="space-y-4">
+								<div className="flex items-center space-x-4 group">
+									<div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-purple-500 to-blue-500 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+										<svg
+											className="w-6 h-6 text-white"
+											fill="none"
+											stroke="currentColor"
+											viewBox="0 0 24 24"
+										>
+											<path
+												strokeLinecap="round"
+												strokeLinejoin="round"
+												strokeWidth={2}
+												d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+											/>
+										</svg>
+									</div>
+									<div>
+										<h3 className="text-lg font-semibold">
+											Personal Watchlist
+										</h3>
+										<p className="text-gray-400">
+											Save movies and shows you want to watch later
+										</p>
+									</div>
+								</div>
+
+								<div className="flex items-center space-x-4 group">
+									<div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-pink-500 to-purple-500 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+										<svg
+											className="w-6 h-6 text-white"
+											fill="none"
+											stroke="currentColor"
+											viewBox="0 0 24 24"
+										>
+											<path
+												strokeLinecap="round"
+												strokeLinejoin="round"
+												strokeWidth={2}
+												d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
+											/>
+										</svg>
+									</div>
+									<div>
+										<h3 className="text-lg font-semibold">Write Reviews</h3>
+										<p className="text-gray-400">
+											Share your thoughts and rate movies
+										</p>
+									</div>
+								</div>
+
+								<div className="flex items-center space-x-4 group">
+									<div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+										<svg
+											className="w-6 h-6 text-white"
+											fill="none"
+											stroke="currentColor"
+											viewBox="0 0 24 24"
+										>
+											<path
+												strokeLinecap="round"
+												strokeLinejoin="round"
+												strokeWidth={2}
+												d="M13 10V3L4 14h7v7l9-11h-7z"
+											/>
+										</svg>
+									</div>
+									<div>
+										<h3 className="text-lg font-semibold">
+											Smart Recommendations
+										</h3>
+										<p className="text-gray-400">
+											Get personalized movie suggestions
+										</p>
+									</div>
+								</div>
+
+								<div className="flex items-center space-x-4 group">
+									<div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+										<svg
+											className="w-6 h-6 text-white"
+											fill="none"
+											stroke="currentColor"
+											viewBox="0 0 24 24"
+										>
+											<path
+												strokeLinecap="round"
+												strokeLinejoin="round"
+												strokeWidth={2}
+												d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+											/>
+										</svg>
+									</div>
+									<div>
+										<h3 className="text-lg font-semibold">
+											Connect with Friends
+										</h3>
+										<p className="text-gray-400">
+											Share lists and discover together
+										</p>
+									</div>
+								</div>
+							</div>
+
+							{/*--------- CTA Buttons ----------*/}
+							<div className="flex flex-col sm:flex-row gap-4 pt-4">
+								<Link
+									href="/sign-up"
+									className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold text-lg rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 shadow-xl hover:shadow-2xl text-center"
+								>
+									<div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+									<span className="relative flex items-center justify-center space-x-2">
+										<span>Get Started Free</span>
+										<svg
+											className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300"
+											fill="none"
+											stroke="currentColor"
+											viewBox="0 0 24 24"
+										>
+											<path
+												strokeLinecap="round"
+												strokeLinejoin="round"
+												strokeWidth={2}
+												d="M13 7l5 5m0 0l-5 5m5-5H6"
+											/>
+										</svg>
+									</span>
+								</Link>
+                {/*--------- sign in btn ----------*/}
+								<Link
+									href="/sign-in"
+									className="px-8 py-4 border-2 border-gray-600 hover:border-purple-400 text-gray-300 hover:text-white font-bold text-lg rounded-2xl transition-all duration-300 hover:bg-purple-600/10 backdrop-blur-sm text-center"
+								>
+									Sign In
+								</Link>
+							</div>
+
+							{/* Free badge */}
+							<div className="inline-flex items-center space-x-2 text-sm text-gray-400">
+								<svg
+									className="w-5 h-5 text-purple-400"
+									fill="currentColor"
+									viewBox="0 0 20 20"
+								>
+									<path
+										fillRule="evenodd"
+										d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+										clipRule="evenodd"
+									/>
+								</svg>
+								<span>
+									100% Free • No Credit Card Required • Join 50,000+ Users
+								</span>
+							</div>
+						</div>
+
+						{/* Right side - Visual elements */}
+						<div className="relative lg:block hidden">
+							{/* Movie cards showcase */}
+							<div className="relative">
+								{/*--------- Background card ----------*/}
+								<div className="absolute inset-0 backdrop-blur-sm rounded-3xl transform rotate-10 scale-95 border border-purple-500/10"></div>
+
+								{/* Main showcase card */}
+								<div className="relative bg-black/50 backdrop-blur-md rounded-3xl p-6 border border-gray-700/30 shadow-2xl">
+									<div className="space-y-6">
+										{/* Header */}
+										<div className="flex items-center justify-between">
+											<h3 className="text-xl font-bold text-white">
+												My Watchlist
+											</h3>
+											<div className="flex items-center space-x-1">
+												<div className="w-3 h-3 bg-green-400 rounded-full"></div>
+												<div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
+												<div className="w-3 h-3 bg-red-400 rounded-full"></div>
+											</div>
+										</div>
+
+										{/* Movie items */}
+										<div className="space-y-4">
+											<div className="flex items-center space-x-4 p-3 bg-black/30 backdrop-blur-sm rounded-xl hover:bg-purple-600/10 transition-colors duration-300 group border border-gray-700/20">
+												<div className="w-16 h-24 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg shadow-lg"></div>
+												<div className="flex-1">
+													<h4 className="text-white font-semibold group-hover:text-purple-300 transition-colors duration-300">
+														Smile 2
+													</h4>
+													<p className="text-gray-400 text-sm">Horror • 2024</p>
+													<div className="flex items-center space-x-1 mt-1">
+														<span className="text-yellow-400">★★★★☆</span>
+														<span className="text-gray-500 text-xs">
+															8.5/10
+														</span>
+													</div>
+												</div>
+											</div>
+
+											<div className="flex items-center space-x-4 p-3 bg-black/30 backdrop-blur-sm rounded-xl hover:bg-purple-600/10 transition-colors duration-300 group border border-gray-700/20">
+												<div className="w-16 h-24 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-lg shadow-lg"></div>
+												<div className="flex-1">
+													<h4 className="text-white font-semibold group-hover:text-purple-300 transition-colors duration-300">
+														Breaking Bad
+													</h4>
+													<p className="text-gray-400 text-sm">
+														Drama • Series
+													</p>
+													<div className="flex items-center space-x-1 mt-1">
+														<span className="text-yellow-400">★★★★★</span>
+														<span className="text-gray-500 text-xs">
+															9.5/10
+														</span>
+													</div>
+												</div>
+											</div>
+
+											<div className="flex items-center space-x-4 p-3 bg-black/30 backdrop-blur-sm rounded-xl hover:bg-purple-600/10 transition-colors duration-300 group border border-gray-700/20">
+												<div className="w-16 h-24 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg shadow-lg"></div>
+												<div className="flex-1">
+													<h4 className="text-white font-semibold group-hover:text-purple-300 transition-colors duration-300">
+														Vikings
+													</h4>
+													<p className="text-gray-400 text-sm">
+														Action • Series
+													</p>
+													<div className="flex items-center space-x-1 mt-1">
+														<span className="text-yellow-400">★★★★☆</span>
+														<span className="text-gray-500 text-xs">
+															8.8/10
+														</span>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										{/* Add button */}
+										<button className="w-full py-3 border-2 border-dashed border-purple-500/30 text-purple-400 rounded-xl hover:border-purple-400 hover:text-purple-300 hover:bg-purple-600/5 transition-colors duration-300 font-medium backdrop-blur-sm">
+											+ Add New Movie
+										</button>
+									</div>
+								</div>
+
+								{/* Floating elements */}
+								<div className="absolute -top-4 -right-4 w-8 h-8 bg-purple-500/80 rounded-full opacity-80 animate-bounce"></div>
+								<div className="absolute top-1/3 -left-6 w-6 h-6 bg-blue-500/60 rounded-full opacity-60 animate-pulse"></div>
+								<div className="absolute -bottom-2 right-1/4 w-10 h-10 bg-cyan-500/70 rounded-full opacity-70 animate-bounce delay-300"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
+}

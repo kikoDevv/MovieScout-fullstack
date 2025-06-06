@@ -12,7 +12,7 @@ export default function SearchBar() {
 		/*--------- Transform scroll value for border radios ----------*/
 	}
 	// const borderRadius = useTransform(scrollY, [10, 600], [10, 30]);
-	const borderRadius = useTransform(scrollY, [10, 600], [10, 30]);
+	const borderRadius = useTransform(scrollY, [10, 600], [15, 30]);
 
 	{
 		/*--------- Transform scroll value to width 480px to 320px of searchbar ----------*/

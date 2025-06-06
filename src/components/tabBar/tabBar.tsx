@@ -17,7 +17,7 @@ export default function TabBar() {
 		{ id: "movies", label: "Movies", icon: "🎬" },
 		{ id: "tvshows", label: "TV Shows", icon: "📺" },
 		{ id: "children", label: "Children", icon: "🧸" },
-		{ id: "newReleases", label: "New Releases", icon: "🆕" },
+		{ id: "Upcoming", label: "Upcoming", icon: "🆕" },
 		{ id: "comedy", label: "Comedy", icon: "😂" },
 	];
 

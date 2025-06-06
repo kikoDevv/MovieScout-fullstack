@@ -14,6 +14,9 @@ const workSans = Work_Sans({
 export const metadata: Metadata = {
 	title: "Movie-Scout",
 	description: "Find a movie to watch",
+	icons: {
+		icon: [{ url: "/MovieScout.svg", type: "image/svg+xml" }],
+	},
 };
 
 export default function RootLayout({
