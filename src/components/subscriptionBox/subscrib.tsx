@@ -4,9 +4,9 @@ import { SignInButton, SignedOut } from "@clerk/nextjs";
 
 export default function SubscriptionBox() {
 	return (
-		<div className="relative w-full mx-auto my-16 overflow-hidden select-none">
+		<div className="relative w-full mx-auto my-8 md:my-12 lg:my-16 overflow-hidden select-none sm:px-4 sm:px-6 lg:px-8">
 			{/*--------- Main container with backdrop blur matching page theme ----------*/}
-			<div className="relative bg-black/40 backdrop-blur-md rounded-3xl shadow-2xl overflow-hidden border border-white/10 m-50">
+			<div className="relative bg-black/40 backdrop-blur-md rounded-3xl shadow-2xl overflow-hidden border border-white/10 mx-auto max-w-5xl">
 				<div className="absolute inset-0 opacity-100">
 					<Image
 						src="/seat.jpg"
@@ -21,7 +21,7 @@ export default function SubscriptionBox() {
 				<div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-purple-500/20 to-pink-500/15 rounded-full blur-3xl -translate-y-48 translate-x-48"></div>
 				<div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-blue-500/15 to-cyan-500/20 rounded-full blur-3xl translate-y-40 -translate-x-40"></div>
 
-				<div className="relative z-10 px-8 py-12 lg:px-16 lg:py-16">
+				<div className="relative z-10 px-8 py-12 lg:px-10 lg:py-9">
 					<div className="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
 						{/* Left side - Content */}
 						<div className="text-white space-y-8">
@@ -124,8 +124,21 @@ export default function SubscriptionBox() {
 									</div>
 								</div>
 							</div>
-
-							{/*--------- CTA Buttons ----------*/}
+							{/*--------- 100% free badge ----------*/}
+							<div className="inline-flex items-center space-x-2 text-sm text-gray-400 m-0">
+								<svg
+									className="w-5 h-5 text-purple-400"
+									fill="currentColor"
+									viewBox="0 0 20 20"
+								>
+									<path
+										fillRule="evenodd"
+										d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+										clipRule="evenodd"
+									/>
+								</svg>
+								<span>100% Free • secure login usin clerk</span>
+							</div>
 							<div className="flex flex-col sm:flex-row gap-4 pt-4">
 								{/*--------- sign up button ----------*/}
 								<SignedOut>
@@ -159,22 +172,6 @@ export default function SubscriptionBox() {
 										</div>
 									</SignInButton>
 								</SignedOut>
-							</div>
-
-							{/* Free badge */}
-							<div className="inline-flex items-center space-x-2 text-sm text-gray-400">
-								<svg
-									className="w-5 h-5 text-purple-400"
-									fill="currentColor"
-									viewBox="0 0 20 20"
-								>
-									<path
-										fillRule="evenodd"
-										d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-										clipRule="evenodd"
-									/>
-								</svg>
-								<span>100% Free • secure login usin clerk</span>
 							</div>
 						</div>
 
@@ -263,7 +260,7 @@ export default function SubscriptionBox() {
 								</div>
 
 								{/*--------- dot on the top of the main card ----------*/}
-								<div className="absolute -top-2 -right-2 w-8 h-8 bg-purple-500/80 rounded-full opacity-80"></div>
+								<div className="absolute -top-[-15px] -right-[-15px] w-8 h-8 bg-purple-500/80 rounded-full opacity-80"></div>
 								<div className="absolute top-1/3 -left-6 w-6 h-6 bg-blue-500/60 rounded-full opacity-60 animate-pulse"></div>
 							</div>
 						</div>
