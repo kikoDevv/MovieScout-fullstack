@@ -75,12 +75,17 @@ export default function Home() {
 						Top categories
 					</h1>
 					<p className="text-center text-white mb-5">
+					<h2 className="text-2xl md:text-3xl font-bold text-center text-white mb-6">
+						Explore Categories
+					</h2>
+					<p className="text-center text-white sm:mb-30 mb-5">
 						Our database features top movies across all categories from every
 						genre.
 					</p>
 				</div>
 			</section>
-			{/*--------- tabs bar and its content ----------*/}
+			{/*--------- tabs bar ----------*/}
+			{/* <div className="overflow-x-auto scrollbar-hide tab-backdrop inset-0 bg-black/30 backdrop-blur-md mx-2 rounded-full sm:w-fit sm:place-self-center"></div> */}
 			<TabBar />
 		</main>
 	);

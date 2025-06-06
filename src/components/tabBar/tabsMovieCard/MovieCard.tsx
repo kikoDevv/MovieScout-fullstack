@@ -10,14 +10,14 @@ interface MovieCardProps {
 export default function MovieCard({ movie, onClick }: MovieCardProps) {
 	return (
 		<div
-			className="relative overflow-hidden rounded-2xl w-full aspect-video cursor-pointer hover:scale-105 transition-transform duration-300"
+			className="relative overflow-hidden bg-amber-50 rounded-2xl w-full aspect-video cursor-pointer hover:scale-105 transition-transform duration-300"
 			onClick={() => onClick && onClick(movie.id)}
 		>
 			<Image
-				src={movie.backdropPath || movie.posterPath}
+				src={movie.posterPath}
 				alt={`${movie.title} poster`}
-				width={1280}
-				height={720}
+				width={500}
+				height={300}
 				className="w-full h-full object-cover"
 			/>
 			<h1 className="absolute bottom-0 font-bold text-white text-2xl font-sans p-4">
