@@ -58,7 +58,7 @@ export default function Header() {
 						</Link>
 						{/*--------- signed in function ----------*/}
 						<SignedIn>
-							<UserButton/>
+							<UserButton showName/>
 						</SignedIn>
 						<SignedOut>
 							<SignInButton mode="modal">

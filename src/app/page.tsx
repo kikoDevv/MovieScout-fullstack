@@ -81,9 +81,8 @@ export default function Home() {
 				</div>
 			</section>
 			{/*--------- tabs bar ----------*/}
-			<div className="overflow-x-auto scrollbar-hide tab-backdrop inset-0 bg-black/30 backdrop-blur-md mx-2 rounded-full sm:w-fit sm:place-self-center">
-				<TabBar />
-			</div>
+			{/* <div className="overflow-x-auto scrollbar-hide tab-backdrop inset-0 bg-black/30 backdrop-blur-md mx-2 rounded-full sm:w-fit sm:place-self-center"></div> */}
+			<TabBar />
 		</main>
 	);
 }
