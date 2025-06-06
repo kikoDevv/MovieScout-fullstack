@@ -139,7 +139,7 @@ export default function SubscriptionBox() {
 								</svg>
 								<span>100% Free • secure login usin clerk</span>
 							</div>
-							<div className="flex flex-col sm:flex-row gap-4 pt-4">
+							<div className="flex flex-col sm:flex-row gap-4">
 								{/*--------- sign up button ----------*/}
 								<SignedOut>
 									<SignInButton mode="modal">
