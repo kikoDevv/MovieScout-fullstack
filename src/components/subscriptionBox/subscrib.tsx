@@ -1,22 +1,23 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { SignInButton, SignedIn, SignedOut } from "@clerk/nextjs";
 
 export default function SubscriptionBox() {
 	return (
-		<div className="relative w-full mx-auto my-16 overflow-hidden">
+		<div className="relative w-full mx-auto my-16 overflow-hidden select-none">
 			{/*--------- Main container with backdrop blur matching page theme ----------*/}
-			<div className="relative bg-black/40 backdrop-blur-md rounded-3xl shadow-2xl overflow-hidden border border-white/10">
+			<div className="relative bg-black/40 backdrop-blur-md rounded-3xl shadow-2xl overflow-hidden border border-white/10 m-50">
 				<div className="absolute inset-0 opacity-100">
 					<Image
 						src="/seat.jpg"
 						alt="Cinema seats image not found"
 						className="w-full h-full object-cover"
-            fill
+						fill
 					/>
 					<div className="absolute inset-0 bg-gradient-to-r from-black via-black/50 to-black"></div>
 				</div>
-        {/*--------- Animated background effects matching page colors ----------*/}
+				{/*--------- Animated background effects matching page colors ----------*/}
 				<div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 via-black/20 to-blue-600/10"></div>
 				<div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-purple-500/20 to-pink-500/15 rounded-full blur-3xl -translate-y-48 translate-x-48"></div>
 				<div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-blue-500/15 to-cyan-500/20 rounded-full blur-3xl translate-y-40 -translate-x-40"></div>
@@ -38,13 +39,14 @@ export default function SubscriptionBox() {
 								<h2 className="text-4xl lg:text-6xl font-bold leading-tight">
 									Unlock Your{" "}
 									<span className="bg-gradient-to-r from-purple-400 via-pink-500 to-blue-400 bg-clip-text text-transparent">
-										Movie Journey
+										login Benefits
 									</span>
 								</h2>
-								<p className="text-xl text-gray-300 leading-relaxed">
-									Join thousands of movie lovers and discover your next favorite
-									film. Create your account today and unlock exclusive features.
-								</p>
+								{/* <p className="text-xl text-gray-300 leading-relaxed">
+									Join our comunity of movie lovers and discover your next
+									favorite film. Create your account today and unlock exclusive
+									features.
+								</p> */}
 							</div>
 
 							{/*--------- Features list ----------*/}
@@ -66,9 +68,7 @@ export default function SubscriptionBox() {
 										</svg>
 									</div>
 									<div>
-										<h3 className="text-lg font-semibold">
-											Personal Watchlist
-										</h3>
+										<h3 className="text-lg font-semibold">Add movies</h3>
 										<p className="text-gray-400">
 											Save movies and shows you want to watch later
 										</p>
@@ -120,33 +120,7 @@ export default function SubscriptionBox() {
 											Smart Recommendations
 										</h3>
 										<p className="text-gray-400">
-											Get personalized movie suggestions
-										</p>
-									</div>
-								</div>
-
-								<div className="flex items-center space-x-4 group">
-									<div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-										<svg
-											className="w-6 h-6 text-white"
-											fill="none"
-											stroke="currentColor"
-											viewBox="0 0 24 24"
-										>
-											<path
-												strokeLinecap="round"
-												strokeLinejoin="round"
-												strokeWidth={2}
-												d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-											/>
-										</svg>
-									</div>
-									<div>
-										<h3 className="text-lg font-semibold">
-											Connect with Friends
-										</h3>
-										<p className="text-gray-400">
-											Share lists and discover together
+											Beta future, propoply never gets finished
 										</p>
 									</div>
 								</div>
@@ -154,35 +128,38 @@ export default function SubscriptionBox() {
 
 							{/*--------- CTA Buttons ----------*/}
 							<div className="flex flex-col sm:flex-row gap-4 pt-4">
-								<Link
-									href="/sign-up"
-									className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold text-lg rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 shadow-xl hover:shadow-2xl text-center"
-								>
-									<div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-									<span className="relative flex items-center justify-center space-x-2">
-										<span>Get Started Free</span>
-										<svg
-											className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300"
-											fill="none"
-											stroke="currentColor"
-											viewBox="0 0 24 24"
-										>
-											<path
-												strokeLinecap="round"
-												strokeLinejoin="round"
-												strokeWidth={2}
-												d="M13 7l5 5m0 0l-5 5m5-5H6"
-											/>
-										</svg>
-									</span>
-								</Link>
-                {/*--------- sign in btn ----------*/}
-								<Link
-									href="/sign-in"
-									className="px-8 py-4 border-2 border-gray-600 hover:border-purple-400 text-gray-300 hover:text-white font-bold text-lg rounded-2xl transition-all duration-300 hover:bg-purple-600/10 backdrop-blur-sm text-center"
-								>
-									Sign In
-								</Link>
+								{/*--------- sign up button ----------*/}
+								<SignedOut>
+									<SignInButton mode="modal">
+										<div className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold text-lg rounded-2xl overflow-hidden transition-all duration-100  shadow-xl hover:shadow-2xl text-center hover:cursor-pointer hover:scale-101">
+											<div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+											<span className="relative flex items-center justify-center space-x-2">
+												<span>Get Started Free</span>
+												<svg
+													className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300"
+													fill="none"
+													stroke="currentColor"
+													viewBox="0 0 24 24"
+												>
+													<path
+														strokeLinecap="round"
+														strokeLinejoin="round"
+														strokeWidth={2}
+														d="M13 7l5 5m0 0l-5 5m5-5H6"
+													/>
+												</svg>
+											</span>
+										</div>
+									</SignInButton>
+								</SignedOut>
+								{/*--------- sign in btn ----------*/}
+								<SignedOut>
+									<SignInButton mode="modal">
+										<div className="px-8 py-4 border-2 border-gray-600 hover:border-purple-400 text-gray-300 hover:text-white hover:cursor-pointer font-bold text-lg rounded-2xl transition-all duration-300 hover:bg-purple-600/10 backdrop-blur-sm text-center">
+											Sign In
+										</div>
+									</SignInButton>
+								</SignedOut>
 							</div>
 
 							{/* Free badge */}
@@ -198,9 +175,7 @@ export default function SubscriptionBox() {
 										clipRule="evenodd"
 									/>
 								</svg>
-								<span>
-									100% Free • No Credit Card Required • Join 50,000+ Users
-								</span>
+								<span>100% Free • secure login usin clerk</span>
 							</div>
 						</div>
 
@@ -209,10 +184,10 @@ export default function SubscriptionBox() {
 							{/* Movie cards showcase */}
 							<div className="relative">
 								{/*--------- Background card ----------*/}
-								<div className="absolute inset-0 backdrop-blur-sm rounded-3xl transform rotate-10 scale-95 border border-purple-500/10"></div>
+								<div className="absolute inset-0 backdrop-blur-sm rounded-3xl transform rotate-6 scale-100 border border-purple-500/10 bg-black/90"></div>
 
 								{/* Main showcase card */}
-								<div className="relative bg-black/50 backdrop-blur-md rounded-3xl p-6 border border-gray-700/30 shadow-2xl">
+								<div className="relative bg-black/90 backdrop-blur-md rounded-3xl p-6 border border-gray-700/30 shadow-2xl">
 									<div className="space-y-6">
 										{/* Header */}
 										<div className="flex items-center justify-between">
@@ -288,10 +263,9 @@ export default function SubscriptionBox() {
 									</div>
 								</div>
 
-								{/* Floating elements */}
-								<div className="absolute -top-4 -right-4 w-8 h-8 bg-purple-500/80 rounded-full opacity-80 animate-bounce"></div>
+								{/*--------- dot on the top of the main card ----------*/}
+								<div className="absolute -top-2 -right-2 w-8 h-8 bg-purple-500/80 rounded-full opacity-80"></div>
 								<div className="absolute top-1/3 -left-6 w-6 h-6 bg-blue-500/60 rounded-full opacity-60 animate-pulse"></div>
-								<div className="absolute -bottom-2 right-1/4 w-10 h-10 bg-cyan-500/70 rounded-full opacity-70 animate-bounce delay-300"></div>
 							</div>
 						</div>
 					</div>
