@@ -2,12 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Movie } from "../../../types/movie";
 import MovieCard from "../tabsMovieCard/MovieCard";
 
-const TMDB_API_KEY =
-	process.env.NEXT_PUBLIC_TMDB_KEY || process.env.TMDB_KEY || "";
+const TMDB_API_KEY = process.env.TMDB_KEY || "";
 const TMDB_BASE_URL =
-	process.env.NEXT_PUBLIC_TMDB_BASE_URL || "https://api.themoviedb.org/3";
+	process.env.TMDB_BASE_URL || "https://api.themoviedb.org/3";
 const TMDB_IMAGE_BASE_URL =
-	process.env.NEXT_PUBLIC_TMDB_IMAGE_BASE_URL ||
+	process.env.TMDB_IMAGE_BASE_URL ||
 	"https://image.tmdb.org/t/p/w1280";
 
 /*--------- TMDB response type ----------*/

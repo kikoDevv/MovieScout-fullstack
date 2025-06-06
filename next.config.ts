@@ -15,6 +15,11 @@ const nextConfig: NextConfig = {
 		minimumCacheTTL: 60,
 		dangerouslyAllowSVG: false,
 	},
+	env: {
+		TMDB_KEY: process.env.TMDB_KEY,
+		TMDB_BASE_URL: process.env.TMDB_BASE_URL,
+		TMDB_IMAGE_BASE_URL: process.env.TMDB_IMAGE_BASE_URL,
+	},
 };
 
 export default nextConfig;
