@@ -22,8 +22,8 @@ export default function Footer() {
 				<div className={styles.socialsContainer}>
 					<a
 						data-social="Twitter"
-						style={{ "--accent-color": "black" } as React.CSSProperties}
-						href="https://twitter.com"
+						style={{ "--accent-color": "#9333ea" } as React.CSSProperties}
+						href="https://x.com/kikodevv"
 						target="_blank"
 						rel="noopener noreferrer"
 						aria-label="Twitter (X)"
@@ -40,8 +40,8 @@ export default function Footer() {
 					</a>
 					<a
 						data-social="YouTube"
-						style={{ "--accent-color": "red" } as React.CSSProperties}
-						href="https://youtube.com"
+						style={{ "--accent-color": "#4f46e5" } as React.CSSProperties}
+						href="https://www.youtube.com/@Kiko-fancy"
 						target="_blank"
 						rel="noopener noreferrer"
 						aria-label="YouTube"
@@ -58,7 +58,7 @@ export default function Footer() {
 					</a>
 					<a
 						data-social="Instagram"
-						style={{ "--accent-color": "#fe107c" } as React.CSSProperties}
+						style={{ "--accent-color": "#6366f1" } as React.CSSProperties}
 						href="https://www.instagram.com/kiko7afg/"
 						target="_blank"
 						rel="noopener noreferrer"
@@ -75,26 +75,27 @@ export default function Footer() {
 						</svg>
 					</a>
 					<a
-						data-social="TikTok"
-						style={{ "--accent-color": "#38142a" } as React.CSSProperties}
-						href="https://tiktok.com"
+						data-social="LinkedIn"
+						style={{ "--accent-color": "#5b21b6" } as React.CSSProperties}
+						href="http://linkedin.com/in/nasrolla-hassani-368763161"
 						target="_blank"
 						rel="noopener noreferrer"
-						aria-label="TikTok"
+						aria-label="LinkedIn"
 					>
 						<svg
 							role="img"
 							viewBox="0 0 24 24"
 							xmlns="http://www.w3.org/2000/svg"
 							aria-hidden="true"
+							fill="currentColor"
 						>
-							<title>TikTok</title>
-							<path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
+							<title>LinkedIn</title>
+							<path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
 						</svg>
 					</a>
 					<a
 						data-social="GitHub"
-						style={{ "--accent-color": "#333" } as React.CSSProperties}
+						style={{ "--accent-color": "#8b5cf6" } as React.CSSProperties}
 						href="https://github.com/kikoDevv"
 						target="_blank"
 						rel="noopener noreferrer"

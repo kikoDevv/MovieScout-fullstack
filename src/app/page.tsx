@@ -75,9 +75,6 @@ export default function Home() {
 					<h1 className="sm:text-6xl text-3xl font-bold text-center text-white sm:mb-5 mt-15">
 						Top categories
 					</h1>
-					<h2 className="text-2xl md:text-3xl font-bold text-center text-white mb-6">
-						Explore Categories
-					</h2>
 					<p className="text-center text-white sm:mb-30 mb-5">
 						Our database features top movies across all categories from every
 						genre.

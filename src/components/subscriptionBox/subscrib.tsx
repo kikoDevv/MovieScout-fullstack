@@ -1,7 +1,6 @@
 import React from "react";
-import Link from "next/link";
 import Image from "next/image";
-import { SignInButton, SignedIn, SignedOut } from "@clerk/nextjs";
+import { SignInButton, SignedOut } from "@clerk/nextjs";
 
 export default function SubscriptionBox() {
 	return (
@@ -184,10 +183,10 @@ export default function SubscriptionBox() {
 							{/* Movie cards showcase */}
 							<div className="relative">
 								{/*--------- Background card ----------*/}
-								<div className="absolute inset-0 backdrop-blur-sm rounded-3xl transform rotate-6 scale-100 border border-purple-500/10 bg-black/90"></div>
+								<div className="absolute inset-0 backdrop-blur-sm rounded-3xl transform rotate-6 scale-90 border border-purple-500/10 bg-black/90"></div>
 
 								{/* Main showcase card */}
-								<div className="relative bg-black/90 backdrop-blur-md rounded-3xl p-6 border border-gray-700/30 shadow-2xl">
+								<div className="relative bg-black/90 backdrop-blur-md rounded-3xl p-6 border border-gray-700/30 shadow-2xl scale-90">
 									<div className="space-y-6">
 										{/* Header */}
 										<div className="flex items-center justify-between">
