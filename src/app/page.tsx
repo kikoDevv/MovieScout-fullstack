@@ -71,17 +71,16 @@ export default function Home() {
 			{/*--------- text section ----------*/}
 			<section className="py-10 relative overflow-hidden sm:mt-20">
 				<div className="container mx-auto relative z-10">
-					<h2 className="text-2xl md:text-3xl font-bold text-center text-white mb-6">
-						Explore Categories
-					</h2>
-					<p className="text-center text-white sm:mb-30 mb-5">
+					<h1 className="text-6xl font-bold text-center text-white mb-5 mt-15">
+						Top categories
+					</h1>
+					<p className="text-center text-white mb-5">
 						Our database features top movies across all categories from every
 						genre.
 					</p>
 				</div>
 			</section>
-			{/*--------- tabs bar ----------*/}
-			{/* <div className="overflow-x-auto scrollbar-hide tab-backdrop inset-0 bg-black/30 backdrop-blur-md mx-2 rounded-full sm:w-fit sm:place-self-center"></div> */}
+			{/*--------- tabs bar and its content ----------*/}
 			<TabBar />
 		</main>
 	);

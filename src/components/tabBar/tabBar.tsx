@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import "./tabBar.css";
-import TopMovies from "./tabsContent/tabsMovies";
+import TabsMovies from "./tabsContent/tabsMovies";
 
 interface TabItem {
 	id: string;
@@ -22,7 +22,7 @@ export default function TabBar() {
 	];
 
 	return (
-		<div className="bg-amber-600">
+		<div>
 			<div className="overflow-x-auto scrollbar-hide tab-backdrop inset-0 bg-black/30 backdrop-blur-md mx-2 rounded-full sm:w-fit sm:place-self-center">
 				<div className="flex justify-center w-fit">
 					<div className="max-w-4xl w-fit backdrop-blur-md">
@@ -87,7 +87,7 @@ export default function TabBar() {
 				</div>
 			</div>
 			{/*--------- tabs content ----------*/}
-			<TopMovies/>
+			<TabsMovies activeTab={activeTab} />
 		</div>
 	);
 }
