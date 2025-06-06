@@ -69,9 +69,9 @@ export default function Home() {
 				</div>
 			</div>
 			{/*--------- text section ----------*/}
-			<section className="py-10 relative overflow-hidden sm:mt-20">
+			<section className="sm:py-10 relative overflow-hidden sm:mt-20">
 				<div className="container mx-auto relative z-10">
-					<h1 className="text-6xl font-bold text-center text-white mb-5 mt-15">
+					<h1 className="sm:text-6xl text-3xl font-bold text-center text-white sm:mb-5 mt-15">
 						Top categories
 					</h1>
 					<p className="text-center text-white mb-5">

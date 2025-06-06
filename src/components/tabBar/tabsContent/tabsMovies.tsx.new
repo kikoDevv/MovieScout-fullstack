@@ -1,0 +1,64 @@
+import React, { useEffect, useState } from "react";
+import { Movie } from "../../../types/movie";
+import MovieCard from "../tabsMovieCard/MovieCard";
+
+interface TabsMoviesProps {
+	activeTab: string;
+}
+
+export default function TabsMovies({ activeTab }: TabsMoviesProps) {
+	const [movies, setMovies] = useState<Movie[]>([]);
+	const [loading, setLoading] = useState<boolean>(true);
+	const [error, setError] = useState<string | null>(null);
+
+	useEffect(() => {
+		const fetchMovies = async () => {
+			setLoading(true);
+			setError(null);
+
+			try {
+				// Use our new secure API route instead of calling TMDB directly
+				const apiUrl = `/api/movies?tab=${activeTab}&limit=6`;
+				const response = await fetch(apiUrl);
+
+				if (!response.ok) {
+					throw new Error("Failed to fetch movies");
+				}
+
+				const data = await response.json();
+				setMovies(data);
+			} catch (err) {
+				console.error("Error fetching data:", err);
+				setError("Failed to load content. Please try again later.");
+			} finally {
+				setLoading(false);
+			}
+		};
+
+		fetchMovies();
+	}, [activeTab]);
+
+	if (loading) {
+		return (
+			<div className="flex justify-center items-center w-full h-64">
+				<div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white"></div>
+			</div>
+		);
+	}
+
+	if (error) {
+		return (
+			<div className="flex justify-center items-center w-full h-64 text-white">
+				<p>{error}</p>
+			</div>
+		);
+	}
+
+	return (
+		<section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full bg-blue-700 p-5 sm:p-20 transition-all duration-300 ease-in-out">
+			{movies.map((movie) => (
+				<MovieCard key={movie.id} movie={movie} />
+			))}
+		</section>
+	);
+}
