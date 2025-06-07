@@ -18,7 +18,7 @@
 
 
 <div align="center">
-  <h2>🚀 Visit the deployed version: <a href="https://movie-scout-l5hmydq5k-kikodevvs-projects.vercel.app/">Movie Scout</a></h2>
+  <h2>🚀 Visit the deployed version: <a href="https://movie-scout-rho.vercel.app/">Movie Scout</a></h2>
 </div>
 
 <div align="center">
