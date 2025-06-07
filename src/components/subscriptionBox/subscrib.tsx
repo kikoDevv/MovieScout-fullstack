@@ -16,9 +16,9 @@ export default function SubscriptionBox() {
 					/>
 					<div className="absolute inset-0 bg-gradient-to-r from-black via-black/50 to-black"></div>
 				</div>
-				{/*--------- Animated background effects matching page colors ----------*/}
+				{/*--------- Animated background effects ----------*/}
 				<div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 via-black/20 to-blue-600/10"></div>
-				<div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-purple-500/20 to-pink-500/15 rounded-full blur-3xl -translate-y-48 translate-x-48"></div>
+				<div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-purple-500/50 to-pink-500/15 rounded-full blur-3xl -translate-y-10 translate-x-10"></div>
 				<div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-blue-500/15 to-cyan-500/20 rounded-full blur-3xl translate-y-40 -translate-x-40"></div>
 
 				<div className="relative z-10 px-8 py-12 lg:px-10 lg:py-9">
