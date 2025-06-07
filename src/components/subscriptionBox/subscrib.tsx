@@ -7,8 +7,8 @@ export default function SubscriptionBox() {
 	return (
 		<div className="relative w-full mx-auto my-8 md:my-12 lg:my-16 overflow-hidden select-none sm:px-4 sm:px-6 lg:px-8">
 			{/*--------- Main container backdrop ----------*/}
-			<div className="relative bg-black/60 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden border border-white/10 mx-auto max-w-5xl">
-				<div className="absolute inset-0 opacity-80">
+			<div className="relative bg-black/60 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden border border-white/10 mx-auto max-w-5xl sm:mt-20 sm:mb-50">
+				<div className="absolute inset-0">
 					<Image
 						src="/seat.jpg"
 						alt="Cinema seats image not found"
@@ -146,7 +146,7 @@ export default function SubscriptionBox() {
 								{/*--------- sign up button ----------*/}
 								<SignedOut>
 									<SignInButton mode="modal">
-										<div className="group relative px-4 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold text-base rounded-2xl overflow-hidden transition-all duration-200 shadow-xl hover:shadow-2xl text-center hover:cursor-pointer hover:scale-[1.02] will-change-transform">
+										<div className="group relative px-4 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold text-base rounded-2xl overflow-hidden transition-all duration-300 text-center hover:cursor-pointer hover:scale-[1.02] will-change-transform">
 											<div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
 											<span className="relative flex items-center justify-center space-x-2">
 												<span>Get Started Free</span>

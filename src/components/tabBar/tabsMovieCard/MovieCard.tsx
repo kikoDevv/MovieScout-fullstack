@@ -10,7 +10,7 @@ interface MovieCardProps {
 export default function MovieCard({ movie, onClick }: MovieCardProps) {
 	return (
 		<div
-			className="relative overflow-hidden rounded-2xl w-full aspect-video cursor-pointer hover:scale-105 transition-transform duration-300"
+			className="relative overflow-hidden rounded-2xl w-full aspect-video cursor-pointer hover:scale-102 transition-transform duration-300"
 			onClick={() => onClick && onClick(movie.id)}
 		>
 			<Image
