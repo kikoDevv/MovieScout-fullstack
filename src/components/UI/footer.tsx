@@ -126,7 +126,7 @@ export default function Footer() {
 
 			<div className={styles.copyrightContainer}>
 				<hr />
-				<p>©{currentYear} Movie Scout | All rights reserved</p>
+				<p>©Made with ❤️ by <a href="https://github.com/kikoDevv">KikoDevv | All rights reserved</a></p>
 			</div>
 		</footer>
 	);
