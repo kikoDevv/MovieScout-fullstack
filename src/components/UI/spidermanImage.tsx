@@ -54,12 +54,11 @@ export default function AnimatedImage({
 		};
 	}, []);
 
-	const translateY = scrollProgress * -120 * animationIntensity;
-	const rotate =
-		scrollProgress * 30 * animationIntensity - 15 * animationIntensity;
+	const translateY = scrollProgress * -250 * animationIntensity;
+
 
 	const transformStyle = {
-		transform: `translateY(${translateY}px) rotate(${rotate}deg)`,
+		transform: `translateY(${translateY}px)`,
 		transition: "transform 0.1s ease-out",
 	};
 
