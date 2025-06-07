@@ -46,7 +46,7 @@ export default function Home() {
 					<div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-black to-transparent"></div>
 				</div>
 				{/*-----------Spider------------*/}
-				<div className="absolute transform -translate-x-1/2 bottom-[4rem] left-[60%] z-2 hidden sm:block">
+				<div className="absolute transform -translate-x-60 sm:bottom-[2rem] left-[60%] z-2 hidden sm:block">
 					<AnimatedImage
 						src="/spiderman.png"
 						alt="Spiderman logo not found"
