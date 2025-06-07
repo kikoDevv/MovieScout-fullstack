@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import { SignInButton, SignedOut } from "@clerk/nextjs";
@@ -5,21 +6,23 @@ import { SignInButton, SignedOut } from "@clerk/nextjs";
 export default function SubscriptionBox() {
 	return (
 		<div className="relative w-full mx-auto my-8 md:my-12 lg:my-16 overflow-hidden select-none sm:px-4 sm:px-6 lg:px-8">
-			{/*--------- Main container with backdrop blur matching page theme ----------*/}
-			<div className="relative bg-black/40 backdrop-blur-md rounded-3xl shadow-2xl overflow-hidden border border-white/10 mx-auto max-w-5xl">
-				<div className="absolute inset-0 opacity-100">
+			{/*--------- Main container backdrop ----------*/}
+			<div className="relative bg-black/60 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden border border-white/10 mx-auto max-w-5xl">
+				<div className="absolute inset-0 opacity-80">
 					<Image
 						src="/seat.jpg"
 						alt="Cinema seats image not found"
 						className="w-full h-full object-cover"
 						fill
+						priority
+						quality={75}
 					/>
-					<div className="absolute inset-0 bg-gradient-to-r from-black via-black/50 to-black"></div>
+					<div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/80"></div>
 				</div>
-				{/*--------- Animated background effects ----------*/}
-				<div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 via-black/20 to-blue-600/10"></div>
-				<div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-purple-500/50 to-pink-500/15 rounded-full blur-3xl -translate-y-10 translate-x-10"></div>
-				<div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-blue-500/15 to-cyan-500/20 rounded-full blur-3xl translate-y-40 -translate-x-40"></div>
+				{/*---------  background effects ----------*/}
+				<div className="absolute inset-0 bg-gradient-to-br from-purple-600/8 via-transparent to-blue-600/8"></div>
+				<div className="absolute top-0 right-0 w-72 h-72 bg-purple-500/20 rounded-full blur-2xl -translate-y-10 translate-x-10 will-change-transform"></div>
+				<div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/15 rounded-full blur-2xl translate-y-32 -translate-x-32 will-change-transform"></div>
 
 				<div className="relative z-10 px-8 py-12 lg:px-10 lg:py-9">
 					<div className="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
@@ -51,7 +54,7 @@ export default function SubscriptionBox() {
 							{/*--------- Features list ----------*/}
 							<div className="space-y-4">
 								<div className="flex items-center space-x-4 group">
-									<div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-purple-500 to-blue-500 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+									<div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-purple-500 to-blue-500 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-200 will-change-transform">
 										<svg
 											className="w-6 h-6 text-white"
 											fill="none"
@@ -75,7 +78,7 @@ export default function SubscriptionBox() {
 								</div>
 
 								<div className="flex items-center space-x-4 group">
-									<div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-pink-500 to-purple-500 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+									<div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-pink-500 to-purple-500 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-200 will-change-transform">
 										<svg
 											className="w-6 h-6 text-white"
 											fill="none"
@@ -99,7 +102,7 @@ export default function SubscriptionBox() {
 								</div>
 
 								<div className="flex items-center space-x-4 group">
-									<div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+									<div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-200 will-change-transform">
 										<svg
 											className="w-6 h-6 text-white"
 											fill="none"
@@ -143,12 +146,12 @@ export default function SubscriptionBox() {
 								{/*--------- sign up button ----------*/}
 								<SignedOut>
 									<SignInButton mode="modal">
-										<div className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold text-lg rounded-2xl overflow-hidden transition-all duration-100  shadow-xl hover:shadow-2xl text-center hover:cursor-pointer hover:scale-101">
-											<div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+										<div className="group relative px-4 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold text-base rounded-2xl overflow-hidden transition-all duration-200 shadow-xl hover:shadow-2xl text-center hover:cursor-pointer hover:scale-[1.02] will-change-transform">
+											<div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
 											<span className="relative flex items-center justify-center space-x-2">
 												<span>Get Started Free</span>
 												<svg
-													className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300"
+													className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200"
 													fill="none"
 													stroke="currentColor"
 													viewBox="0 0 24 24"
@@ -167,7 +170,7 @@ export default function SubscriptionBox() {
 								{/*--------- sign in btn ----------*/}
 								<SignedOut>
 									<SignInButton mode="modal">
-										<div className="px-8 py-4 border-2 border-gray-600 hover:border-purple-400 text-gray-300 hover:text-white hover:cursor-pointer font-bold text-lg rounded-2xl transition-all duration-300 hover:bg-purple-600/10 backdrop-blur-sm text-center">
+										<div className="px-4 py-4 border-2 border-gray-600 hover:border-purple-400 text-gray-300 hover:text-white hover:cursor-pointer font-bold text-base rounded-2xl transition-all duration-200 hover:bg-purple-600/10 backdrop-blur-sm text-center will-change-transform">
 											Sign In
 										</div>
 									</SignInButton>
@@ -180,10 +183,10 @@ export default function SubscriptionBox() {
 							{/* Movie cards showcase */}
 							<div className="relative">
 								{/*--------- Background card ----------*/}
-								<div className="absolute inset-0 backdrop-blur-sm rounded-3xl transform rotate-6 scale-90 border border-purple-500/10 bg-black/90"></div>
+								<div className="absolute inset-0 rounded-3xl transform rotate-6 scale-90 border border-purple-500/10 bg-black/80 will-change-transform"></div>
 
 								{/* Main showcase card */}
-								<div className="relative bg-black/90 backdrop-blur-md rounded-3xl p-6 border border-gray-700/30 shadow-2xl scale-90">
+								<div className="relative bg-black/85 rounded-3xl p-6 border border-gray-700/30 shadow-2xl scale-90 will-change-transform">
 									<div className="space-y-6">
 										{/* Header */}
 										<div className="flex items-center justify-between">
@@ -199,10 +202,10 @@ export default function SubscriptionBox() {
 
 										{/* Movie items */}
 										<div className="space-y-4">
-											<div className="flex items-center space-x-4 p-3 bg-black/30 backdrop-blur-sm rounded-xl hover:bg-purple-600/10 transition-colors duration-300 group border border-gray-700/20">
+											<div className="flex items-center space-x-4 p-3 bg-black/40 rounded-xl hover:bg-purple-600/15 transition-colors duration-200 group border border-gray-700/20 will-change-auto">
 												<div className="w-16 h-24 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg shadow-lg"></div>
 												<div className="flex-1">
-													<h4 className="text-white font-semibold group-hover:text-purple-300 transition-colors duration-300">
+													<h4 className="text-white font-semibold group-hover:text-purple-300 transition-colors duration-200">
 														Smile 2
 													</h4>
 													<p className="text-gray-400 text-sm">Horror • 2024</p>
@@ -215,10 +218,10 @@ export default function SubscriptionBox() {
 												</div>
 											</div>
 
-											<div className="flex items-center space-x-4 p-3 bg-black/30 backdrop-blur-sm rounded-xl hover:bg-purple-600/10 transition-colors duration-300 group border border-gray-700/20">
+											<div className="flex items-center space-x-4 p-3 bg-black/40 rounded-xl hover:bg-purple-600/15 transition-colors duration-200 group border border-gray-700/20 will-change-auto">
 												<div className="w-16 h-24 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-lg shadow-lg"></div>
 												<div className="flex-1">
-													<h4 className="text-white font-semibold group-hover:text-purple-300 transition-colors duration-300">
+													<h4 className="text-white font-semibold group-hover:text-purple-300 transition-colors duration-200">
 														Breaking Bad
 													</h4>
 													<p className="text-gray-400 text-sm">
@@ -233,10 +236,10 @@ export default function SubscriptionBox() {
 												</div>
 											</div>
 
-											<div className="flex items-center space-x-4 p-3 bg-black/30 backdrop-blur-sm rounded-xl hover:bg-purple-600/10 transition-colors duration-300 group border border-gray-700/20">
+											<div className="flex items-center space-x-4 p-3 bg-black/40 rounded-xl hover:bg-purple-600/15 transition-colors duration-200 group border border-gray-700/20 will-change-auto">
 												<div className="w-16 h-24 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg shadow-lg"></div>
 												<div className="flex-1">
-													<h4 className="text-white font-semibold group-hover:text-purple-300 transition-colors duration-300">
+													<h4 className="text-white font-semibold group-hover:text-purple-300 transition-colors duration-200">
 														Vikings
 													</h4>
 													<p className="text-gray-400 text-sm">
@@ -253,15 +256,15 @@ export default function SubscriptionBox() {
 										</div>
 
 										{/* Add button */}
-										<button className="w-full py-3 border-2 border-dashed border-purple-500/30 text-purple-400 rounded-xl hover:border-purple-400 hover:text-purple-300 hover:bg-purple-600/5 transition-colors duration-300 font-medium backdrop-blur-sm">
+										<button className="w-full py-3 border-2 border-dashed border-purple-500/30 text-purple-400 rounded-xl hover:border-purple-400 hover:text-purple-300 hover:bg-purple-600/5 transition-colors duration-200 font-medium will-change-auto">
 											+ Add New Movie
 										</button>
 									</div>
 								</div>
 
 								{/*--------- dot on the top of the main card ----------*/}
-								<div className="absolute -top-[-15px] -right-[-15px] w-8 h-8 bg-purple-500/80 rounded-full opacity-80"></div>
-								<div className="absolute top-1/3 -left-6 w-6 h-6 bg-blue-500/60 rounded-full opacity-60 animate-pulse"></div>
+								<div className="absolute -top-[-15px] -right-[-15px] w-8 h-8 bg-purple-500/60 rounded-full opacity-80"></div>
+								<div className="absolute top-1/3 -left-6 w-6 h-6 bg-blue-500/40 rounded-full opacity-60"></div>
 							</div>
 						</div>
 					</div>
