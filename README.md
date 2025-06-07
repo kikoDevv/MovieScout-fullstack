@@ -10,8 +10,9 @@
   <h2>Screenshots main page</h2>
 </div>
 <div align="center">
-  <img width="1422" alt="Movie Scout Homepage" src="https://github.com/user-attachments/assets/d0d60328-3b69-4fcc-b498-312d2926dad7"/>
-  <img width="1422" alt="Movie Scout Features" src="https://github.com/user-attachments/assets/c0660fe0-35d5-4e03-9001-49cdc4a27828"/>
+  <img width="1422" alt="Screenshot 2025-06-07 at 01 50 44" src="https://github.com/user-attachments/assets/0ce79435-7e06-433a-ab17-c3f3509bf697" />
+<img width="1422" alt="Screenshot 2025-06-07 at 02 37 26" src="https://github.com/user-attachments/assets/81a492af-72ca-4244-9fc1-7b87992e2c70" />
+
 </div>
 
 
