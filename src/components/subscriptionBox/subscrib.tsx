@@ -45,7 +45,7 @@ export default function SubscriptionBox() {
 
 
 									<span className="text-sm font-bold bg-gradient-to-r from-emerald-200 to-green-200 bg-clip-text text-transparent tracking-wide relative z-10">
-										🎬 FREE Premium Benefits
+										🎬 FREE sign up Benefits
 									</span>
 								</div>
 
@@ -84,7 +84,7 @@ export default function SubscriptionBox() {
 									<div>
 										<h3 className="text-lg font-semibold">Add movies</h3>
 										<p className="text-gray-400">
-											Save movies and shows you want to watch later
+											Save movies and TV-shows to ur watch list
 										</p>
 									</div>
 								</div>
