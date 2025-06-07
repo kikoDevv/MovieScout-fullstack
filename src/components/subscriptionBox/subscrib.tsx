@@ -26,29 +26,41 @@ export default function SubscriptionBox() {
 
 				<div className="relative z-10 px-8 py-12 lg:px-10 lg:py-9">
 					<div className="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
-						{/* Left side - Content */}
+						{/*--------- left side container ----------*/}
 						<div className="text-white space-y-8">
 							{/* Badge */}
-							<div className="inline-flex items-center space-x-2 px-4 py-2 bg-black/30 backdrop-blur-sm rounded-full border border-purple-500/20">
-								<div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-								<span className="text-sm font-medium">
-									Free Account Benefits
-								</span>
+							<div className="relative inline-flex items-center space-x-3 px-6 py-3 bg-gradient-to-r from-emerald-500/20 via-green-500/15 to-teal-500/20 backdrop-blur-md rounded-full border border-emerald-400/60 shadow-xl shadow-emerald-500/25 group transition-all duration-300">
+
+
+								{/*--------- pulsing dot ----------*/}
+								<div className="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full opacity-80 animate-ping"></div>
+								<div className="absolute -top-1 -right-1 w-3 h-3 bg-yellow-300 rounded-full opacity-60"></div>
+
+								<div className="relative flex items-center space-x-3">
+									{/*--------- puling dot ----------*/}
+									<div className="relative">
+										<div className="w-3 h-3 bg-gradient-to-r from-emerald-400 to-green-400 rounded-full animate-pulse shadow-lg shadow-emerald-400/60"></div>
+										<div className="absolute inset-0 w-3 h-3 bg-emerald-300 rounded-full animate-ping opacity-40"></div>
+									</div>
+
+
+									<span className="text-sm font-bold bg-gradient-to-r from-emerald-200 to-green-200 bg-clip-text text-transparent tracking-wide relative z-10">
+										🎬 FREE Premium Benefits
+									</span>
+								</div>
+
+
 							</div>
 
 							{/*--------- Main heading ----------*/}
 							<div className="space-y-4">
-								<h2 className="text-4xl lg:text-6xl font-bold leading-tight">
+								<h2 className="text-4xl lg:text-4xl font-bold leading-tight">
 									Unlock Your{" "}
 									<span className="bg-gradient-to-r from-purple-400 via-pink-500 to-blue-400 bg-clip-text text-transparent">
 										login Benefits
 									</span>
 								</h2>
-								{/* <p className="text-xl text-gray-300 leading-relaxed">
-									Join our comunity of movie lovers and discover your next
-									favorite film. Create your account today and unlock exclusive
-									features.
-								</p> */}
+
 							</div>
 
 							{/*--------- Features list ----------*/}
@@ -146,7 +158,7 @@ export default function SubscriptionBox() {
 								{/*--------- sign up button ----------*/}
 								<SignedOut>
 									<SignInButton mode="modal">
-										<div className="group relative px-4 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold text-base rounded-2xl overflow-hidden transition-all duration-300 text-center hover:cursor-pointer hover:scale-[1.02] will-change-transform">
+										<div className="group relative px-4 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold text-base rounded-full overflow-hidden transition-all duration-300 text-center hover:cursor-pointer hover:scale-[1.02] will-change-transform">
 											<div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
 											<span className="relative flex items-center justify-center space-x-2">
 												<span>Get Started Free</span>
@@ -170,7 +182,7 @@ export default function SubscriptionBox() {
 								{/*--------- sign in btn ----------*/}
 								<SignedOut>
 									<SignInButton mode="modal">
-										<div className="px-4 py-4 border-2 border-gray-600 hover:border-purple-400 text-gray-300 hover:text-white hover:cursor-pointer font-bold text-base rounded-2xl transition-all duration-200 hover:bg-purple-600/10 backdrop-blur-sm text-center will-change-transform">
+										<div className="px-4 py-3 border-2 border-gray-600 hover:border-purple-400 text-gray-300 hover:text-white hover:cursor-pointer font-bold text-base rounded-full transition-all duration-200 hover:bg-purple-600/10 backdrop-blur-sm text-center will-change-transform">
 											Sign In
 										</div>
 									</SignInButton>
