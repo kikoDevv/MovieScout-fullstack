@@ -11,6 +11,11 @@ const nextConfig: NextConfig = {
 				hostname: "image.tmdb.org",
 				pathname: "/**",
 			},
+			{
+				protocol: "https",
+				hostname: "img.clerk.com",
+				pathname: "/**",
+			},
 		],
 		minimumCacheTTL: 60,
 		dangerouslyAllowSVG: false,
