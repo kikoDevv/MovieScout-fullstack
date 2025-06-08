@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Movie } from "../../../types/movie";
 import MovieCard from "../tabsMovieCard/MovieCard";
+import "../tabBar.css";
 
 const TMDB_API_KEY =
 	process.env.NEXT_PUBLIC_TMDB_KEY || process.env.TMDB_KEY || "";
@@ -123,10 +124,22 @@ export default function TabsMovies({ activeTab }: TabsMoviesProps) {
 	}
 
 	return (
-		<section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full p-5 sm:p-20 transition-all duration-300 ease-in-out">
-			{movies.map((movie) => (
-				<MovieCard key={movie.id} movie={movie} />
-			))}
+		<section className="w-full p-5 sm:p-20 transition-all duration-300 ease-in-out">
+			{/*--------- scroll horizontally on mobile ----------*/}
+			<div className="flex overflow-x-auto gap-4 md:hidden scrollbar-hide pb-4 snap-x snap-mandatory">
+				{movies.map((movie) => (
+					<div key={movie.id} className="flex-none w-64 snap-center">
+						<MovieCard movie={movie} />
+					</div>
+				))}
+			</div>
+
+			{/*--------- on desktop grid ----------*/}
+			<div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+				{movies.map((movie) => (
+					<MovieCard key={movie.id} movie={movie} />
+				))}
+			</div>
 		</section>
 	);
 }

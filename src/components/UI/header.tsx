@@ -5,12 +5,10 @@ import Link from "next/link";
 import styles from "./header.module.css";
 import { FaBars } from "react-icons/fa";
 import SideBar from "@/components/sideBar/sideBar";
-import { SignedIn, SignedOut, SignInButton, UserButton, UserProfile, useUser } from "@clerk/nextjs";
+import { SignedIn, SignedOut, SignInButton, UserButton} from "@clerk/nextjs";
 
 export default function Header() {
 	const [menuOpen, setMenuOpen] = useState(false);
-	const { user } = useUser();
-
 	const toggleMenu = () => {
 		setMenuOpen(!menuOpen);
 	};

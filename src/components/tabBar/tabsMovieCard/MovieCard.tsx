@@ -20,7 +20,7 @@ export default function MovieCard({ movie, onClick }: MovieCardProps) {
 				height={720}
 				className="w-full h-full object-cover"
 			/>
-			<h1 className="absolute bottom-0 font-bold text-white text-2xl font-sans p-4">
+			<h1 className="absolute bottom-0 font-bold text-white sm:text-2xl font-sans p-4">
 				{movie.title}
 			</h1>
 			<div className="absolute bottom-4 right-4 flex items-center gap-1">
