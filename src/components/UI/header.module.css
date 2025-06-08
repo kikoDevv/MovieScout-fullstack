@@ -82,7 +82,7 @@
 	align-items: center;
 	background-color: antiquewhite;
 	border-radius: 0px 10px 10px 0px;
-	padding: 10px 0px;
+	min-height: 44px;
 	z-index: 1000;
 	max-height: fit-content;
 }

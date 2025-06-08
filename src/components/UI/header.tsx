@@ -5,10 +5,11 @@ import Link from "next/link";
 import styles from "./header.module.css";
 import { FaBars } from "react-icons/fa";
 import SideBar from "@/components/sideBar/sideBar";
-import { SignedIn, SignedOut, UserButton, SignInButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut, SignInButton, UserButton, UserProfile, useUser } from "@clerk/nextjs";
 
 export default function Header() {
 	const [menuOpen, setMenuOpen] = useState(false);
+	const { user } = useUser();
 
 	const toggleMenu = () => {
 		setMenuOpen(!menuOpen);
@@ -47,6 +48,7 @@ export default function Header() {
 								alt="Main logo not found!"
 								width={200}
 								height={200}
+								unoptimized
 							/>
 						</Link>
 					</div>
@@ -58,7 +60,10 @@ export default function Header() {
 						</Link>
 						{/*--------- signed in function ----------*/}
 						<SignedIn>
-							<UserButton showName/>
+							<Link href="/dashboard" className={styles.menuItem}>
+								Dashboard
+							</Link>
+							<UserButton/>
 						</SignedIn>
 						<SignedOut>
 							<SignInButton mode="modal">
