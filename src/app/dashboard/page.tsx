@@ -35,7 +35,7 @@ export default async function Dashboard() {
 							)}
 						</div>
 						<h1 className="text-4xl font-bold text-white mb-2">
-							Welcome back {user.firstName}
+							Welcome back {user.firstName || user.username || "Movie Explorer"}
 						</h1>
 						<p className="text-blue-200 text-lg">
 							Your personal movie discovery space
