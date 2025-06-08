@@ -54,7 +54,7 @@ export default function DashboardContent() {
 		/*--------- User is signed in, show dashboard content ----------*/
 	}
 	return (
-		<div className="min-h-screen bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 flex items-center justify-center">
+		<div className="min-h-screen  flex items-center justify-center">
 			<div className="max-w-2xl mx-auto text-center px-6">
 				<div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 shadow-2xl border border-white/20">
 					<div className="mb-6">
@@ -79,45 +79,12 @@ export default function DashboardContent() {
 							)}
 						</div>
 						<h1 className="text-4xl font-bold text-white mb-2">
-							Welcome to {user?.firstName || user?.username || "Your"} Zone!
+							Welcome back {user?.firstName || user?.username || "Movie explorer"}
 						</h1>
 						<p className="text-blue-200 text-lg">
 							Your personal movie discovery space
 						</p>
 					</div>
-
-					<div className="space-y-4 mb-8">
-						<div className="bg-white/5 rounded-lg p-4 border border-white/10">
-							<h3 className="text-xl font-semibold text-white mb-2">
-								Hello, {user?.firstName || user?.username || "Movie Explorer"}!
-							</h3>
-							<p className="text-blue-200">
-								You&apos;ve successfully logged into MovieScout. This is your
-								personalized dashboard where you can discover amazing movies and
-								track your favorites.
-							</p>
-						</div>
-
-						<div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-							<div className="bg-white/5 rounded-lg p-4 border border-white/10 hover:bg-white/10 transition-colors">
-								<h4 className="text-lg font-semibold text-white mb-2">
-									🎬 Discover Movies
-								</h4>
-								<p className="text-blue-200 text-sm">
-									Explore trending films and hidden gems
-								</p>
-							</div>
-							<div className="bg-white/5 rounded-lg p-4 border border-white/10 hover:bg-white/10 transition-colors">
-								<h4 className="text-lg font-semibold text-white mb-2">
-									⭐ Your Favorites
-								</h4>
-								<p className="text-blue-200 text-sm">
-									Keep track of movies you love
-								</p>
-							</div>
-						</div>
-					</div>
-
 					<div className="flex flex-col sm:flex-row gap-4 justify-center">
 						<a
 							href="#"
