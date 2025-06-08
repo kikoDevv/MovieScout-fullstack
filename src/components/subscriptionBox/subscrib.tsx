@@ -1,13 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import {
-	SignIn,
-	SignInButton,
-	SignUpButton,
-	SignedIn,
-	SignedOut,
-} from "@clerk/nextjs";
+import { SignInButton, SignUpButton, SignedIn, SignedOut } from "@clerk/nextjs";
 
 export default function SubscriptionBox() {
 	return (
@@ -305,9 +299,22 @@ export default function SubscriptionBox() {
 										</div>
 
 										{/* Add button */}
-										<button className="w-full py-3 border-2 border-dashed border-purple-500/30 text-purple-400 rounded-xl hover:border-purple-400 hover:text-purple-300 hover:bg-purple-600/5 transition-colors duration-200 font-medium will-change-auto">
-											+ Add New Movie
-										</button>
+										<SignedIn>
+											<a
+												href="/dashboard"
+												className="w-full block py-3 border-2 border-dashed border-purple-500/30 text-purple-400 rounded-xl hover:border-purple-400 hover:text-purple-300 hover:bg-purple-600/5 transition-colors duration-200 font-medium text-center will-change-auto"
+											>
+												+ Add more to your list
+											</a>
+										</SignedIn>
+										<SignedOut>
+											<a
+												href="/dashboard"
+												className="w-full block py-3 border-2 border-dashed border-purple-500/30 text-purple-400 rounded-xl hover:border-purple-400 hover:text-purple-300 hover:bg-purple-600/5 transition-colors duration-200 font-medium text-center will-change-auto"
+											>
+												+ Add New Movie
+											</a>
+										</SignedOut>
 									</div>
 								</div>
 
