@@ -39,3 +39,5 @@ export default function MovieCard({ movie, onClick }: MovieCardProps) {
 		</div>
 	);
 }
+
+
