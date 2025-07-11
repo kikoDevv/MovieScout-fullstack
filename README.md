@@ -1,5 +1,5 @@
 <div align="center">
-  <a href="https://apps.apple.com/se/app/easybudget/id6446150580?l=en-GB">
+  <a href="https://movie-scout-rho.vercel.app/">
     <img src="MovieScout.png" width="100" height="100" style="filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.1));">
   </a>
   <h2>Movie Scout fullstack</h2>
