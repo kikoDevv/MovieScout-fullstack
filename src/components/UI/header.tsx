@@ -53,7 +53,7 @@ export default function Header() {
 				</div>
 				<div className={styles.navTitleContainer}>
 					<div className={styles.navbarContainerRight}>
-						<Link href="/contact" className={styles.menuItem}>
+						<Link href="/contactPage" className={styles.menuItem}>
 							Contact us
 						</Link>
 						{/*--------- signed in function ----------*/}
