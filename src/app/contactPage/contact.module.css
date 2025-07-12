@@ -1,0 +1,35 @@
+.phoneContainer {
+  position: relative;
+  width: 80%;
+  height: 100%;
+  top: -3rem;
+}
+.containerRight {
+  width: 60%;
+  flex-shrink: 0;
+  background: linear-gradient(
+      135deg,
+      rgba(59, 130, 246, 0.3) 0%,
+      rgba(99, 102, 241, 0.2) 25%,
+      rgba(139, 92, 246, 0.2) 50%,
+      rgba(168, 85, 247, 0.3) 100%
+    ),
+    linear-gradient(0deg, rgba(30, 58, 138, 0.4) 0%, transparent 50%);
+}
+.phoneImage {
+  transform: translateX(7.5rem) translateY(-2rem);
+  max-width: fit-content;
+  max-height: 32.5rem;
+  transform-origin: top center;
+  animation: hanging 3s infinite ease-in-out;
+}
+
+@keyframes hanging {
+  0%,
+  100% {
+    transform: translateX(7.5rem) translateY(-2rem) rotate(-10deg);
+  }
+  50% {
+    transform: translateX(7.5rem) translateY(-2rem) rotate(10deg);
+  }
+}
