@@ -19,7 +19,7 @@
 .phoneImage {
   transform: translateX(7.5rem) translateY(-2rem);
   max-width: fit-content;
-  max-height: 32.5rem;
+  max-height: 42.5rem;
   transform-origin: top center;
   animation: hanging 3s infinite ease-in-out;
 }

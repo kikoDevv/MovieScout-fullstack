@@ -1,15 +1,17 @@
 import React from "react";
 import Image from "next/image";
 import styles from "./contact.module.css";
+import { IoMdSend } from "react-icons/io";
 
 export default function Contact() {
   return (
     <div>
       <section className="min-h-screen grid bg-gradient-to-br from-gray-900 via-slate-900 to-slate-800">
-        <section className="relative flex h-170 mx-50 mt-20 mb-30 rounded-4xl overflow-hidden shadow-2xl shadow-black/40">
-          <section className="w-[40%] bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-800 relative overflow-hidden">
+        <section className="relative flex h-170 md:mx-50 mt-20 mb-30 sm:mx-3 rounded-4xl overflow-hidden shadow-2xl shadow-black/40 border border-amber-50/20">
+          <section className="w-[40%] relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-72 h-72 bg-purple-500/20 rounded-full blur-2xl -translate-y-20 translate-x-20 will-change-transform"></div>
             {/*--------- left container ----------*/}
-            {/* <Image
+            <Image
               src="/seat.jpg"
               alt="Cinema seats image not found"
               className="object-cover opacity-20"
@@ -26,37 +28,46 @@ export default function Contact() {
                 priority
                 quality={100}
               />
-            </div> */}
+            </div>
           </section>
 
           {/*--------- right container ----------*/}
           <section className={styles.containerRight}>
             <div className="grid p-10 h-full text-white select-none">
-              <h1 className="text-4xl font-bold mb-8 bg-gradient-to-r from-white via-purple-700 to-blue-700 bg-clip-text text-transparent place-self-center">Contact Form</h1>
+              <h1 className="text-4xl font-bold mb-8 bg-gradient-to-r from-white via-purple-700 to-blue-700 bg-clip-text text-transparent place-self-center">
+                Contact Form
+              </h1>
               <input
                 type="text"
-                placeholder="Enter your name"
+                placeholder="Enter Your Name"
                 className="px-4 py-2 rounded-lg border bg-white/10 border-white/20 text-white placeholder-white/50 outline-none focus:border-white/40 transition-colors h-fit"
               />
               <input
-                type="text"
-                placeholder="Enter your name"
+                type="email"
+                placeholder="Enter Your Email Adress"
                 className="px-4 py-2 rounded-lg border bg-white/10 border-white/20 text-white placeholder-white/50 outline-none focus:border-white/40 transition-colors h-fit"
               />
               <input
-                type="text"
-                placeholder="Enter your name"
+                type="tel"
+                placeholder="Enter Your Phone Number"
+                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                title="Phone number format: XXX-XXX-XXXX"
                 className="px-4 py-2 rounded-lg border bg-white/10 border-white/20 text-white placeholder-white/50 outline-none focus:border-white/40 transition-colors h-fit"
               />
               <div>
                 <p className="ml-2">Leave your feedback</p>
-                <input
-                type="text"
-                placeholder="What do you have in mind?"
-                className="rounded-lg border bg-white/10 border-white/20 text-white placeholder-white/50 outline-none focus:border-white/40 transition-colors w-full py-10 pl-10 h-fit"
-              />
+                <textarea
+                  placeholder="What do you have in mind?"
+                  className="rounded-lg border bg-white/10 border-white/20 text-white placeholder-white/50 outline-none focus:border-white/40 transition-colors w-full p-4 min-h-[150px] align-top resize-none"
+                ></textarea>
               </div>
-              <button>Submit</button>
+              <button className="relative overflow-hidden bg-gradient-to-r from-blue-600 to-purple-600 py-2 px-4 rounded-full cursor-pointer group hover:scale-105 transition-all duration-200 w-fit h-fit place-self-center">
+                <div className="absolute inset-0 bg-gradient-to-l from-blue-600 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <span className="relative flex items-center gap-2">
+                  Submit
+                  <IoMdSend className="w-5 h-5" />
+                </span>
+              </button>
               <div></div>
             </div>
           </section>
