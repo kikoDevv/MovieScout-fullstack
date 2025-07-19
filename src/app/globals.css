@@ -113,6 +113,11 @@ body {
 	opacity: 0.3;
 	animation: fadePulses 2s ease-in-out infinite;
 }
+/*------------------- tab transitions -------------------*/
+.tab-content-fade {
+  transition: opacity 0.3s ease-in-out;
+}
+
 /*------------------- skeleton -------------------*/
 @keyframes fadePulse {
 

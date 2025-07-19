@@ -16,9 +16,9 @@ export default function TabBar() {
   console.log("selected tabs---", activeTab);
   const tabs: TabItem[] = [
     { id: "popular", label: "Popular", icon: "🎬" },
-    { id: "Upcoming", label: "Upcoming", icon: "🍿" },
-    { id: "tvshows", label: "TV Shows", icon: "📺" },
-    { id: "children", label: "Children", icon: "🧒🏻" },
+    { id: "kids", label: "Children", icon: "🧒🏻" },
+    { id: "TV-shows", label: "TV Shows", icon: "📺" },
+    { id: "upcoming", label: "Upcoming", icon: "🍿" },
     { id: "top_rated", label: "Top Rated", icon: "🚀" },
   ];
 
