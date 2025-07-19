@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import "./tabMenu.css";
-
+import Content from "./content";
 import Link from "next/link";
 
 interface TabItem {
@@ -12,9 +12,8 @@ interface TabItem {
 }
 
 export default function TabBar() {
-  const [activeTab, setActiveTab] = useState("movies");
+  const [activeTab, setActiveTab] = useState("popular");
   console.log("selected tabs---", activeTab);
-
   const tabs: TabItem[] = [
     { id: "popular", label: "Popular", icon: "🎬" },
     { id: "Upcoming", label: "Upcoming", icon: "🍿" },
@@ -81,7 +80,9 @@ export default function TabBar() {
         </div>
       </div>
       {/*--------- tabs content ----------*/}
-
+      <div className="mt-8">
+        <Content />
+      </div>
       {/*--------- button under the tabs movies ----------*/}
       <div className="flex justify-center mt-8 mb-4">
         <Link href="/moviesPage">
