@@ -5,7 +5,7 @@ import Link from "next/link";
 import styles from "./header.module.css";
 import { FaBars } from "react-icons/fa";
 import SideBar from "@/components/sideBar/sideBar";
-import { SignedIn, SignedOut, SignInButton, UserButton} from "@clerk/nextjs";
+// import { SignedIn, SignedOut, SignInButton, UserButton} from "@clerk/nextjs";
 
 export default function Header() {
 	const [menuOpen, setMenuOpen] = useState(false);
@@ -57,7 +57,7 @@ export default function Header() {
 							Contact us
 						</Link>
 						{/*--------- signed in function ----------*/}
-						<SignedIn>
+						{/* <SignedIn>
 							<Link href="/dashboard" className={styles.menuItem}>
 								Dashboard
 							</Link>
@@ -67,7 +67,7 @@ export default function Header() {
 							<SignInButton mode="modal">
 								<button className={styles.menuItem}>Sign-In</button>
 							</SignInButton>
-						</SignedOut>
+						</SignedOut> */}
 					</div>
 				</div>
 			</header>

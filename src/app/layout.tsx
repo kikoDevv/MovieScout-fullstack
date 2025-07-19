@@ -4,35 +4,36 @@ import Header from "@/components/UI/header";
 import Footer from "@/components/UI/footer";
 import { Work_Sans } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
+import { TanstackProvider } from "@/components/providers/tanstackProvider";
 
 const workSans = Work_Sans({
-	subsets: ["latin"],
-	display: "swap",
-	weight: ["400", "700"],
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "700"],
 });
 
 export const metadata: Metadata = {
-	title: "Movie-Scout",
-	description: "Find a movie to watch",
-	icons: {
-		icon: [{ url: "/MovieScout.svg", type: "image/svg+xml" }],
-	},
+  title: "Movie-Scout",
+  description: "Find a movie to watch",
+  icons: {
+    icon: [{ url: "/MovieScout.svg", type: "image/svg+xml" }],
+  },
 };
 
 export default function RootLayout({
-	children,
+  children,
 }: Readonly<{
-	children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
-	return (
-		<html lang="en">
-			<ClerkProvider>
-				<body className={workSans.className}>
-					<Header />
-					{children}
-					<Footer />
-				</body>
-			</ClerkProvider>
-		</html>
-	);
+  return (
+    <html lang="en">
+      <ClerkProvider>
+        <body className={workSans.className}>
+          <Header />
+          <TanstackProvider>{children}</TanstackProvider>
+          <Footer />
+        </body>
+      </ClerkProvider>
+    </html>
+  );
 }

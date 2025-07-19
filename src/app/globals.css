@@ -1,105 +1,141 @@
 @import "tailwindcss";
 
 body {
-	/* background-color: #242424; */
-	background-color: #000000;
-	color: var(--foreground);
-	font-family: Arial, Helvetica, sans-serif;
+  /* background-color: #242424; */
+  background-color: #000000;
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 /* Animation keyframes */
 @keyframes float {
-	0% {
-		transform: translateY(0px) rotate(0deg);
-	}
-	50% {
-		transform: translateY(-15px) rotate(5deg);
-	}
-	100% {
-		transform: translateY(0px) rotate(0deg);
-	}
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(5deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
 }
 
 @keyframes swing {
-	0% {
-		transform: rotate(0deg);
-	}
-	25% {
-		transform: rotate(5deg);
-	}
-	75% {
-		transform: rotate(-5deg);
-	}
-	100% {
-		transform: rotate(0deg);
-	}
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(5deg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }
 
 /* Company Logo Animations */
 .logo-container {
-	width: 100%;
-	overflow: hidden;
-	position: relative;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
 }
 
 .logo-track {
-	display: flex;
-	width: max-content;
-	animation: marquee 25s linear infinite;
+  display: flex;
+  width: max-content;
+  animation: marquee 25s linear infinite;
 }
 
 .logo-track-reverse {
-	display: flex;
-	width: max-content;
-	animation: marquee-reverse 25s linear infinite;
+  display: flex;
+  width: max-content;
+  animation: marquee-reverse 25s linear infinite;
 }
 
 .logo-item {
-	flex-shrink: 0;
-	height: 90px;
-	width: 150px;
-	margin: 0 20px;
-	border-radius: 10px;
+  flex-shrink: 0;
+  height: 90px;
+  width: 150px;
+  margin: 0 20px;
+  border-radius: 10px;
 }
 
 @keyframes marquee {
-	0% {
-		transform: translateX(0);
-	}
-	100% {
-		transform: translateX(calc(-50%));
-	}
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-50%));
+  }
 }
 
 @keyframes marquee-reverse {
-	0% {
-		transform: translateX(calc(-50%));
-	}
-	100% {
-		transform: translateX(0);
-	}
+  0% {
+    transform: translateX(calc(-50%));
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 /* Animation classes */
 .animate-float {
-	animation: float 6s ease-in-out infinite;
+  animation: float 6s ease-in-out infinite;
 }
 
 .animate-swing {
-	animation: swing 4s ease-in-out infinite;
+  animation: swing 4s ease-in-out infinite;
 }
 
 .animate-fade-in {
-	animation: fadeIn 1.5s ease-in-out forwards;
+  animation: fadeIn 1.5s ease-in-out forwards;
 }
+
 
 @keyframes fadeIn {
 	from {
 		opacity: 0;
-		transform: translateY(20px);
-	}
-	to {
+    transform: translateY(20px);
+  }
+  to {
 		opacity: 1;
-		transform: translateY(0);
-	}
+    transform: translateY(0);
+  }
+}
+/*------------------- skaleten animation -------------------*/
+.skeleton-tab-card {
+	opacity: 0.4;
+	animation: fadePulse 2s ease-in-out infinite;
+}
+.skeleton-tab-text {
+	opacity: 0.3;
+	animation: fadePulses 2s ease-in-out infinite;
+}
+/*------------------- skeleton -------------------*/
+@keyframes fadePulse {
+
+  0% {
+    background-color: hsl(200, 9%, 40%);
+  }
+	 100% {
+    background-color: hsl(200, 9%, 40%);
+  }
+  50% {
+    background-color: hsl(200, 15%, 95%);
+  }
+}
+
+@keyframes fadePulses {
+
+  0% {
+    background-color: hsl(200, 9%, 40%);
+  }
+	 100% {
+    background-color: hsl(200, 9%, 40%);
+  }
+  50% {
+    background-color: hsl(200, 15%, 95%);
+  }
 }

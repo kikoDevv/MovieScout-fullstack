@@ -10,8 +10,8 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^6.21.0",
-    "@types/video.js": "^7.3.58",
-    "@videojs/http-streaming": "^3.17.0",
+    "@tanstack/react-query": "^5.83.0",
+    "@tanstack/react-query-devtools": "^5.83.0",
     "axios": "^1.10.0",
     "framer-motion": "^12.16.0",
     "next": "15.3.2",
@@ -19,9 +19,7 @@
     "react-dom": "^19.0.0",
     "react-icons": "^5.5.0",
     "react-player": "^3.2.0",
-    "react-youtube": "^10.1.0",
-    "video.js": "^8.23.3",
-    "videojs-youtube": "^3.0.1"
+    "react-youtube": "^10.1.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
