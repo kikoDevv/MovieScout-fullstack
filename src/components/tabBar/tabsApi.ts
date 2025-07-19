@@ -8,14 +8,14 @@ interface Movie {
   backdrop_path: string;
 }
 
-// List of all available categories
+/*------------------- List of all available categories -------------------*/
 export const availableCategories = ["popular", "top_rated", "upcoming", "now_playing", "TV-shows", "kids"];
 
 export const fetchMoviesByCategory = async (category: string = "popular"): Promise<Movie[]> => {
   if (category == "TV-shows") {
     const response = await axios.get(`https://api.themoviedb.org/3/trending/tv/week?language=en-US`, {
       headers: {
-        Authorization: process.env.NEXT_PUBLIC_TMDB_API_KEY,
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_TMDB_API_KEY}`,
         accept: "application/json",
       },
     });
@@ -29,7 +29,7 @@ export const fetchMoviesByCategory = async (category: string = "popular"): Promi
         page: "1",
       },
       headers: {
-        Authorization: process.env.NEXT_PUBLIC_TMDB_API_KEY,
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_TMDB_API_KEY}`,
         accept: "application/json",
       },
     });
@@ -41,7 +41,7 @@ export const fetchMoviesByCategory = async (category: string = "popular"): Promi
         page: "1",
       },
       headers: {
-        Authorization: process.env.NEXT_PUBLIC_TMDB_API_KEY,
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_TMDB_API_KEY}`,
         accept: "application/json",
       },
     });
@@ -50,10 +50,10 @@ export const fetchMoviesByCategory = async (category: string = "popular"): Promi
 };
 
 // Function to prefetch all categories
-export const prefetchAllCategories = async (queryClient: import('@tanstack/react-query').QueryClient) => {
+export const prefetchAllCategories = async (queryClient: import("@tanstack/react-query").QueryClient) => {
   try {
     // Create an array of promises for all category fetches
-    const fetchPromises = availableCategories.map(category => {
+    const fetchPromises = availableCategories.map((category) => {
       // Prefetch each category and store in the cache
       return queryClient.prefetchQuery({
         queryKey: ["movies", category],
