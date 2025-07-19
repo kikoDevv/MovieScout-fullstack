@@ -1,8 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import "./tabBar.css";
-import TabsMovies from "./tabsContent/tabsMovies";
+import "./tabMenu.css";
+
 import Link from "next/link";
 
 interface TabItem {
@@ -13,13 +13,14 @@ interface TabItem {
 
 export default function TabBar() {
   const [activeTab, setActiveTab] = useState("movies");
+  console.log("selected tabs---", activeTab);
 
   const tabs: TabItem[] = [
-    { id: "movies", label: "Movies", icon: "🎬" },
+    { id: "popular", label: "Popular", icon: "🎬" },
+    { id: "Upcoming", label: "Upcoming", icon: "🍿" },
     { id: "tvshows", label: "TV Shows", icon: "📺" },
-    { id: "children", label: "Children", icon: "🧸" },
-    { id: "Upcoming", label: "Upcoming", icon: "🆕" },
-    { id: "comedy", label: "Comedy", icon: "😂" },
+    { id: "children", label: "Children", icon: "🧒🏻" },
+    { id: "TopRated", label: "Top Rated", icon: "🚀" },
   ];
 
   return (
@@ -80,7 +81,7 @@ export default function TabBar() {
         </div>
       </div>
       {/*--------- tabs content ----------*/}
-      <TabsMovies activeTab={activeTab} />
+
       {/*--------- button under the tabs movies ----------*/}
       <div className="flex justify-center mt-8 mb-4">
         <Link href="/moviesPage">

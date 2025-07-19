@@ -3,7 +3,7 @@ import SearchBar from "@/components/mainSearchBar/SearchBar";
 import AnimatedImage from "@/components/UI/spidermanImage";
 import Companys from "@/components/companysLogo/Companys";
 import MovieHighlight from "@/components/movieHighlight/MovieHighlight";
-import TabBar from "@/components/tabBar/tabBar";
+import TabMenu from "@/components/tabBar/tabMenu";
 import SubscriptionBox from "@/components/subscriptionBox/subscrib";
 
 export default function Home() {
@@ -83,7 +83,7 @@ export default function Home() {
 			</section>
 			{/*--------- tabs bar ----------*/}
 			{/* <div className="overflow-x-auto scrollbar-hide tab-backdrop inset-0 bg-black/30 backdrop-blur-md mx-2 rounded-full sm:w-fit sm:place-self-center"></div> */}
-			<TabBar />
+			<TabMenu />
 
 			{/*--------- subscription box ----------*/}
 			<div className="container mx-auto px-4 my-16">
