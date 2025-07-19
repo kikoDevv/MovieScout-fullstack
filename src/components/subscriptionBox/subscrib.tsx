@@ -1,10 +1,10 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { SignInButton, SignUpButton, SignedIn, SignedOut } from "@clerk/nextjs";
-import { LiaSignInAltSolid } from "react-icons/lia";
-import { IoLogIn } from "react-icons/io5";
+// import Link from "next/link";
+// import { SignInButton, SignUpButton, SignedIn, SignedOut } from "@clerk/nextjs";
+// import { LiaSignInAltSolid } from "react-icons/lia";
+// import { IoLogIn } from "react-icons/io5";
 
 export default function SubscriptionBox() {
   return (
@@ -99,7 +99,7 @@ export default function SubscriptionBox() {
             </div>
             <div className="sm:flex gap-3">
               {/*--------- if user is signed out ----------*/}
-              <SignedOut>
+              {/* <SignedOut>
                 <SignUpButton mode="modal">
                   <button className="relative overflow-hidden bg-gradient-to-r from-blue-600 to-purple-600 py-2 px-4 rounded-full cursor-pointer group hover:scale-105 transition-all duration-200">
                     <div className="absolute inset-0 bg-gradient-to-l from-blue-600 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -118,9 +118,9 @@ export default function SubscriptionBox() {
                     </span>
                   </button>
                 </SignInButton>
-              </SignedOut>
+              </SignedOut> */}
               {/*--------- if user is signed in ----------*/}
-              <SignedIn>
+              {/* <SignedIn>
                 <Link href="/dashboard">
                   <button className="relative overflow-hidden bg-gradient-to-r from-blue-600 to-purple-600 py-2 px-4 rounded-full cursor-pointer group hover:scale-105 transition-all duration-200">
                     <div className="absolute inset-0 bg-gradient-to-l from-blue-600 to-purple-100 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -130,7 +130,7 @@ export default function SubscriptionBox() {
                     </span>
                   </button>
                 </Link>
-              </SignedIn>
+              </SignedIn> */}
             </div>
           </div>
         </div>

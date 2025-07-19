@@ -19,7 +19,7 @@ export default function TabBar() {
     { id: "Upcoming", label: "Upcoming", icon: "🍿" },
     { id: "tvshows", label: "TV Shows", icon: "📺" },
     { id: "children", label: "Children", icon: "🧒🏻" },
-    { id: "TopRated", label: "Top Rated", icon: "🚀" },
+    { id: "top_rated", label: "Top Rated", icon: "🚀" },
   ];
 
   return (
@@ -81,7 +81,9 @@ export default function TabBar() {
       </div>
       {/*--------- tabs content ----------*/}
       <div className="mt-8">
-        <Content />
+        <Content
+        kategory={activeTab}
+        />
       </div>
       {/*--------- button under the tabs movies ----------*/}
       <div className="flex justify-center mt-8 mb-4">

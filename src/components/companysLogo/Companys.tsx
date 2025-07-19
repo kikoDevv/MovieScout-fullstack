@@ -7,10 +7,7 @@ interface CompanysProps {
 	noRotate?: boolean;
 }
 
-export default function Companys({
-	direction = "left",
-	noRotate = false,
-}: CompanysProps) {
+export default function Companys({direction = "left", noRotate = false,}: CompanysProps) {
 	const logos = [
 		{ src: "/logos/disney.png", alt: "Disney logo" },
 		{ src: "/logos/dreamworks.png", alt: "Dreamworks logo" },
