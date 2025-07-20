@@ -13,12 +13,12 @@ export default function MovieHighlight({
 }: MovieHighlightProps) {
 	const movies = [
 		{
-			src: "/movieImages/Back-in-Action.jpg",
+			src: "/movieImages/train.webp",
 			alt: "Back in Action",
 			title: "Back in Action",
 		},
 		{
-			src: "/movieImages/smile2.jpg",
+			src: "/movieImages/balerina.webp",
 			alt: "Smile 2",
 			title: "Smile 2",
 		},
@@ -33,17 +33,17 @@ export default function MovieHighlight({
 			title: "Breaking Bad",
 		},
 		{
-			src: "/movieImages/vikings.jpg",
+			src: "/movieImages/f1.webp",
 			alt: "Vikings",
 			title: "Vikings",
 		},
 		{
-			src: "/movieImages/mads.jpg",
+			src: "/movieImages/hororr.webp",
 			alt: "Vikings",
 			title: "Vikings",
 		},
 		{
-			src: "/movieImages/flightRisk.jpg",
+			src: "/movieImages/squid.webp",
 			alt: "Vikings",
 			title: "Vikings",
 		},

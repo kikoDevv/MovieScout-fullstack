@@ -53,7 +53,7 @@ export default function Content({ kategory }: kType) {
   if (error) return <div>Some stupid shit happend fetching tab movies: {error.message}</div>;
   /*-------------------- Root ----------------------*/
   return (
-    <section className="mb-20">
+    <section className="mb-20 mt-10">
       <div className="flex overflow-x-auto snap-x snap-mandatory sm:grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:mx-20 scrollbar-hide sm:p-3 px-10 py-1">
         {isLoading
           ? Array.from({ length: 6 }).map((_, index) => (
