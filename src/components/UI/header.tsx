@@ -43,9 +43,10 @@ export default function Header() {
                 className={styles.movieScoutLogo}
                 src="/MovieScout.svg"
                 alt="Main logo not found!"
-                width={200}
-                height={200}
+                width={375}
+                height={375}
                 unoptimized
+                priority
               />
             </Link>
           </div>

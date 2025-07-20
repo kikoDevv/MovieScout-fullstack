@@ -77,10 +77,10 @@ export default function Content({ kategory }: kType) {
                   priority
                   quality={100}
                 />
-                <h1 className="absolute bottom-1 left-3 font-bold text-white sm:text-2xl font-sans select-none text-shadow-lg/10">
+                <h1 className="absolute bottom-2 left-4 font-bold text-white sm:text-2xl font-sans select-none text-shadow-lg/10">
                   {movie.title}
                 </h1>
-                <div className="flex absolute gap-1 bottom-4 right-4 select-none">
+                <div className="flex absolute gap-1 bottom-2 right-4 select-none">
                   <FaStar className="text-yellow-500 text-2xl" />
                   <p className="text-white text-lg font-semibold">{movie.vote_average.toFixed(1)}</p>
                 </div>
