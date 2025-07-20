@@ -14,9 +14,9 @@ export default function Home() {
         <Image src="/seat.jpg" alt="Seat image" width={300} height={300} unoptimized className="w-full" />
         <div className="absolute w-full text-center" style={{ top: "10%" }}>
           <div className="px-6 py-4">
-            <h1 className="text-xl font-bold tracking-wider text-white uppercase md:text-2xl lg:text-3xl">
-              <span className="block">Immerse yourself in the cinematic</span>
-              <span className="block">universe</span>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-wide uppercase bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-500 to-pink-500 drop-shadow-xl antialiased subpixel-antialiased">
+              <span className="block">Immerse Yourself</span>
+              <span className="block">in the Cinematic Universe</span>
             </h1>
           </div>
         </div>
