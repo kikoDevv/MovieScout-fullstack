@@ -31,7 +31,7 @@ export default function Header() {
             <Link href="/movies" className={styles.menuItem}>
               Movies
             </Link>
-            <Link href="/tv-shows" className={styles.menuItem}>
+            <Link href="/movies" className={styles.menuItem}>
               TV-Shows
             </Link>
           </div>

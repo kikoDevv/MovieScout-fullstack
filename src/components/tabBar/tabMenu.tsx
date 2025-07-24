@@ -87,7 +87,7 @@ export default function TabBar() {
       </div>
       {/*--------- button under the tabs movies ----------*/}
       <div className="flex justify-center mt-8 mb-4">
-        <Link href="/moviesPage">
+        <Link href="/movies">
           <button className="group relative px-4 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold text-base rounded-full overflow-hidden transition-all duration-300 text-center hover:cursor-pointer hover:scale-[1.02] will-change-transform shadow-xl hover:shadow-2xl">
             <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
             <span className="relative flex items-center justify-center space-x-2">

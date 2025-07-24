@@ -106,7 +106,7 @@ export default function SubscriptionBox() {
               {/*--------- if user is signed out ----------*/}
               <SignedOut>
                 <SignUpButton mode="modal">
-                  <button className="relative overflow-hidden bg-gradient-to-r from-blue-600 to-purple-600 py-2 px-4 rounded-full cursor-pointer group hover:scale-105 transition-all duration-200">
+                  <button className="relative overflow-hidden bg-gradient-to-r from-blue-600 to-purple-600 py-2 px-4 rounded-full cursor-pointer group hover:scale-101 transition-all duration-200">
                     <div className="absolute inset-0 bg-gradient-to-l from-blue-600 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     <span className="relative flex items-center gap-2">
                       Get Started Free
@@ -115,7 +115,7 @@ export default function SubscriptionBox() {
                   </button>
                 </SignUpButton>
                 <SignInButton mode="modal">
-                  <button className="relative overflow-hidden bg-gradient-to-r from-blue-600 to-purple-600 py-2 px-4 rounded-full cursor-pointer group hover:scale-105 transition-all duration-200">
+                  <button className="relative overflow-hidden bg-gradient-to-r from-blue-600 to-purple-600 py-2 px-4 rounded-full cursor-pointer group hover:scale-101 transition-all duration-200">
                     <div className="absolute inset-0 bg-gradient-to-l from-blue-600 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     <span className="relative flex items-center gap-2">
                       Sign In
@@ -127,7 +127,7 @@ export default function SubscriptionBox() {
               {/*--------- if user is signed in ----------*/}
               <SignedIn>
                 <Link href="/dashboard">
-                  <button className="relative overflow-hidden bg-gradient-to-r from-blue-600 to-purple-600 py-2 px-4 rounded-full cursor-pointer group hover:scale-105 transition-all duration-200">
+                  <button className="relative overflow-hidden bg-gradient-to-r from-blue-600 to-purple-600 py-2 px-4 rounded-full cursor-pointer group hover:scale-101 transition-all duration-200">
                     <div className="absolute inset-0 bg-gradient-to-l from-blue-600 to-purple-100 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     <span className="relative flex items-center gap-2">
                       See your Dashboard
