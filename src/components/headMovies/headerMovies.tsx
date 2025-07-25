@@ -3,17 +3,23 @@ import React from "react";
 import Image from "next/image";
 import RatingStars from "../ratings/ratingStars";
 import Button from "../UI/Button";
+import styles from "./headerMovies.module.css";
 import { FaPlay } from "react-icons/fa";
 import { RiMovie2Fill } from "react-icons/ri";
 import { getMovieInfo } from "./getHeadMovies";
 import { useQuery } from "@tanstack/react-query";
 
+interface Genre {
+  id: number;
+  name: string;
+}
 interface MovieData {
   title: string;
   backdrop_path: string;
   poster_path: string;
   vote_average: number;
   overview: string;
+  genres: Genre[];
 }
 interface CastMember {
   cast_id: number;
@@ -28,7 +34,13 @@ interface MovieInfoResponse {
 }
 
 export default function HeaderMovies() {
-  const movieId = 447365;
+  const IDs = [
+    // avatar
+    76600,
+    // john wick
+    603692,
+  ];
+  const movieId = IDs[Math.floor(Math.random() * IDs.length)];
 
   /*--------- use query to manage APIs ----------*/
   const {
@@ -71,18 +83,18 @@ export default function HeaderMovies() {
         <section className="grid absolute bottom-1 left-1/2 transform -translate-x-1/2 w-full justify-center gap-10">
           {/*--------- cast and crew ----------*/}
           <div className="flex gap-10">
-            <div className="grid h-fit place-self-center">
+            <div className={`grid h-fit place-self-center ${styles.slideRightAnimation}`}>
               {movieData?.cast.slice(0, 3).map((member) => (
-                <div key={member.cast_id} className="h-fit justify-items-end">
-                  <p className="text-white font-bold font-mono text-lg text-shadow-lg/50">{member.name}</p>
-                  <p className="text-gray-500 text-shadow-lg/50">{member.character}</p>
+                <div key={member.cast_id} className="flex h-fit gap-5 justify-end select-none">
+                  <p className="text-gray-500 text-shadow-lg/50">{member.name}</p>
+                  <p className="text-white font-bold font-mono text-md text-shadow-lg/50">{member.character}</p>
                 </div>
               ))}
             </div>
             {/*--------- logo ----------*/}
             <div className="max-w-170">
               <Image
-                className="w-fit h-fit"
+                className={`w-fit h-fit ${styles.fadeUpAnimation}`}
                 src={`https://image.tmdb.org/t/p/original${movieData?.movieLogo}`}
                 alt="Movie logo"
                 unoptimized
@@ -93,7 +105,18 @@ export default function HeaderMovies() {
               />
             </div>
             {/*--------- rating ----------*/}
-            <RatingStars rating={movieData?.movieData.vote_average} showValue showIMDB size="lg" />
+            <div className={`grid h-fit place-self-center ${styles.slideLeftAnimation}`}>
+              <div>
+                <RatingStars rating={movieData?.movieData.vote_average} showValue showIMDB size="md" />
+              </div>
+              <div>
+                {movieData?.movieData.genres.map((genre) => (
+                  <p key={genre.id} className="font-mono text-white text-shadow-lg/50">
+                    {genre.name}
+                  </p>
+                ))}
+              </div>
+            </div>
           </div>
           {/*--------- buttons group ----------*/}
           <div className="flex gap-10 justify-center">
