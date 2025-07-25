@@ -5,7 +5,7 @@ interface ButtonProps {
   icon?: React.ReactNode;
 }
 
-export default function Button({ text, icon }: ButtonProps): JSX.Element {
+export default function Button({ text, icon }: ButtonProps) {
   return (
     <div className="flex">
       <button className="relative overflow-hidden bg-gradient-to-r from-blue-600 to-purple-600 py-2 px-4 rounded-full cursor-pointer group hover:scale-105 transition-all duration-200">

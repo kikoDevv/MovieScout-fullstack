@@ -39,9 +39,21 @@ export default function HeaderMovies() {
     76600,
     // john wick
     603692,
+    // dragun
+    1087192,
+    // megan
+    1071585,
+    // lio
+    552524,
+    // karate legend
+    1011477,
+    // balerina
+    541671,
+    // f1
+    911430,
+
   ];
   const movieId = IDs[Math.floor(Math.random() * IDs.length)];
-
   /*--------- use query to manage APIs ----------*/
   const {
     data: movieData,
