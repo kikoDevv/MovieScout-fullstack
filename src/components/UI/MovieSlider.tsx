@@ -2,20 +2,21 @@
 import React from "react";
 import Slider from "react-slick";
 import Image from "next/image";
+import { FcNext, FcPrevious, } from "react-icons/fc";
 
 const NextArrow = (props: any) => (
   <button
     {...props}
-    className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 z-10">
-    ▶
+    className="absolute right-[-25] top-1/2 transform -translate-y-1/2 bg-white text-blue-500 px-3 py-5 rounded-full hover:scale-107 cursor-pointer transition-all duration-200 opacity-55 hover:opacity-100">
+    <FcNext />
   </button>
 );
 
 const PrevArrow = (props: any) => (
   <button
     {...props}
-    className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 z-10">
-    ◀
+    className="absolute left-[-20] top-1/2 transform -translate-y-1/2  bg-white text-blue-500 px-3 py-5 rounded-full hover:scale-107 cursor-pointer transition-all duration-200 opacity-55 hover:opacity-100 z-1">
+    <FcPrevious />
   </button>
 );
 
@@ -55,13 +56,11 @@ const MovieSlider: React.FC<MovieSliderProps> = ({ movies }) => {
   return (
     <div className="relative">
       <Slider {...settings}>
-        {movies.map((movie) => (
+        {movies.map((movie, idx) => (
           <div key={movie.id} className="p-2">
-            <div className="bg-gray-800 text-white rounded overflow-hidden shadow">
+            <div className="relative bg-gray-800 text-white rounded-2xl overflow-hidden shadow">
               <Image src={movie.poster} alt={movie.title} width={300} height={450} className="w-full object-cover" />
-              <div className="p-3">
-                <h3 className="text-lg font-semibold">{movie.title}</h3>
-              </div>
+              <p className="absolute bottom-2 right-5 text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-wide uppercase bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-500 to-pink-500 drop-shadow-xl antialiased subpixel-antialiased">{idx + 1}</p>
             </div>
           </div>
         ))}

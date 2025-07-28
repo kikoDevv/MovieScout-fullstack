@@ -10,7 +10,7 @@ export default function page() {
         {/* <HeaderMovies /> */}
       </section>
       {/*--------- Top 10 movies section ----------*/}
-      <section>
+      <section className='mb-100'>
         <TopTeenMovies />
       </section>
     </div>
