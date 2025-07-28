@@ -1,7 +1,6 @@
-import React from 'react'
-import HeaderMovies from '@/components/headMovies/headerMovies'
-import TopTeenMovies from '@/components/topTeen/topTeenMovies';
-
+import React from "react";
+import HeaderMovies from "@/components/headMovies/headerMovies";
+import TopTeenMovies from "@/components/topTeen/TopTeenMovies";
 
 export default function page() {
   return (
@@ -10,9 +9,9 @@ export default function page() {
         <HeaderMovies />
       </section>
       {/*--------- Top 10 movies section ----------*/}
-      <section className='mb-100'>
+      <section className="mb-100">
         <TopTeenMovies />
       </section>
     </div>
-  )
+  );
 }
