@@ -74,7 +74,7 @@ export default function HeaderMovies() {
   }
 
   return (
-    <section className="mb-100">
+    <section className="mb-10">
       <div className="relative">
         {/*--------- main image ----------*/}
         <Image
