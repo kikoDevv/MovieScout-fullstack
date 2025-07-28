@@ -59,7 +59,7 @@ const MovieSlider: React.FC<MovieSliderProps> = ({ movies }) => {
         {movies.map((movie, idx) => (
           <div key={movie.id} className="p-2">
             <div className="relative bg-gray-800 text-white rounded-2xl overflow-hidden shadow">
-              <Image src={movie.poster} alt={movie.title} width={300} height={450} className="w-full object-cover" />
+              <Image src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} width={300} height={450} className="w-full object-cover" />
               <p className="absolute bottom-2 right-5 text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-wide uppercase bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-500 to-pink-500 drop-shadow-xl antialiased subpixel-antialiased">{idx + 1}</p>
             </div>
           </div>
