@@ -13,7 +13,7 @@ const NextArrow = ({ onClick }: ArrowProps) => (
     className="w-10 h-10 bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-sm border border-slate-600/30 text-white rounded-full hover:scale-110 cursor-pointer transition-all duration-300 ease-out opacity-80 hover:opacity-100 shadow-lg z-10 group">
     <div className="flex items-center justify-center w-full h-full group-hover:text-purple-300 transition-colors duration-300">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" className="ml-0.5">
-        <path d="M8.59 16.59L13.17 12L8.59 7.41L10 6l6 6-6 6l-1.41-1.41z"/>
+        <path d="M8.59 16.59L13.17 12L8.59 7.41L10 6l6 6-6 6l-1.41-1.41z" />
       </svg>
     </div>
   </button>
@@ -25,7 +25,7 @@ const PrevArrow = ({ onClick }: ArrowProps) => (
     className="w-10 h-10 bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-sm border border-slate-600/30 text-white rounded-full hover:scale-110 cursor-pointer transition-all duration-300 ease-out opacity-80 hover:opacity-100 shadow-lg z-10 group">
     <div className="flex items-center justify-center w-full h-full group-hover:text-purple-300 transition-colors duration-300">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" className="mr-0.5">
-        <path d="M15.41 16.59L10.83 12L15.41 7.41L14 6l-6 6 6 6l1.41-1.41z"/>
+        <path d="M15.41 16.59L10.83 12L15.41 7.41L14 6l-6 6 6 6l1.41-1.41z" />
       </svg>
     </div>
   </button>
@@ -56,9 +56,7 @@ const MovieSlider: React.FC<MovieSliderProps> = ({ movies }) => {
       <div className="mt-8 flex justify-center">
         <div className="flex items-center gap-6 bg-black/30 backdrop-blur-sm px-1 py-1 rounded-full border border-white/10 w-fit place-self-center">
           <PrevArrow onClick={() => sliderRef.current?.slickPrev()} />
-          <div className="flex gap-3">
-            {dots}
-          </div>
+          <div className="flex gap-3">{dots}</div>
           <NextArrow onClick={() => sliderRef.current?.slickNext()} />
         </div>
       </div>
@@ -78,16 +76,18 @@ const MovieSlider: React.FC<MovieSliderProps> = ({ movies }) => {
       <Slider ref={sliderRef} {...settings}>
         {movies.map((movie, idx) => (
           <div key={movie.id} className="p-2">
-            <div className="relative bg-gray-800 text-white rounded-2xl overflow-hidden shadow">
+            {/*--------- Movie card ----------*/}
+            <div className="relative bg-gray-800 text-white rounded-2xl shadow-md group cursor-pointer hover:shadow-purple-400/90 transition-shadow duration-200">
               <Image
-                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                alt={movie.title}
-                width={300}
-                height={450}
-                className="w-full object-cover"
+              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+              alt={movie.title}
+              width={300}
+              height={450}
+              className="w-full object-cover rounded-2xl"
               />
-              <p className="absolute bottom-2 right-5 text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-wide uppercase bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-500 to-pink-500 drop-shadow-xl antialiased subpixel-antialiased">
-                {idx + 1}
+              {/*--------- Number ----------*/}
+              <p className="absolute bottom-2 right-5 text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-wide uppercase bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-500 to-pink-500 drop-shadow-xl antialiased subpixel-antialiased text-shadow-lg group-hover:scale-120 transition-all duration-200">
+              {idx + 1}
               </p>
             </div>
           </div>
