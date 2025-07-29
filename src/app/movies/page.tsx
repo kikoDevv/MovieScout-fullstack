@@ -1,6 +1,6 @@
 import React from "react";
 import HeaderMovies from "@/components/headMovies/headerMovies";
-import TopTeenMovies from "@/components/topTeen/TopTeenMovies";
+import TopTeenMovies from "@/components/topTeen/topTeenMovies";
 
 export default function page() {
   return (
