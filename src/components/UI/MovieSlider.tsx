@@ -10,10 +10,10 @@ interface ArrowProps {
 const NextArrow = ({ onClick }: ArrowProps) => (
   <button
     onClick={onClick}
-    className="w-10 h-10 bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-sm border border-slate-600/30 text-white rounded-full hover:scale-110 hover:rotate-3 cursor-pointer transition-all duration-300 ease-out opacity-80 hover:opacity-100 shadow-lg hover:shadow-xl hover:shadow-purple-500/20 z-10 group">
+    className="w-10 h-10 bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-sm border border-slate-600/30 text-white rounded-full hover:scale-110 cursor-pointer transition-all duration-300 ease-out opacity-80 hover:opacity-100 shadow-lg z-10 group">
     <div className="flex items-center justify-center w-full h-full group-hover:text-purple-300 transition-colors duration-300">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" className="ml-0.5">
-        <path d="M8.59 16.59L13.17 12L8.59 7.41L10 6l6 6-6 6l-1.41-1.41z" />
+        <path d="M8.59 16.59L13.17 12L8.59 7.41L10 6l6 6-6 6l-1.41-1.41z"/>
       </svg>
     </div>
   </button>
@@ -22,10 +22,10 @@ const NextArrow = ({ onClick }: ArrowProps) => (
 const PrevArrow = ({ onClick }: ArrowProps) => (
   <button
     onClick={onClick}
-    className="w-10 h-10 bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-sm border border-slate-600/30 text-white rounded-full hover:scale-110 hover:-rotate-3 cursor-pointer transition-all duration-300 ease-out opacity-80 hover:opacity-100 shadow-lg hover:shadow-xl hover:shadow-purple-500/20 z-10 group">
+    className="w-10 h-10 bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-sm border border-slate-600/30 text-white rounded-full hover:scale-110 cursor-pointer transition-all duration-300 ease-out opacity-80 hover:opacity-100 shadow-lg z-10 group">
     <div className="flex items-center justify-center w-full h-full group-hover:text-purple-300 transition-colors duration-300">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" className="mr-0.5">
-        <path d="M15.41 16.59L10.83 12L15.41 7.41L14 6l-6 6 6 6l1.41-1.41z" />
+        <path d="M15.41 16.59L10.83 12L15.41 7.41L14 6l-6 6 6 6l1.41-1.41z"/>
       </svg>
     </div>
   </button>
@@ -56,7 +56,9 @@ const MovieSlider: React.FC<MovieSliderProps> = ({ movies }) => {
       <div className="mt-8 flex justify-center">
         <div className="flex items-center gap-6 bg-black/30 backdrop-blur-sm px-1 py-1 rounded-full border border-white/10 w-fit place-self-center">
           <PrevArrow onClick={() => sliderRef.current?.slickPrev()} />
-          <div className="flex gap-3">{dots}</div>
+          <div className="flex gap-3">
+            {dots}
+          </div>
           <NextArrow onClick={() => sliderRef.current?.slickNext()} />
         </div>
       </div>
