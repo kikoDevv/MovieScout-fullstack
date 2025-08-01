@@ -20,7 +20,7 @@ export default function TopRated() {
   return (
     <div className="m-10">
       <h1 className="text-3xl text-white font-bold pl-4 pb-1">Top 20 Movies to Watch</h1>
-      <MovieSlider movies={movieData || []} showIndex = {false}/>
+      <MovieSlider movies={movieData || []} showIndex={false} />
     </div>
   );
 }
