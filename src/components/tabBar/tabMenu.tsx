@@ -81,9 +81,7 @@ export default function TabBar() {
       </div>
       {/*--------- tabs content ----------*/}
       <div className="mt-8">
-        <Content
-        kategory={activeTab}
-        />
+        <Content kategory={activeTab} />
       </div>
       {/*--------- button under the tabs movies ----------*/}
       <div className="flex justify-center mt-8 mb-4">

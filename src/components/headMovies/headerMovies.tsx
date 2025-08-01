@@ -165,13 +165,7 @@ export default function HeaderMovies() {
                     />
                     {position === 0 && (
                       <div className="absolute bottom-5 left-47">
-                        <Image
-                          className="bg-red-500"
-                          src={"/l1.webp"}
-                          alt="Not found"
-                          width={500}
-                          height={300}
-                        />
+                        <Image className="bg-red-500" src={"/l1.webp"} alt="Not found" width={500} height={300} />
                       </div>
                     )}
                   </div>
