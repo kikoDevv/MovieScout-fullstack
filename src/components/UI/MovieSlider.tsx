@@ -41,9 +41,10 @@ interface MovieType {
 interface MovieSliderProps {
   movies: MovieType[];
   showIndex?: boolean;
+  hoverOpacity?: boolean;
 }
 
-const MovieSlider: React.FC<MovieSliderProps> = ({ movies, showIndex = true }) => {
+const MovieSlider: React.FC<MovieSliderProps> = ({ movies, showIndex = true, hoverOpacity = false }) => {
   const sliderRef = useRef<Slider>(null);
 
   const settings = {
@@ -76,15 +77,17 @@ const MovieSlider: React.FC<MovieSliderProps> = ({ movies, showIndex = true }) =
     <div className="relative">
       <Slider ref={sliderRef} {...settings}>
         {movies.map((movie, idx) => (
-          <div key={movie.id} className="p-2">
+          <div key={movie.id} className={`p-2 overflow-hidden transition-all duration-200 ${hoverOpacity ? " hover:scale-103" : ""}`}>
             {/*--------- Movie card ----------*/}
-            <div className="relative bg-gray-800 text-white rounded-2xl shadow-md group cursor-pointer hover:shadow-purple-400/90 transition-shadow duration-200">
+            <div
+              className="relative bg-gray-800 text-white shadow-md group cursor-pointer hover:shadow-purple-400/90 transition-shadow duration-200 rounded-2xl overflow-hidden"
+            >
               <Image
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                 alt={movie.title}
                 width={300}
                 height={450}
-                className="w-full object-cover rounded-2xl"
+                className="w-full object-cover"
               />
               {/*--------- Number ----------*/}
               {showIndex && (
