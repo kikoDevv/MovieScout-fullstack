@@ -34,13 +34,16 @@ interface MovieInfoResponse {
 export default function HeaderMovies() {
   const MOVIE_IDS = [
     76600, // Avatar
-    603692, // John Wick
     1087192, // Dragon
-    1071585, // Megan
     552524, // Lion King
     1011477, // Karate Legend
-    541671, // Ballerina
     911430, // F1
+    1175942,
+    1151031,
+    950387,
+    1241982,
+    950396,
+
   ] as const;
 
   const TRANSITION_DURATION = 700; // Increased for smoother feel
@@ -128,7 +131,7 @@ export default function HeaderMovies() {
   }
 
   return (
-    <section className="relative min-h-[90vh] py-12">
+    <section className="relative mt-30 mb-20">
       {/*--------- Main Gallery Container ----------*/}
       <div className="relative mx-auto px-6">
         {/* Gallery */}
@@ -152,26 +155,26 @@ export default function HeaderMovies() {
                   0: {
                     // Center
                     card: `${baseClasses} z-20 cursor-pointer`,
-                    container: `${baseContainer} w-220 h-[450px] scale-105 shadow-2xl`,
+                    container: `${baseContainer} w-220 h-[500px] scale-105 shadow-2xl`,
                   },
                   [-1]: {
                     // Left adjacent
-                    card: `${baseClasses} z-10 -translate-x-112 translate-y-16 opacity-75 cursor-pointer`,
+                    card: `${baseClasses} z-10 -translate-x-112 translate-y-23 opacity-75 cursor-pointer`,
                     container: `${baseContainer} w-64 h-[350px] scale-95 shadow-xl`,
                   },
                   [1]: {
                     // Right adjacent
-                    card: `${baseClasses} z-10 translate-x-112 translate-y-16 opacity-75 cursor-pointer`,
+                    card: `${baseClasses} z-10 translate-x-112 translate-y-23 opacity-75 cursor-pointer`,
                     container: `${baseContainer} w-64 h-[350px] scale-95 shadow-xl`,
                   },
                   [-2]: {
                     // Far left
-                    card: `${baseClasses} z-0 -translate-x-130 translate-y-25 opacity-40 cursor-pointer`,
+                    card: `${baseClasses} z-0 -translate-x-130 translate-y-33 opacity-40 cursor-pointer`,
                     container: `${baseContainer} w-92 h-[280px] scale-90 shadow-lg`,
                   },
                   [2]: {
                     // Far right
-                    card: `${baseClasses} z-0 translate-x-145 translate-y-25 opacity-40 cursor-pointer`,
+                    card: `${baseClasses} z-0 translate-x-145 translate-y-33 opacity-40 cursor-pointer`,
                     container: `${baseContainer} w-62 h-[280px] scale-90 shadow-lg`,
                   },
                 };
