@@ -43,7 +43,7 @@ export default function HeaderMovies() {
     911430, // F1
   ] as const;
 
-  const TRANSITION_DURATION = 500;
+  const TRANSITION_DURATION = 700; // Increased for smoother feel
   const STALE_TIME = 5 * 60 * 1000; // 5 minutes
 
   const [currentIndex, setCurrentIndex] = useState(2);
@@ -63,13 +63,45 @@ export default function HeaderMovies() {
 
   const visibleMovies = getVisibleMovies();
 
-  const movieQueries = visibleMovies.map((movie) =>
-    useQuery<MovieInfoResponse>({
-      queryKey: ["movieInfo", movie.id],
-      queryFn: () => getMovieInfo(movie.id),
-      staleTime: STALE_TIME,
-    })
-  );
+  {
+    /*--------- querys ----------*/
+  }
+  const movieQuery0 = useQuery<MovieInfoResponse>({
+    queryKey: ["movieInfo", visibleMovies[0]?.id],
+    queryFn: () => getMovieInfo(visibleMovies[0]?.id),
+    staleTime: STALE_TIME,
+    enabled: !!visibleMovies[0]?.id,
+  });
+
+  const movieQuery1 = useQuery<MovieInfoResponse>({
+    queryKey: ["movieInfo", visibleMovies[1]?.id],
+    queryFn: () => getMovieInfo(visibleMovies[1]?.id),
+    staleTime: STALE_TIME,
+    enabled: !!visibleMovies[1]?.id,
+  });
+
+  const movieQuery2 = useQuery<MovieInfoResponse>({
+    queryKey: ["movieInfo", visibleMovies[2]?.id],
+    queryFn: () => getMovieInfo(visibleMovies[2]?.id),
+    staleTime: STALE_TIME,
+    enabled: !!visibleMovies[2]?.id,
+  });
+
+  const movieQuery3 = useQuery<MovieInfoResponse>({
+    queryKey: ["movieInfo", visibleMovies[3]?.id],
+    queryFn: () => getMovieInfo(visibleMovies[3]?.id),
+    staleTime: STALE_TIME,
+    enabled: !!visibleMovies[3]?.id,
+  });
+
+  const movieQuery4 = useQuery<MovieInfoResponse>({
+    queryKey: ["movieInfo", visibleMovies[4]?.id],
+    queryFn: () => getMovieInfo(visibleMovies[4]?.id),
+    staleTime: STALE_TIME,
+    enabled: !!visibleMovies[4]?.id,
+  });
+
+  const movieQueries = [movieQuery0, movieQuery1, movieQuery2, movieQuery3, movieQuery4];
 
   const handleSlideChange = (newIndex: number) => {
     if (isTransitioning) return;
@@ -111,33 +143,35 @@ export default function HeaderMovies() {
                 /*--------- Calculate positioning and styling based on position ----------*/
               }
               const getCardStyles = (pos: number) => {
-                const baseClasses = "absolute transition-all duration-500 ease-in-out cursor-pointer transform-gpu";
-                const baseContainer = "relative overflow-hidden rounded-2xl shadow-lg";
+                const baseClasses =
+                  "absolute transition-all duration-700 ease-out will-change-transform transform-gpu backface-hidden";
+                const baseContainer =
+                  "relative overflow-hidden rounded-2xl shadow-lg transition-all duration-700 ease-out";
 
                 const styles = {
                   0: {
                     // Center
-                    card: `${baseClasses} z-20`,
-                    container: `${baseContainer} relative w-220 h-[450px] scale-105 shadow-2xl`,
+                    card: `${baseClasses} z-20 cursor-pointer`,
+                    container: `${baseContainer} w-220 h-[450px] scale-105 shadow-2xl`,
                   },
                   [-1]: {
                     // Left adjacent
-                    card: `${baseClasses} z-10 -translate-x-112 translate-y-16 opacity-75`,
+                    card: `${baseClasses} z-10 -translate-x-112 translate-y-16 opacity-75 cursor-pointer`,
                     container: `${baseContainer} w-64 h-[350px] scale-95 shadow-xl`,
                   },
                   [1]: {
                     // Right adjacent
-                    card: `${baseClasses} z-10 translate-x-112 translate-y-16 opacity-75`,
+                    card: `${baseClasses} z-10 translate-x-112 translate-y-16 opacity-75 cursor-pointer`,
                     container: `${baseContainer} w-64 h-[350px] scale-95 shadow-xl`,
                   },
                   [-2]: {
                     // Far left
-                    card: `${baseClasses} z-0 -translate-x-130 translate-y-25 opacity-40`,
+                    card: `${baseClasses} z-0 -translate-x-130 translate-y-25 opacity-40 cursor-pointer`,
                     container: `${baseContainer} w-92 h-[280px] scale-90 shadow-lg`,
                   },
                   [2]: {
                     // Far right
-                    card: `${baseClasses} z-0 translate-x-145 translate-y-25 opacity-40`,
+                    card: `${baseClasses} z-0 translate-x-145 translate-y-25 opacity-40 cursor-pointer`,
                     container: `${baseContainer} w-62 h-[280px] scale-90 shadow-lg`,
                   },
                 };
@@ -160,11 +194,12 @@ export default function HeaderMovies() {
                       }
                       alt={movieData?.movieData.title || "Movie"}
                       fill
-                      className="object-cover"
+                      className="object-cover transition-all duration-700 ease-out"
                       quality={100}
+                      priority={position === 0}
                     />
                     {position === 0 && (
-                      <div className="absolute bottom-5 left-47">
+                      <div className="absolute bottom-5 left-47 transition-all duration-700 ease-out">
                         <Image className="bg-red-500" src={"/l1.webp"} alt="Not found" width={500} height={300} />
                       </div>
                     )}
@@ -182,7 +217,7 @@ export default function HeaderMovies() {
           {/*--------- Previous Arrow ----------*/}
           <button
             onClick={prevSlide}
-            className="w-10 h-10 bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-sm border border-slate-600/30 text-white rounded-full hover:scale-110 cursor-pointer transition-all duration-300 ease-out opacity-80 hover:opacity-100 shadow-lg group"
+            className="w-10 h-10 bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-sm border border-slate-600/30 text-white rounded-full hover:scale-110 cursor-pointer transition-all duration-300 ease-out opacity-80 hover:opacity-100 shadow-lg group disabled:opacity-50"
             disabled={isTransitioning}
             aria-label="Previous movie">
             <div className="flex items-center justify-center w-full h-full group-hover:text-purple-300 transition-colors duration-300">
@@ -202,7 +237,7 @@ export default function HeaderMovies() {
                   index === currentIndex
                     ? "bg-gradient-to-br from-purple-400 to-purple-500 scale-140 shadow-lg shadow-purple-500/60"
                     : "bg-white/40 hover:bg-white/70 hover:scale-125"
-                }`}
+                } disabled:opacity-50`}
                 disabled={isTransitioning}
                 aria-label={`Go to slide ${index + 1}`}
               />
@@ -212,7 +247,7 @@ export default function HeaderMovies() {
           {/*--------- Next Arrow ----------*/}
           <button
             onClick={nextSlide}
-            className="w-10 h-10 bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-sm border border-slate-600/30 text-white rounded-full hover:scale-110 cursor-pointer transition-all duration-300 ease-out opacity-80 hover:opacity-100 shadow-lg group"
+            className="w-10 h-10 bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-sm border border-slate-600/30 text-white rounded-full hover:scale-110 cursor-pointer transition-all duration-300 ease-out opacity-80 hover:opacity-100 shadow-lg group disabled:opacity-50"
             disabled={isTransitioning}
             aria-label="Next movie">
             <div className="flex items-center justify-center w-full h-full group-hover:text-purple-300 transition-colors duration-300">
@@ -227,6 +262,27 @@ export default function HeaderMovies() {
       <style jsx>{`
         .border-3 {
           border-width: 3px;
+        }
+
+        /* Additional smoothing for hardware acceleration */
+        .transform-gpu {
+          transform: translate3d(0, 0, 0);
+        }
+
+        /* Optimize for smooth animations */
+        .backface-hidden {
+          backface-visibility: hidden;
+          perspective: 1000px;
+        }
+
+        .will-change-transform {
+          will-change: transform, opacity, filter;
+        }
+
+        /* Smooth transition for all interactive elements */
+        button,
+        .cursor-pointer {
+          transform: translate3d(0, 0, 0);
         }
       `}</style>
     </section>
