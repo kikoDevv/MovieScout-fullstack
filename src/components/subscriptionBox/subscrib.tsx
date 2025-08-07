@@ -18,7 +18,7 @@ export default function SubscriptionBox() {
       <div className="relative lg:flex p-10 rounded-3xl items-center justify-between overflow-hidden border border-gray-600/30 shadow-2xl shadow-neutral-800/10">
         <div className="absolute top-0 right-0 w-72 h-72 bg-purple-500/20 rounded-full blur-2xl -translate-y-10 translate-x-10 will-change-transform"></div>
         <Image
-          src="/seat.jpg"
+          src="/cinema.jpg"
           alt="Cinema seats image not found"
           className="absolute inset-0 w-full h-full object-cover opacity-20"
           fill

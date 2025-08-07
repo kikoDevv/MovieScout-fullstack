@@ -118,9 +118,10 @@ export default function HeaderMovies() {
     if (index !== currentIndex) handleSlideChange(index);
   };
 
+  {/*--------- loading scaleten ----------*/}
   if (movieQueries[2]?.isLoading) {
     return (
-      <div className="relative h-[90vh] flex justify-center items-center bg-gradient-to-br from-slate-50 to-slate-100">
+      <div className="relative h-[90vh] flex justify-center items-center bg-gradient-to-br from-black/30 to-black/100">
         <div className="flex flex-col items-center gap-4">
           <div className="w-12 h-12 border-3 border-purple-400 border-t-transparent rounded-full animate-spin"></div>
           <p className="text-slate-600 text-lg">Loading Movie Gallery...</p>
