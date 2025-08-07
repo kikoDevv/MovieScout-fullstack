@@ -200,31 +200,34 @@ export default function HeaderMovies() {
                       quality={100}
                       priority={position === 0}
                     />
-                    {/*--------- Logo section ----------*/}
+                    {/*----------------- Logo section -----------------*/}
                     {position === 0 && (
-                      <div className="absolute bottom-5 left-0 transition-all duration-700 ease-out w-full justify-items-center">
+                      <div
+                        key={`logo-${movie.id}`}
+                        className={`absolute bottom-5 left-0 transition-all duration-500 ease-out w-full justify-items-center ${
+                          !isTransitioning ? "opacity-100 translate-y-0 animate-fadeIn" : "opacity-0 translate-y-4"
+                        }`}>
                         {/*--------- cast ----------*/}
                         <div className="flex w-fit">
                           <div className="grid justify-items-end">
                             <div className="flex gap-2 items-center">
-                              <p className="font-mono text-md text-gray-300">{movieData?.cast[0].name}</p>
-                              <p className="font-mono text-lg text-white">{movieData?.cast[0].character}</p>
+                              <p className="font-mono text-md text-gray-300">{movieData?.cast[0]?.name}</p>
+                              <p className="font-mono text-lg text-white">{movieData?.cast[0]?.character}</p>
                             </div>
                             <div className="flex gap-2 items-center">
-                              <p className="font-mono text-md text-gray-300">{movieData?.cast[1].name}</p>
-                              <p className="font-mono text-lg text-white">{movieData?.cast[1].character}</p>
+                              <p className="font-mono text-md text-gray-300">{movieData?.cast[1]?.name}</p>
+                              <p className="font-mono text-lg text-white">{movieData?.cast[1]?.character}</p>
                             </div>
                             <div className="flex gap-2 items-center">
-                              <p className="font-mono text-md text-gray-300">{movieData?.cast[2].name}</p>
-                              <p className="font-mono text-lg text-white">{movieData?.cast[2].character}</p>
+                              <p className="font-mono text-md text-gray-300">{movieData?.cast[2]?.name}</p>
+                              <p className="font-mono text-lg text-white">{movieData?.cast[2]?.character}</p>
                             </div>
                           </div>
                           {/*--------- logo ----------*/}
-
                           <div className="w-100 h-30">
                             <Image
                               className="w-full h-full"
-                              src={`https://image.tmdb.org/t/p/w780${movieData.movieLogo}`}
+                              src={`https://image.tmdb.org/t/p/w780${movieData?.movieLogo}`}
                               alt="Not found"
                               height={40}
                               width={400}
