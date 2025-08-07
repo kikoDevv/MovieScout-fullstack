@@ -49,11 +49,12 @@ const MovieSlider: React.FC<MovieSliderProps> = ({ movies, showIndex = true, hov
 
   const settings = {
     dots: true,
-    infinite: false,
+    infinite: true,
     speed: 500,
-    slidesToShow: 7,
+    slidesToShow: 6,
     slidesToScroll: 4,
     arrows: false,
+    dotsClass: "slick-dots custom-dots",
     appendDots: (dots: React.ReactNode) => (
       <div className="mt-8 flex justify-center">
         <div className="flex items-center gap-6 bg-black/30 backdrop-blur-sm px-1 py-1 rounded-full border border-white/10 w-fit place-self-center">
@@ -63,9 +64,15 @@ const MovieSlider: React.FC<MovieSliderProps> = ({ movies, showIndex = true, hov
         </div>
       </div>
     ),
-    customPaging: () => (
-      <div className="w-2 h-2 bg-white/40 rounded-full transition-all duration-300 hover:bg-white/70 cursor-pointer transform hover:scale-125" />
+    customPaging: (index: number) => (
+      <div
+        className="w-2 h-2 bg-white/40 rounded-full transition-all duration-300 hover:bg-white/70 cursor-pointer transform hover:scale-125"
+        data-index={index}
+      />
     ),
+    beforeChange: (oldIndex: number, newIndex: number) => {
+      console.log(`Slide changing from ${oldIndex} to ${newIndex}`);
+    },
     responsive: [
       { breakpoint: 1024, settings: { slidesToShow: 3, slidesToScroll: 3 } },
       { breakpoint: 768, settings: { slidesToShow: 2, slidesToScroll: 2 } },
@@ -77,11 +84,11 @@ const MovieSlider: React.FC<MovieSliderProps> = ({ movies, showIndex = true, hov
     <div className="relative">
       <Slider ref={sliderRef} {...settings}>
         {movies.map((movie, idx) => (
-          <div key={movie.id} className={`p-2 overflow-hidden transition-all duration-200 ${hoverOpacity ? " hover:scale-103" : ""}`}>
+          <div
+            key={movie.id}
+            className={`p-2 overflow-hidden transition-all duration-200 ${hoverOpacity ? " hover:scale-103" : ""}`}>
             {/*--------- Movie card ----------*/}
-            <div
-              className="relative bg-gray-800 text-white shadow-md group cursor-pointer hover:shadow-purple-400/90 transition-shadow duration-200 rounded-2xl overflow-hidden"
-            >
+            <div className="relative bg-gray-800 text-white shadow-md group cursor-pointer hover:shadow-purple-400/90 transition-shadow duration-200 rounded-2xl overflow-hidden">
               <Image
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                 alt={movie.title}
@@ -118,6 +125,7 @@ const MovieSlider: React.FC<MovieSliderProps> = ({ movies, showIndex = true, hov
           padding: 0 !important;
           background: transparent !important;
           border: none !important;
+          outline: none !important;
         }
 
         .slick-dots li button:before {
@@ -150,6 +158,15 @@ const MovieSlider: React.FC<MovieSliderProps> = ({ movies, showIndex = true, hov
 
         .slick-track {
           transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+        }
+
+        /* Enhanced dot synchronization */
+        .custom-dots li {
+          position: relative !important;
+        }
+
+        .custom-dots li.slick-active {
+          z-index: 1 !important;
         }
       `}</style>
     </div>

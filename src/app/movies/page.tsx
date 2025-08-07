@@ -7,6 +7,7 @@ import TopRated from "@/components/topRated/topRatedMovies";
 export default function page() {
   return (
     <div>
+      {/*--------- Movie galery hilight ----------*/}
       <section>
         <HeaderMovies />
       </section>
