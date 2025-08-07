@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { getMovieInfo } from "./getHeadMovies";
 import { useQuery } from "@tanstack/react-query";
+import RatingStars from "../ratings/ratingStars";
 
 interface Genre {
   id: number;
@@ -43,7 +44,6 @@ export default function HeaderMovies() {
     950387,
     1241982,
     950396,
-
   ] as const;
 
   const TRANSITION_DURATION = 700; // Increased for smoother feel
@@ -66,9 +66,7 @@ export default function HeaderMovies() {
 
   const visibleMovies = getVisibleMovies();
 
-  {
-    /*--------- querys ----------*/
-  }
+  /*--------- querys for movie gallery ----------*/
   const movieQuery0 = useQuery<MovieInfoResponse>({
     queryKey: ["movieInfo", visibleMovies[0]?.id],
     queryFn: () => getMovieInfo(visibleMovies[0]?.id),
@@ -103,6 +101,7 @@ export default function HeaderMovies() {
     staleTime: STALE_TIME,
     enabled: !!visibleMovies[4]?.id,
   });
+  console.log("--------------query data---------:", movieQuery4.data);
 
   const movieQueries = [movieQuery0, movieQuery1, movieQuery2, movieQuery3, movieQuery4];
 
@@ -201,9 +200,40 @@ export default function HeaderMovies() {
                       quality={100}
                       priority={position === 0}
                     />
+                    {/*--------- Logo section ----------*/}
                     {position === 0 && (
-                      <div className="absolute bottom-5 left-47 transition-all duration-700 ease-out">
-                        <Image className="bg-red-500" src={"/l1.webp"} alt="Not found" width={500} height={300} />
+                      <div className="absolute bottom-5 left-0 transition-all duration-700 ease-out w-full justify-items-center">
+                        {/*--------- cast ----------*/}
+                        <div className="flex w-fit">
+                          <div className="grid justify-items-end">
+                            <div className="flex gap-2 items-center">
+                              <p className="font-mono text-md text-gray-300">{movieData?.cast[0].name}</p>
+                              <p className="font-mono text-lg text-white">{movieData?.cast[0].character}</p>
+                            </div>
+                            <div className="flex gap-2 items-center">
+                              <p className="font-mono text-md text-gray-300">{movieData?.cast[1].name}</p>
+                              <p className="font-mono text-lg text-white">{movieData?.cast[1].character}</p>
+                            </div>
+                            <div className="flex gap-2 items-center">
+                              <p className="font-mono text-md text-gray-300">{movieData?.cast[2].name}</p>
+                              <p className="font-mono text-lg text-white">{movieData?.cast[2].character}</p>
+                            </div>
+                          </div>
+                          {/*--------- logo ----------*/}
+
+                          <div className="w-100 h-30">
+                            <Image
+                              className="w-full h-full"
+                              src={`https://image.tmdb.org/t/p/w780${movieData.movieLogo}`}
+                              alt="Not found"
+                              height={40}
+                              width={400}
+                            />
+                          </div>
+
+                          {/*--------- rating ----------*/}
+                          <RatingStars rating={movieData?.movieData.vote_average} showIMDB showValue />
+                        </div>
                       </div>
                     )}
                   </div>
