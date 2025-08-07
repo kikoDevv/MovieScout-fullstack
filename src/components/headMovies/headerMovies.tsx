@@ -204,29 +204,25 @@ export default function HeaderMovies() {
                     {position === 0 && (
                       <div
                         key={`logo-${movie.id}`}
-                        className={`absolute bottom-5 left-0 transition-all duration-500 ease-out w-full justify-items-center ${
+                        className={`absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-6 transition-all duration-500 ease-out justify-items-center ${
                           !isTransitioning ? "opacity-100 translate-y-0 animate-fadeIn" : "opacity-0 translate-y-4"
                         }`}>
                         {/*--------- cast ----------*/}
-                        <div className="flex w-fit">
-                          <div className="grid justify-items-end">
-                            <div className="flex gap-2 items-center">
-                              <p className="font-mono text-md text-gray-300">{movieData?.cast[0]?.name}</p>
-                              <p className="font-mono text-lg text-white">{movieData?.cast[0]?.character}</p>
-                            </div>
-                            <div className="flex gap-2 items-center">
-                              <p className="font-mono text-md text-gray-300">{movieData?.cast[1]?.name}</p>
-                              <p className="font-mono text-lg text-white">{movieData?.cast[1]?.character}</p>
-                            </div>
-                            <div className="flex gap-2 items-center">
-                              <p className="font-mono text-md text-gray-300">{movieData?.cast[2]?.name}</p>
-                              <p className="font-mono text-lg text-white">{movieData?.cast[2]?.character}</p>
-                            </div>
+                        <div className="flex w-fit items-center gap-1 w-fit">
+                          <div>
+                            {movieData?.cast?.slice(0, 3).map((actor, index) => (
+                              <div key={index} className="flex gap-2 text-sm justify-end">
+                                <span className="text-gray-200 font-medium drop-shadow-lg">{actor?.name}</span>
+                                <span className="text-white/40 text-xs">as</span>
+                                <span className="text-white/80 text-xs drop-shadow-lg">{actor?.character}</span>
+                              </div>
+                            ))}
                           </div>
+
                           {/*--------- logo ----------*/}
                           <div className="w-100 h-30">
                             <Image
-                              className="w-full h-full"
+                              className="w-full h-full object-contain drop-shadow-2xl"
                               src={`https://image.tmdb.org/t/p/w780${movieData?.movieLogo}`}
                               alt="Not found"
                               height={40}
@@ -235,7 +231,12 @@ export default function HeaderMovies() {
                           </div>
 
                           {/*--------- rating ----------*/}
-                          <RatingStars rating={movieData?.movieData.vote_average} showIMDB showValue />
+                          <div className="grid">
+                            <h3 className="text-white/70 text-xs font-medium mb-2 tracking-widest uppercase drop-shadow-lg">
+                              Rating
+                            </h3>
+                            <RatingStars rating={movieData?.movieData.vote_average} showIMDB showValue />
+                          </div>
                         </div>
                       </div>
                     )}
