@@ -1,7 +1,368 @@
-import React from 'react'
+"use client";
+import React, { useState } from "react";
+import Image from "next/image";
+import { useQuery } from "@tanstack/react-query";
+import RatingStars from "@/components/ratings/ratingStars";
+import { FaPlay, FaHeart, FaBookmark, FaShare, FaClock, FaCalendar, FaGlobe } from "react-icons/fa";
+import { getMovieDetails, getMovieCredits, getMovieVideos } from "./movieDetailsApi";
 
-export default function page() {
+export default function MovieDetailsPage() {
+  const [activeTab, setActiveTab] = useState("overview");
+
+  const movieId = 1234821;
+
+  /*--------- Fetch movie data using React Query ----------*/
+
+  const { data: movieDetails, isLoading: detailsLoading } = useQuery({
+    queryKey: ["movieDetails", movieId],
+    queryFn: () => getMovieDetails(movieId),
+  });
+
+  const { data: movieCredits, isLoading: creditsLoading } = useQuery({
+    queryKey: ["movieCredits", movieId],
+    queryFn: () => getMovieCredits(movieId),
+  });
+
+  const { data: movieVideos, isLoading: videosLoading } = useQuery({
+    queryKey: ["movieVideos", movieId],
+    queryFn: () => getMovieVideos(movieId),
+  });
+
+  /*--------- loading state ----------*/
+
+  if (detailsLoading) {
+    return (
+      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+        <div className="text-2xl">Loading movie details...</div>
+      </div>
+    );
+  }
+  if (!movieDetails) {
+    return (
+      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+        <div className="text-2xl text-red-400">Error loading movie details</div>
+      </div>
+    );
+  }
+
+  const director = movieCredits?.crew.find((person) => person.job === "Director");
+  const writers = movieCredits?.crew.filter((person) => person.job === "Writer" || person.job === "Screenplay");
+  const trailer = movieVideos?.results.find((video) => video.type === "Trailer" && video.site === "YouTube");
+
+  const formatCurrency = (amount: number) => {
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(amount);
+  };
+
+  const formatDate = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  };
+
   return (
-    <div className='mt-200'>page</div>
-  )
+    <div className="min-h-screen bg-black text-white mb-100">
+      {/*--------- Hero Section with Backdrop ----------*/}
+      <div className="relative w-full h-[70vh] overflow-hidden">
+        <Image
+          src={`https://image.tmdb.org/t/p/w1280${movieDetails.backdrop_path}`}
+          alt={movieDetails.title}
+          fill
+          className="object-cover opacity-60"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+
+        {/*--------- Movie Info Overlay ----------*/}
+        <div className="absolute bottom-0 left-0 right-0 p-8">
+          <div className="container mx-auto flex flex-col lg:flex-row items-end gap-8">
+            {/*--------- Poster ----------*/}
+            <div className="flex-shrink-0">
+              <div className="relative w-64 h-96 rounded-2xl overflow-hidden shadow-2xl hover:scale-105 transition-transform duration-300">
+                <Image
+                  src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
+                  alt={movieDetails.title}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+
+            {/*--------- Movie Details ----------*/}
+            <div className="flex-1 space-y-4">
+              <h1 className="text-4xl md:text-6xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-500 to-pink-500">
+                {movieDetails.title}
+              </h1>
+              <p className="text-lg text-gray-300 italic">{movieDetails.tagline}</p>
+
+              <div className="flex items-center gap-6">
+                <RatingStars rating={movieDetails.vote_average} showValue size="lg" showIMDB />
+                <span className="text-gray-300">({movieDetails.vote_count.toLocaleString()} votes)</span>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-4 text-sm text-gray-300">
+                <div className="flex items-center gap-2">
+                  <FaCalendar className="text-purple-400" />
+                  {formatDate(movieDetails.release_date)}
+                </div>
+                <div className="flex items-center gap-2">
+                  <FaClock className="text-purple-400" />
+                  {movieDetails.runtime} min
+                </div>
+                <div className="flex items-center gap-2">
+                  <FaGlobe className="text-purple-400" />
+                  {movieDetails.spoken_languages[0]?.name || "English"}
+                </div>
+              </div>
+
+              <div className="flex flex-wrap gap-2">
+                {movieDetails.genres.map((genre) => (
+                  <span
+                    key={genre.id}
+                    className="px-3 py-1 bg-purple-600/20 border border-purple-500/30 rounded-full text-sm">
+                    {genre.name}
+                  </span>
+                ))}
+              </div>
+
+              {/*--------- Action Buttons ----------*/}
+              <div className="flex items-center gap-4 pt-4">
+                <button
+                  onClick={() => {
+                    setActiveTab("videos");
+                    document.getElementById("trailer-section")?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                  className="flex items-center gap-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 px-6 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
+                  <FaPlay />
+                  Watch Trailer
+                </button>
+                <button className="p-3 bg-gray-800/80 hover:bg-gray-700/80 rounded-full transition-all duration-300 transform hover:scale-110">
+                  <FaHeart className="text-red-500" />
+                </button>
+                <button className="p-3 bg-gray-800/80 hover:bg-gray-700/80 rounded-full transition-all duration-300 transform hover:scale-110">
+                  <FaBookmark className="text-blue-400" />
+                </button>
+                <button className="p-3 bg-gray-800/80 hover:bg-gray-700/80 rounded-full transition-all duration-300 transform hover:scale-110">
+                  <FaShare className="text-green-400" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/*--------- Content Section ----------*/}
+      <div className="container mx-auto px-8 py-12">
+        {/*--------- Tab Navigation ----------*/}
+        <div className="flex flex-wrap gap-4 mb-8 border-b border-gray-800">
+          {[
+            { id: "overview", label: "Overview" },
+            { id: "cast", label: "Cast & Crew" },
+            { id: "details", label: "Details" },
+            { id: "videos", label: "Videos & Photos" },
+          ].map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`px-6 py-3 font-semibold rounded-t-lg transition-all duration-300 ${
+                activeTab === tab.id
+                  ? "text-purple-400 border-b-2 border-purple-400 bg-gray-900/50"
+                  : "text-gray-400 hover:text-white hover:bg-gray-800/50"
+              }`}>
+              {tab.label}
+            </button>
+          ))}
+        </div>
+
+        {/*--------- Tab Content ----------*/}
+        <div className="tab-content-fade">
+          {activeTab === "overview" && (
+            <div className="space-y-8">
+              <div>
+                <h2 className="text-3xl font-bold mb-4">Synopsis</h2>
+                <p className="text-gray-300 text-lg leading-relaxed">{movieDetails.overview}</p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="bg-gray-900/50 rounded-xl p-6">
+                  <h3 className="text-xl font-bold mb-3 text-purple-400">Director</h3>
+                  <p className="text-gray-300">{director?.name || "Not available"}</p>
+                </div>
+                <div className="bg-gray-900/50 rounded-xl p-6">
+                  <h3 className="text-xl font-bold mb-3 text-purple-400">Writers</h3>
+                  <p className="text-gray-300">{writers?.map((w) => w.name).join(", ") || "Not available"}</p>
+                </div>
+                <div className="bg-gray-900/50 rounded-xl p-6">
+                  <h3 className="text-xl font-bold mb-3 text-purple-400">Status</h3>
+                  <p className="text-gray-300">{movieDetails.status}</p>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {activeTab === "cast" && (
+            <div className="space-y-12">
+              <div>
+                <h2 className="text-3xl font-bold mb-8">Cast</h2>
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                  {movieCredits?.cast.slice(0, 12).map((actor) => (
+                    <div key={actor.id} className="text-center group">
+                      <div className="relative w-24 h-24 mx-auto mb-3 rounded-full overflow-hidden bg-gray-800 group-hover:scale-110 transition-transform duration-300">
+                        {actor.profile_path ? (
+                          <Image
+                            src={`https://image.tmdb.org/t/p/w200${actor.profile_path}`}
+                            alt={actor.name}
+                            fill
+                            className="object-cover"
+                          />
+                        ) : (
+                          <div className="w-full h-full bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center text-white font-bold text-xl">
+                            {actor.name.charAt(0)}
+                          </div>
+                        )}
+                      </div>
+                      <h4 className="font-semibold text-sm">{actor.name}</h4>
+                      <p className="text-gray-400 text-xs">{actor.character}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h2 className="text-3xl font-bold mb-8">Crew</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                  {movieCredits?.crew
+                    .filter((member) =>
+                      ["Director", "Producer", "Writer", "Screenplay", "Music", "Cinematography"].includes(member.job)
+                    )
+                    .slice(0, 8)
+                    .map((member) => (
+                      <div
+                        key={`${member.id}-${member.job}`}
+                        className="bg-gray-900/50 rounded-xl p-4 hover:bg-gray-800/50 transition-colors duration-300">
+                        <h4 className="font-semibold">{member.name}</h4>
+                        <p className="text-purple-400 text-sm">{member.job}</p>
+                      </div>
+                    ))}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {activeTab === "details" && (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="space-y-6">
+                <h2 className="text-3xl font-bold mb-6">Production Details</h2>
+                <div className="space-y-4">
+                  <div className="flex justify-between py-3 border-b border-gray-800">
+                    <span className="text-gray-400">Budget</span>
+                    <span className="font-semibold">{formatCurrency(movieDetails.budget)}</span>
+                  </div>
+                  <div className="flex justify-between py-3 border-b border-gray-800">
+                    <span className="text-gray-400">Box Office</span>
+                    <span className="font-semibold text-green-400">{formatCurrency(movieDetails.revenue)}</span>
+                  </div>
+                  <div className="flex justify-between py-3 border-b border-gray-800">
+                    <span className="text-gray-400">Runtime</span>
+                    <span className="font-semibold">{movieDetails.runtime} minutes</span>
+                  </div>
+                  <div className="flex justify-between py-3 border-b border-gray-800">
+                    <span className="text-gray-400">Language</span>
+                    <span className="font-semibold">{movieDetails.spoken_languages[0]?.name || "English"}</span>
+                  </div>
+                  <div className="flex justify-between py-3 border-b border-gray-800">
+                    <span className="text-gray-400">Release Date</span>
+                    <span className="font-semibold">{formatDate(movieDetails.release_date)}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-6">
+                <h2 className="text-3xl font-bold mb-6">Statistics</h2>
+                <div className="bg-gray-900/50 rounded-xl p-6 space-y-4">
+                  <div className="text-center">
+                    <div className="text-4xl font-bold text-purple-400 mb-2">
+                      {movieDetails.vote_average.toFixed(1)}/10
+                    </div>
+                    <p className="text-gray-400">User Rating</p>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-4xl font-bold text-pink-400 mb-2">
+                      {movieDetails.vote_count.toLocaleString()}
+                    </div>
+                    <p className="text-gray-400">Total Votes</p>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-4xl font-bold text-green-400 mb-2">
+                      {movieDetails.budget > 0
+                        ? (Math.round((movieDetails.revenue / movieDetails.budget) * 100) / 100).toFixed(1) + "x"
+                        : "N/A"}
+                    </div>
+                    <p className="text-gray-400">ROI Multiplier</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {activeTab === "videos" && (
+            <div className="space-y-8">
+              <div id="trailer-section">
+                <h2 className="text-3xl font-bold mb-6">Official Trailer</h2>
+                {trailer ? (
+                  <div className="relative aspect-video bg-gray-900 rounded-xl overflow-hidden shadow-2xl">
+                    <iframe
+                      src={`https://www.youtube.com/embed/${trailer.key}?rel=0&modestbranding=1&showinfo=0`}
+                      title={`${movieDetails.title} - Official Trailer`}
+                      className="w-full h-full rounded-xl"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                    />
+                  </div>
+                ) : (
+                  <div className="text-center py-20 text-gray-400">
+                    <p>No trailer available</p>
+                  </div>
+                )}
+              </div>
+
+              <div>
+                <h2 className="text-3xl font-bold mb-6">Gallery</h2>
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                  {[
+                    movieDetails.backdrop_path,
+                    movieDetails.poster_path,
+                    movieDetails.backdrop_path,
+                    movieDetails.poster_path,
+                    movieDetails.backdrop_path,
+                    movieDetails.poster_path,
+                    movieDetails.backdrop_path,
+                    movieDetails.poster_path,
+                  ].map((imagePath, index) => (
+                    <div
+                      key={index}
+                      className="relative aspect-video bg-gray-800 rounded-lg overflow-hidden group cursor-pointer">
+                      <Image
+                        src={`https://image.tmdb.org/t/p/w500${imagePath}`}
+                        alt={`Gallery image ${index + 1}`}
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-300"
+                      />
+                      <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
 }
