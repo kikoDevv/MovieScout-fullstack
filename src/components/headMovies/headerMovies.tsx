@@ -34,9 +34,9 @@ interface MovieInfoResponse {
 
 export default function HeaderMovies() {
   const MOVIE_IDS = [
-    76600, // Avatar
     1087192, // Dragon
     552524, // Lion King
+    76600, // Avatar
     1011477, // Karate Legend
     911430, // F1
     1175942,

@@ -5,9 +5,10 @@ import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 import RatingStars from "@/components/ratings/ratingStars";
 import CastSlider from "@/components/UI/CastSlider";
-import { FaPlay, FaHeart, FaBookmark, FaShare, FaClock, FaCalendar, FaGlobe } from "react-icons/fa";
+import { FaYoutube, FaHeart, FaBookmark, FaShare, FaClock, FaCalendar, FaGlobe, FaPlay } from "react-icons/fa";
 import { getMovieDetails, getMovieCredits, getMovieVideos } from "../movieDetailsApi";
 import Button from "@/components/UI/Button";
+import { SignInButton, SignedOut } from "@clerk/nextjs";
 
 interface MovieDetailsPageProps {
   params: Promise<{
@@ -145,12 +146,18 @@ export default function MovieDetailsPage({ params }: MovieDetailsPageProps) {
               <div className="flex items-center gap-4 pt-4">
                 <Button
                   text="Watch Trailer"
-                  icon={<FaPlay />}
+                  icon={<FaYoutube />}
                   onClick={() => {
                     setActiveTab("videos");
                     document.getElementById("trailer-section")?.scrollIntoView({ behavior: "smooth" });
                   }}
                 />
+                {/*--------- log in and watch the movie ----------*/}
+                <SignedOut>
+                  <SignInButton mode="modal">
+                    <Button text={"Stream now"} icon={<FaPlay />} />
+                  </SignInButton>
+                </SignedOut>
 
                 <button className="p-3 bg-gray-800/80 hover:bg-gray-700/80 rounded-full transition-all duration-300 transform hover:scale-110">
                   <FaHeart className="text-red-500" />
