@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { FaStar } from "react-icons/fa6";
 import { fetchMoviesByCategory } from "./tabsApi";
 import { useQuery } from "@tanstack/react-query";
@@ -62,29 +63,30 @@ export default function Content({ kategory }: kType) {
               </div>
             )) /*--------- when is loaded ----------*/
           : movies.slice(0, 6).map((movie: Movie) => (
-              <div
-                key={movie.id}
-                className={`relative w-80 flex-shrink-0 snap-center mr-4 sm:w-fit sm:mr-0 cursor-pointer hover:scale-102 transition-all duration-400 ${
-                  isVisible ? "opacity-100" : "opacity-0"
-                }`}>
-                <Image
-                  className="rounded-2xl h-full w-full object-cover tab-content-fade"
-                  src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
-                  alt={`${movie.title} backdrop image not found`}
-                  unoptimized
-                  width={1920}
-                  height={1080}
-                  priority
-                  quality={100}
-                />
-                <h1 className="absolute bottom-2 left-4 font-bold text-white sm:text-2xl font-sans select-none text-shadow-lg/10">
-                  {movie.title}
-                </h1>
-                <div className="flex absolute gap-1 bottom-2 right-4 select-none">
-                  <FaStar className="text-yellow-500 text-2xl" />
-                  <p className="text-white text-lg font-semibold">{movie.vote_average.toFixed(1)}</p>
+              <Link key={movie.id} href={`/movie/${movie.id}`}>
+                <div
+                  className={`relative w-80 flex-shrink-0 snap-center mr-4 sm:w-fit sm:mr-0 cursor-pointer hover:scale-102 transition-all duration-400 ${
+                    isVisible ? "opacity-100" : "opacity-0"
+                  }`}>
+                  <Image
+                    className="rounded-2xl h-full w-full object-cover tab-content-fade"
+                    src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+                    alt={`${movie.title} backdrop image not found`}
+                    unoptimized
+                    width={1920}
+                    height={1080}
+                    priority
+                    quality={100}
+                  />
+                  <h1 className="absolute bottom-2 left-4 font-bold text-white sm:text-2xl font-sans select-none text-shadow-lg/10">
+                    {movie.title}
+                  </h1>
+                  <div className="flex absolute gap-1 bottom-2 right-4 select-none">
+                    <FaStar className="text-yellow-500 text-2xl" />
+                    <p className="text-white text-lg font-semibold">{movie.vote_average.toFixed(1)}</p>
+                  </div>
                 </div>
-              </div>
+              </Link>
             ))}
       </div>
     </section>

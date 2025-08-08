@@ -2,7 +2,6 @@
 import React, { useRef } from "react";
 import Slider from "react-slick";
 import Image from "next/image";
-import Link from "next/link";
 
 interface ArrowProps {
   onClick?: () => void;
@@ -11,7 +10,7 @@ interface ArrowProps {
 const NextArrow = ({ onClick }: ArrowProps) => (
   <button
     onClick={onClick}
-    className="w-10 h-10 bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-sm border border-slate-600/30 text-white rounded-full hover:scale-110 cursor-pointer transition-all duration-300 ease-out opacity-80 hover:opacity-100 shadow-lg z-10 group">
+    className="w-10 h-10 bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-sm border border-slate-600/30 text-white rounded-full hover:scale-105 cursor-pointer transition-all duration-300 ease-out opacity-80 hover:opacity-100 shadow-lg z-10 group">
     <div className="flex items-center justify-center w-full h-full group-hover:text-purple-300 transition-colors duration-300">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" className="ml-0.5">
         <path d="M8.59 16.59L13.17 12L8.59 7.41L10 6l6 6-6 6l-1.41-1.41z" />
@@ -23,7 +22,7 @@ const NextArrow = ({ onClick }: ArrowProps) => (
 const PrevArrow = ({ onClick }: ArrowProps) => (
   <button
     onClick={onClick}
-    className="w-10 h-10 bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-sm border border-slate-600/30 text-white rounded-full hover:scale-110 cursor-pointer transition-all duration-300 ease-out opacity-80 hover:opacity-100 shadow-lg z-10 group">
+    className="w-10 h-10 bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-sm border border-slate-600/30 text-white rounded-full hover:scale-105 cursor-pointer transition-all duration-300 ease-out opacity-80 hover:opacity-100 shadow-lg z-10 group">
     <div className="flex items-center justify-center w-full h-full group-hover:text-purple-300 transition-colors duration-300">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" className="mr-0.5">
         <path d="M15.41 16.59L10.83 12L15.41 7.41L14 6l-6 6 6 6l1.41-1.41z" />
@@ -32,27 +31,25 @@ const PrevArrow = ({ onClick }: ArrowProps) => (
   </button>
 );
 
-interface MovieType {
-  id: string | number;
-  poster: string;
-  poster_path: string;
-  title: string;
+interface CastMember {
+  id: number;
+  name: string;
+  character: string;
+  profile_path: string | null;
 }
 
-interface MovieSliderProps {
-  movies: MovieType[];
-  showIndex?: boolean;
-  hoverOpacity?: boolean;
+interface CastSliderProps {
+  cast: CastMember[];
 }
 
-const MovieSlider: React.FC<MovieSliderProps> = ({ movies, showIndex = true, hoverOpacity = false }) => {
+const CastSlider: React.FC<CastSliderProps> = ({ cast }) => {
   const sliderRef = useRef<Slider>(null);
 
   const settings = {
     dots: true,
-    infinite: true,
+    infinite: false,
     speed: 500,
-    slidesToShow: 6,
+    slidesToShow: 8,
     slidesToScroll: 4,
     arrows: false,
     dotsClass: "slick-dots custom-dots",
@@ -71,41 +68,39 @@ const MovieSlider: React.FC<MovieSliderProps> = ({ movies, showIndex = true, hov
         data-index={index}
       />
     ),
-    beforeChange: (oldIndex: number, newIndex: number) => {
-      console.log(`Slide changing from ${oldIndex} to ${newIndex}`);
-    },
     responsive: [
-      { breakpoint: 1024, settings: { slidesToShow: 3, slidesToScroll: 3 } },
-      { breakpoint: 768, settings: { slidesToShow: 2, slidesToScroll: 2 } },
-      { breakpoint: 480, settings: { slidesToShow: 1, slidesToScroll: 1 } },
+      { breakpoint: 1440, settings: { slidesToShow: 6, slidesToScroll: 3 } },
+      { breakpoint: 1024, settings: { slidesToShow: 4, slidesToScroll: 2 } },
+      { breakpoint: 768, settings: { slidesToShow: 3, slidesToScroll: 2 } },
+      { breakpoint: 480, settings: { slidesToShow: 2, slidesToScroll: 1 } },
     ],
   };
 
   return (
     <div className="relative">
       <Slider ref={sliderRef} {...settings}>
-        {movies.map((movie, idx) => (
-          <div
-            key={movie.id}
-            className={`p-2 overflow-hidden transition-all duration-200 ${hoverOpacity ? " hover:scale-103" : ""}`}>
-            {/*--------- Movie card ----------*/}
-            <Link href={`/movie/${movie.id}`}>
-              <div className="relative bg-gray-800 text-white shadow-md group cursor-pointer hover:shadow-purple-400/90 transition-shadow duration-200 rounded-2xl overflow-hidden">
-                <Image
-                  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                  alt={movie.title}
-                  width={300}
-                  height={450}
-                  className="w-full object-cover"
-                />
-                {/*--------- Number ----------*/}
-                {showIndex && (
-                  <p className="absolute bottom-2 right-5 text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-wide uppercase bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-500 to-pink-500 drop-shadow-xl antialiased subpixel-antialiased text-shadow-lg group-hover:scale-120 transition-all duration-200">
-                    {idx + 1}
-                  </p>
+        {cast.map((actor) => (
+          <div key={actor.id} className="p-2 overflow-hidden">
+            <div className="text-center group cursor-pointer bg-gray-900/30 rounded-3xl px-4 pt-3 pb-6 hover:bg-gray-800/50 transition-all duration-300 hover:scale-102">
+              <div className="relative w-25 h-25 mx-auto mb-4 rounded-full overflow-hidden bg-gray-800 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                {actor.profile_path ? (
+                  <Image
+                    src={`https://image.tmdb.org/t/p/w200${actor.profile_path}`}
+                    alt={actor.name}
+                    fill
+                    className="object-cover"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center text-white font-bold text-xl">
+                    {actor.name.charAt(0)}
+                  </div>
                 )}
               </div>
-            </Link>
+              <div className="space-y-1">
+                <h4 className="font-semibold text-sm text-white truncate px-1">{actor.name}</h4>
+                <p className="text-gray-400 text-xs truncate px-1">{actor.character}</p>
+              </div>
+            </div>
           </div>
         ))}
       </Slider>
@@ -163,7 +158,6 @@ const MovieSlider: React.FC<MovieSliderProps> = ({ movies, showIndex = true, hov
           transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
         }
 
-        /* Enhanced dot synchronization */
         .custom-dots li {
           position: relative !important;
         }
@@ -176,4 +170,4 @@ const MovieSlider: React.FC<MovieSliderProps> = ({ movies, showIndex = true, hov
   );
 };
 
-export default MovieSlider;
+export default CastSlider;

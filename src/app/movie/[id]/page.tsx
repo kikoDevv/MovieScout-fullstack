@@ -1,15 +1,25 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, use } from "react";
 import Image from "next/image";
 import { useQuery } from "@tanstack/react-query";
+import { motion } from "framer-motion";
 import RatingStars from "@/components/ratings/ratingStars";
+import CastSlider from "@/components/UI/CastSlider";
 import { FaPlay, FaHeart, FaBookmark, FaShare, FaClock, FaCalendar, FaGlobe } from "react-icons/fa";
-import { getMovieDetails, getMovieCredits, getMovieVideos } from "./movieDetailsApi";
+import { getMovieDetails, getMovieCredits, getMovieVideos } from "../movieDetailsApi";
+import Button from "@/components/UI/Button";
 
-export default function MovieDetailsPage() {
+interface MovieDetailsPageProps {
+  params: Promise<{
+    id: string;
+  }>;
+}
+
+export default function MovieDetailsPage({ params }: MovieDetailsPageProps) {
   const [activeTab, setActiveTab] = useState("overview");
 
-  const movieId = 1234821;
+  const resolvedParams = use(params);
+  const movieId = parseInt(resolvedParams.id);
 
   /*--------- Fetch movie data using React Query ----------*/
 
@@ -69,12 +79,12 @@ export default function MovieDetailsPage() {
   return (
     <div className="min-h-screen bg-black text-white mb-100">
       {/*--------- Hero Section with Backdrop ----------*/}
-      <div className="relative w-full h-[70vh] overflow-hidden">
+      <div className="relative w-full h-[90vh] overflow-hidden">
         <Image
           src={`https://image.tmdb.org/t/p/w1280${movieDetails.backdrop_path}`}
           alt={movieDetails.title}
           fill
-          className="object-cover opacity-60"
+          className="object-cover"
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
@@ -84,7 +94,7 @@ export default function MovieDetailsPage() {
           <div className="container mx-auto flex flex-col lg:flex-row items-end gap-8">
             {/*--------- Poster ----------*/}
             <div className="flex-shrink-0">
-              <div className="relative w-64 h-96 rounded-2xl overflow-hidden shadow-2xl hover:scale-105 transition-transform duration-300">
+              <div className="relative w-64 h-96 rounded-2xl overflow-hidden shadow-2xl hover:scale-102 transition-transform duration-300">
                 <Image
                   src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
                   alt={movieDetails.title}
@@ -131,17 +141,17 @@ export default function MovieDetailsPage() {
                 ))}
               </div>
 
-              {/*--------- Action Buttons ----------*/}
+              {/*--------- trailer Buttons ----------*/}
               <div className="flex items-center gap-4 pt-4">
-                <button
+                <Button
+                  text="Watch Trailer"
+                  icon={<FaPlay />}
                   onClick={() => {
                     setActiveTab("videos");
                     document.getElementById("trailer-section")?.scrollIntoView({ behavior: "smooth" });
                   }}
-                  className="flex items-center gap-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 px-6 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
-                  <FaPlay />
-                  Watch Trailer
-                </button>
+                />
+
                 <button className="p-3 bg-gray-800/80 hover:bg-gray-700/80 rounded-full transition-all duration-300 transform hover:scale-110">
                   <FaHeart className="text-red-500" />
                 </button>
@@ -160,24 +170,62 @@ export default function MovieDetailsPage() {
       {/*--------- Content Section ----------*/}
       <div className="container mx-auto px-8 py-12">
         {/*--------- Tab Navigation ----------*/}
-        <div className="flex flex-wrap gap-4 mb-8 border-b border-gray-800">
-          {[
-            { id: "overview", label: "Overview" },
-            { id: "cast", label: "Cast & Crew" },
-            { id: "details", label: "Details" },
-            { id: "videos", label: "Videos & Photos" },
-          ].map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`px-6 py-3 font-semibold rounded-t-lg transition-all duration-300 ${
-                activeTab === tab.id
-                  ? "text-purple-400 border-b-2 border-purple-400 bg-gray-900/50"
-                  : "text-gray-400 hover:text-white hover:bg-gray-800/50"
-              }`}>
-              {tab.label}
-            </button>
-          ))}
+
+
+        <div className="overflow-x-auto scrollbar-hide tab-backdrop bg-black/30 backdrop-blur-md mx-2 rounded-full sm:w-fit sm:place-self-center mb-20">
+          <div className="overflow-x-auto scrollbar-hide inset-0 bg-black/30 backdrop-blur-md rounded-full w-fit">
+            <div className="flex justify-center w-fit">
+              <div className="backdrop-blur-md">
+                <div className="relative w-fit">
+                  <div className="flex items-center justify-center relative p-1">
+                    <div className="flex space-x-1 sm:space-x-3 relative z-10">
+                      {[
+                        { id: "cast", label: "Cast & Crew" },
+                        { id: "overview", label: "Overview" },
+                        { id: "details", label: "Details" },
+                        { id: "videos", label: "Trailer" },
+                      ].map((tab) => (
+                        <button
+                          key={tab.id}
+                          onClick={() => setActiveTab(tab.id)}
+                          className={`
+                            group relative px-4 py-2.5 rounded-full transition-all duration-200
+                            flex items-center justify-center whitespace-nowrap hover:cursor-pointer
+                            ${activeTab === tab.id ? "text-white" : "text-gray-300"}
+                          `}>
+                          {activeTab === tab.id && (
+                            <motion.div
+                              layoutId="movie-tab-indicator"
+                              className="absolute inset-0 bg-gradient-to-br from-purple-600 to-blue-500 rounded-full"
+                              transition={{
+                                type: "spring",
+                                bounce: 0.15,
+                                duration: 0.5,
+                              }}>
+                              <div className="absolute inset-0 rounded-full opacity-20 blur-sm bg-purple-400"></div>
+                            </motion.div>
+                          )}
+
+                          <span
+                            className={`
+                              relative z-10 font-medium tracking-wide flex items-center text-sm sm:text-base
+                              transition-all duration-200 ease-out
+                              ${
+                                activeTab === tab.id
+                                  ? "transform translate-y-0 text-shadow-glow"
+                                  : "transform sm:group-hover:translate-y-[-2px]"
+                              }
+                            `}>
+                            {tab.label}
+                          </span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/*--------- Tab Content ----------*/}
@@ -210,28 +258,13 @@ export default function MovieDetailsPage() {
             <div className="space-y-12">
               <div>
                 <h2 className="text-3xl font-bold mb-8">Cast</h2>
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-                  {movieCredits?.cast.slice(0, 12).map((actor) => (
-                    <div key={actor.id} className="text-center group">
-                      <div className="relative w-24 h-24 mx-auto mb-3 rounded-full overflow-hidden bg-gray-800 group-hover:scale-110 transition-transform duration-300">
-                        {actor.profile_path ? (
-                          <Image
-                            src={`https://image.tmdb.org/t/p/w200${actor.profile_path}`}
-                            alt={actor.name}
-                            fill
-                            className="object-cover"
-                          />
-                        ) : (
-                          <div className="w-full h-full bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center text-white font-bold text-xl">
-                            {actor.name.charAt(0)}
-                          </div>
-                        )}
-                      </div>
-                      <h4 className="font-semibold text-sm">{actor.name}</h4>
-                      <p className="text-gray-400 text-xs">{actor.character}</p>
-                    </div>
-                  ))}
-                </div>
+                {movieCredits?.cast && movieCredits.cast.length > 0 ? (
+                  <CastSlider cast={movieCredits.cast.slice(0, 20)} />
+                ) : (
+                  <div className="text-center py-12 text-gray-400">
+                    <p>No cast information available</p>
+                  </div>
+                )}
               </div>
 
               <div>
@@ -331,38 +364,25 @@ export default function MovieDetailsPage() {
                   </div>
                 )}
               </div>
-
-              <div>
-                <h2 className="text-3xl font-bold mb-6">Gallery</h2>
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                  {[
-                    movieDetails.backdrop_path,
-                    movieDetails.poster_path,
-                    movieDetails.backdrop_path,
-                    movieDetails.poster_path,
-                    movieDetails.backdrop_path,
-                    movieDetails.poster_path,
-                    movieDetails.backdrop_path,
-                    movieDetails.poster_path,
-                  ].map((imagePath, index) => (
-                    <div
-                      key={index}
-                      className="relative aspect-video bg-gray-800 rounded-lg overflow-hidden group cursor-pointer">
-                      <Image
-                        src={`https://image.tmdb.org/t/p/w500${imagePath}`}
-                        alt={`Gallery image ${index + 1}`}
-                        fill
-                        className="object-cover group-hover:scale-110 transition-transform duration-300"
-                      />
-                      <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300" />
-                    </div>
-                  ))}
-                </div>
-              </div>
             </div>
           )}
         </div>
       </div>
+
+      <style jsx global>{`
+        .scrollbar-hide {
+          scrollbar-width: none; /* Firefox */
+          -ms-overflow-style: none; /* IE and Edge */
+        }
+
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+
+        .text-shadow-glow {
+          text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+        }
+      `}</style>
     </div>
   );
 }
