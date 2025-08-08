@@ -28,12 +28,12 @@ export default function MovieDetailsPage({ params }: MovieDetailsPageProps) {
     queryFn: () => getMovieDetails(movieId),
   });
 
-  const { data: movieCredits, isLoading: creditsLoading } = useQuery({
+  const { data: movieCredits } = useQuery({
     queryKey: ["movieCredits", movieId],
     queryFn: () => getMovieCredits(movieId),
   });
 
-  const { data: movieVideos, isLoading: videosLoading } = useQuery({
+  const { data: movieVideos } = useQuery({
     queryKey: ["movieVideos", movieId],
     queryFn: () => getMovieVideos(movieId),
   });
