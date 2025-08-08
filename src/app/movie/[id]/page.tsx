@@ -170,44 +170,41 @@ export default function MovieDetailsPage({ params }: MovieDetailsPageProps) {
       {/*--------- Content Section ----------*/}
       <div className="container mx-auto px-8 py-12">
         {/*--------- Tab Navigation ----------*/}
-
-
-        <div className="overflow-x-auto scrollbar-hide tab-backdrop bg-black/30 backdrop-blur-md mx-2 rounded-full sm:w-fit sm:place-self-center mb-20">
-          <div className="overflow-x-auto scrollbar-hide inset-0 bg-black/30 backdrop-blur-md rounded-full w-fit">
-            <div className="flex justify-center w-fit">
-              <div className="backdrop-blur-md">
-                <div className="relative w-fit">
-                  <div className="flex items-center justify-center relative p-1">
-                    <div className="flex space-x-1 sm:space-x-3 relative z-10">
-                      {[
-                        { id: "cast", label: "Cast & Crew" },
-                        { id: "overview", label: "Overview" },
-                        { id: "details", label: "Details" },
-                        { id: "videos", label: "Trailer" },
-                      ].map((tab) => (
-                        <button
-                          key={tab.id}
-                          onClick={() => setActiveTab(tab.id)}
-                          className={`
+        <div className="overflow-x-auto scrollbar-hide tab-backdrop inset-0 bg-black/30 backdrop-blur-md mx-2 rounded-full sm:w-fit sm:place-self-center">
+          <div className="flex justify-center w-fit">
+            <div className="max-w-4xl w-fit backdrop-blur-md">
+              <div className="relative w-fit">
+                <div className="flex items-center justify-center relative p-1">
+                  <div className="flex space-x-1 sm:space-x-3 relative z-10">
+                    {[
+                      { id: "cast", label: "Cast & Crew" },
+                      { id: "overview", label: "Overview" },
+                      { id: "details", label: "Details" },
+                      { id: "videos", label: "Trailer" },
+                    ].map((tab) => (
+                      <button
+                        key={tab.id}
+                        onClick={() => setActiveTab(tab.id)}
+                        className={`
                             group relative px-4 py-2.5 rounded-full transition-all duration-200
                             flex items-center justify-center whitespace-nowrap hover:cursor-pointer
                             ${activeTab === tab.id ? "text-white" : "text-gray-300"}
                           `}>
-                          {activeTab === tab.id && (
-                            <motion.div
-                              layoutId="movie-tab-indicator"
-                              className="absolute inset-0 bg-gradient-to-br from-purple-600 to-blue-500 rounded-full"
-                              transition={{
-                                type: "spring",
-                                bounce: 0.15,
-                                duration: 0.5,
-                              }}>
-                              <div className="absolute inset-0 rounded-full opacity-20 blur-sm bg-purple-400"></div>
-                            </motion.div>
-                          )}
+                        {activeTab === tab.id && (
+                          <motion.div
+                            layoutId="movie-tab-indicator"
+                            className="absolute inset-0 bg-gradient-to-br from-purple-600 to-blue-500 rounded-full"
+                            transition={{
+                              type: "spring",
+                              bounce: 0.15,
+                              duration: 0.5,
+                            }}>
+                            <div className="absolute inset-0 rounded-full opacity-20 blur-sm bg-purple-400"></div>
+                          </motion.div>
+                        )}
 
-                          <span
-                            className={`
+                        <span
+                          className={`
                               relative z-10 font-medium tracking-wide flex items-center text-sm sm:text-base
                               transition-all duration-200 ease-out
                               ${
@@ -216,13 +213,14 @@ export default function MovieDetailsPage({ params }: MovieDetailsPageProps) {
                                   : "transform sm:group-hover:translate-y-[-2px]"
                               }
                             `}>
-                            {tab.label}
-                          </span>
-                        </button>
-                      ))}
-                    </div>
+                          {tab.label}
+                        </span>
+                      </button>
+                    ))}
                   </div>
                 </div>
+
+                <div className="tab-glow"></div>
               </div>
             </div>
           </div>
@@ -289,9 +287,9 @@ export default function MovieDetailsPage({ params }: MovieDetailsPageProps) {
           )}
 
           {activeTab === "details" && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
               <div className="space-y-6">
-                <h2 className="text-3xl font-bold mb-6">Production Details</h2>
+                <h2 className="text-3xl font-bold">Production Details</h2>
                 <div className="space-y-4">
                   <div className="flex justify-between py-3 border-b border-gray-800">
                     <span className="text-gray-400">Budget</span>
@@ -380,6 +378,37 @@ export default function MovieDetailsPage({ params }: MovieDetailsPageProps) {
         }
 
         .text-shadow-glow {
+          text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+        }
+
+        .tab-backdrop {
+          background-color: #1d1e20;
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        @keyframes pulse {
+          0% {
+            opacity: 0;
+            transform: scale(0.8);
+          }
+          50% {
+            opacity: 0.2;
+          }
+          100% {
+            opacity: 0;
+            transform: scale(1.2);
+          }
+        }
+
+        @media (max-width: 640px) {
+          .tabs-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+          }
+        }
+
+        button:has(div) span {
           text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
         }
       `}</style>
