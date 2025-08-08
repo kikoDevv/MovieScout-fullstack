@@ -77,7 +77,7 @@ export default function MovieDetailsPage({ params }: MovieDetailsPageProps) {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white mb-100">
+    <div className="min-h-screen bg-black text-white mb-30">
       {/*--------- Hero Section with Backdrop ----------*/}
       <div className="relative w-full h-[90vh] overflow-hidden">
         <Image
@@ -227,15 +227,17 @@ export default function MovieDetailsPage({ params }: MovieDetailsPageProps) {
         </div>
 
         {/*--------- Tab Content ----------*/}
-        <div className="tab-content-fade">
+        <div className="tab-content-fade text-center">
           {activeTab === "overview" && (
-            <div className="space-y-8">
+            <div className="space-y-8 mt-5 border border-gray-800 rounded-3xl p-6">
               <div>
                 <h2 className="text-3xl font-bold mb-4">Synopsis</h2>
-                <p className="text-gray-300 text-lg leading-relaxed">{movieDetails.overview}</p>
+                <p className="text-gray-300 text-lg leading-relaxed text-center max-w-4xl mx-auto">
+                  {movieDetails.overview}
+                </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                 <div className="bg-gray-900/50 rounded-xl p-6">
                   <h3 className="text-xl font-bold mb-3 text-purple-400">Director</h3>
                   <p className="text-gray-300">{director?.name || "Not available"}</p>
@@ -253,7 +255,7 @@ export default function MovieDetailsPage({ params }: MovieDetailsPageProps) {
           )}
 
           {activeTab === "cast" && (
-            <div className="space-y-12">
+            <div className="space-y-12 mt-5 border border-gray-800 rounded-3xl p-6">
               <div>
                 <h2 className="text-3xl font-bold mb-8">Cast</h2>
                 {movieCredits?.cast && movieCredits.cast.length > 0 ? (
@@ -264,30 +266,11 @@ export default function MovieDetailsPage({ params }: MovieDetailsPageProps) {
                   </div>
                 )}
               </div>
-
-              <div>
-                <h2 className="text-3xl font-bold mb-8">Crew</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                  {movieCredits?.crew
-                    .filter((member) =>
-                      ["Director", "Producer", "Writer", "Screenplay", "Music", "Cinematography"].includes(member.job)
-                    )
-                    .slice(0, 8)
-                    .map((member) => (
-                      <div
-                        key={`${member.id}-${member.job}`}
-                        className="bg-gray-900/50 rounded-xl p-4 hover:bg-gray-800/50 transition-colors duration-300">
-                        <h4 className="font-semibold">{member.name}</h4>
-                        <p className="text-purple-400 text-sm">{member.job}</p>
-                      </div>
-                    ))}
-                </div>
-              </div>
             </div>
           )}
 
           {activeTab === "details" && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-5 border border-gray-800 rounded-3xl p-6 max-w-6xl mx-auto">
               <div className="space-y-6">
                 <h2 className="text-3xl font-bold">Production Details</h2>
                 <div className="space-y-4">
@@ -343,7 +326,7 @@ export default function MovieDetailsPage({ params }: MovieDetailsPageProps) {
           )}
 
           {activeTab === "videos" && (
-            <div className="space-y-8">
+            <div className="space-y-8 max-w-6xl mx-auto mt-10">
               <div id="trailer-section">
                 <h2 className="text-3xl font-bold mb-6">Official Trailer</h2>
                 {trailer ? (
