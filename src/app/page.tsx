@@ -5,7 +5,7 @@ import Companys from "@/components/companysLogo/Companys";
 import MovieHighlight from "@/components/movieHighlight/MovieHighlight";
 import TabMenu from "@/components/tabBar/tabMenu";
 import SubscriptionBox from "@/components/subscriptionBox/subscrib";
-import ScrollContext from "@/components/UI/smothScroll";
+import SmoothScrolling from "@/components/UI/smothScroll";
 
 export default function Home() {
   return (
@@ -25,7 +25,7 @@ export default function Home() {
         <SearchBar />
       </div>
       {/*------------Spiderman poster section----------*/}
-      <ScrollContext>
+      <SmoothScrolling>
         <section className="relative">
           {/*--------Background image with fade effect-------*/}
           <div className="relative hidden sm:block">
@@ -58,7 +58,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-      </ScrollContext>
+      </SmoothScrolling>
       {/*-----------movie highlight-------------*/}
       <div className="relative w-full sm:my-12">
         <div className="sm:absolute top-[-150] max-w-full">
