@@ -5,6 +5,7 @@ import Companys from "@/components/companysLogo/Companys";
 import MovieHighlight from "@/components/movieHighlight/MovieHighlight";
 import TabMenu from "@/components/tabBar/tabMenu";
 import SubscriptionBox from "@/components/subscriptionBox/subscrib";
+import ScrollContext from "@/components/UI/smothScroll";
 
 export default function Home() {
   return (
@@ -24,38 +25,40 @@ export default function Home() {
         <SearchBar />
       </div>
       {/*------------Spiderman poster section----------*/}
-      <section className="relative">
-        {/*--------Background image with fade effect-------*/}
-        <div className="relative hidden sm:block">
-          <Image
-            src="/spidermanBackground.png"
-            alt="Spiderman background not found!"
-            width={300}
-            height={300}
-            unoptimized
-            className="w-full"
-          />
-          {/* Fade overlay */}
-          <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-black to-transparent"></div>
-        </div>
-        {/*-----------Spider------------*/}
-        <div className="absolute transform -translate-x-60 sm:bottom-[2rem] left-[60%] z-2 hidden sm:block">
-          <AnimatedImage
-            src="/spiderman.png"
-            alt="Spiderman logo not found"
-            width={600}
-            height={1200}
-            className="w-3/5 md:w-2/5 lg:w-1/3"
-            animationIntensity={1}
-          />
-        </div>
-        {/*---------company logos---------------*/}
-        <div className="relative w-full sm:absolute sm:bottom-40">
-          <div className="py-2 sm:bg-transparent">
-            <Companys direction="left" />
+      <ScrollContext>
+        <section className="relative">
+          {/*--------Background image with fade effect-------*/}
+          <div className="relative hidden sm:block">
+            <Image
+              src="/spidermanBackground.png"
+              alt="Spiderman background not found!"
+              width={300}
+              height={300}
+              unoptimized
+              className="w-full"
+            />
+            {/* Fade overlay */}
+            <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-black to-transparent"></div>
           </div>
-        </div>
-      </section>
+          {/*-----------Spider------------*/}
+          <div className="absolute transform -translate-x-60 sm:bottom-[2rem] left-[60%] z-2 hidden sm:block">
+            <AnimatedImage
+              src="/spiderman.png"
+              alt="Spiderman logo not found"
+              width={600}
+              height={1200}
+              className="w-3/5 md:w-2/5 lg:w-1/3"
+              animationIntensity={1}
+            />
+          </div>
+          {/*---------company logos---------------*/}
+          <div className="relative w-full sm:absolute sm:bottom-40">
+            <div className="py-2 sm:bg-transparent">
+              <Companys direction="left" />
+            </div>
+          </div>
+        </section>
+      </ScrollContext>
       {/*-----------movie highlight-------------*/}
       <div className="relative w-full sm:my-12">
         <div className="sm:absolute top-[-150] max-w-full">
