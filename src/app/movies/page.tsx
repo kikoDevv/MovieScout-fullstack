@@ -4,6 +4,7 @@ import TopTeenMovies from "@/components/topTeen/TopTeenMovies";
 import Upcoming from "@/components/upcoming/upcomingMovies";
 import TopRated from "@/components/topRated/topRatedMovies";
 import SmoothScrolling from "@/components/UI/smothScroll";
+import SearchMovies from "@/components/search/searchMovies";
 
 export default function page() {
   return (
@@ -14,6 +15,7 @@ export default function page() {
           <HeaderMovies />
         </section>
       </SmoothScrolling>
+      <SearchMovies />
       {/*--------- Top 10 movies section ----------*/}
       <section>
         <TopTeenMovies />

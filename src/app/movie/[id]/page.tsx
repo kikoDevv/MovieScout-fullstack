@@ -173,7 +173,7 @@ export default function MovieDetailsPage({ params }: MovieDetailsPageProps) {
                         document.getElementById("stream-section")?.scrollIntoView({ behavior: "smooth" });
                       }}
                     />
-                  </SignedIn>
+                   </SignedIn>
                 </div>
                 {/*--------- btns ----------*/}
                 <div className="flex justify-around mt-4 sm:mt-0 sm:gap-3">
