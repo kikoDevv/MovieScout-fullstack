@@ -154,6 +154,16 @@ export default function MovieDetailsPage({ params }: MovieDetailsPageProps) {
                     }}
                   />
                   {/*--------- Stream buttons  ----------*/}
+                  <SignedOut>
+                    <Button
+                      text={"Watch Now"}
+                      icon={<FaPlay />}
+                      onClick={() => {
+                        setActiveTab("stream");
+                        document.getElementById("stream-section")?.scrollIntoView({ behavior: "smooth" });
+                      }}
+                    />
+                  </SignedOut>
                   <SignedIn>
                     <Button
                       text={"Watch Now"}
@@ -405,8 +415,8 @@ export default function MovieDetailsPage({ params }: MovieDetailsPageProps) {
                 </div>
                 <div className="mt-4 text-center">
                   <p className="text-gray-400 text-sm">
-                    ⚡ Streaming powered by vidsrc.icu and used here for educational purposes only • VPN recommended when
-                    streaming ⚡
+                    ⚡ Streaming powered by vidsrc.icu and used here for educational purposes only • VPN recommended
+                    when streaming ⚡
                   </p>
                 </div>
               </div>
