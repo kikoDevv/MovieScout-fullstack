@@ -10,4 +10,4 @@ export const useSmoothScroller = () => useLenis();
 export default function SmoothScrolling({ children }: { children: ReactNode }) {
   return <ReactLenis root>{children as ReactLenisChildren}</ReactLenis>;
 }
-// ss
+// sss
