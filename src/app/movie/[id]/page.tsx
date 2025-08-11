@@ -8,7 +8,7 @@ import CastSlider from "@/components/UI/CastSlider";
 import { FaYoutube, FaHeart, FaBookmark, FaShare, FaClock, FaCalendar, FaGlobe, FaPlay } from "react-icons/fa";
 import { getMovieDetails, getMovieCredits, getMovieVideos } from "../movieDetailsApi";
 import Button from "@/components/UI/Button";
-import { SignInButton, SignedOut } from "@clerk/nextjs";
+import { SignInButton, SignedOut, SignedIn, SignUpButton } from "@clerk/nextjs";
 
 interface MovieDetailsPageProps {
   params: Promise<{
@@ -17,7 +17,7 @@ interface MovieDetailsPageProps {
 }
 
 export default function MovieDetailsPage({ params }: MovieDetailsPageProps) {
-  const [activeTab, setActiveTab] = useState("overview");
+  const [activeTab, setActiveTab] = useState("cast");
 
   const resolvedParams = use(params);
   const movieId = parseInt(resolvedParams.id);
@@ -152,12 +152,22 @@ export default function MovieDetailsPage({ params }: MovieDetailsPageProps) {
                     document.getElementById("trailer-section")?.scrollIntoView({ behavior: "smooth" });
                   }}
                 />
-                {/*--------- log in and watch the movie ----------*/}
+                {/*--------- Stream buttons  ----------*/}
                 <SignedOut>
-                  <SignInButton mode="modal">
+                  <SignUpButton mode="modal">
                     <Button text={"Stream now"} icon={<FaPlay />} />
-                  </SignInButton>
+                  </SignUpButton>
                 </SignedOut>
+                <SignedIn>
+                  <Button
+                    text={"Stream Movie"}
+                    icon={<FaPlay />}
+                    onClick={() => {
+                      setActiveTab("stream");
+                      document.getElementById("stream-section")?.scrollIntoView({ behavior: "smooth" });
+                    }}
+                  />
+                </SignedIn>
 
                 <button className="p-3 bg-gray-800/80 hover:bg-gray-700/80 rounded-full transition-all duration-300 transform hover:scale-110">
                   <FaHeart className="text-red-500" />
@@ -184,10 +194,11 @@ export default function MovieDetailsPage({ params }: MovieDetailsPageProps) {
                 <div className="flex items-center justify-center relative p-1">
                   <div className="flex space-x-1 sm:space-x-3 relative z-10">
                     {[
-                      { id: "cast", label: "Cast & Crew" },
                       { id: "overview", label: "Overview" },
                       { id: "details", label: "Details" },
+                      { id: "cast", label: "Cast & Crew" },
                       { id: "videos", label: "Trailer" },
+                      { id: "stream", label: "Stream" },
                     ].map((tab) => (
                       <button
                         key={tab.id}
@@ -354,6 +365,54 @@ export default function MovieDetailsPage({ params }: MovieDetailsPageProps) {
               </div>
             </div>
           )}
+          {/*--------- stream section ----------*/}
+          {activeTab === "stream" && (
+            <div className=" max-w-6xl mx-auto mt-10">
+              <div id="stream-section">
+                <h2 className="text-3xl font-bold mb-6">Watch Movie Free</h2>
+                <div className="relative aspect-video bg-gray-900 rounded-xl h-fit shadow-2xl overflow-hidden">
+                  <SignedIn>
+                    <iframe
+                      src={`https://vidsrc.icu/embed/movie/${movieId}`}
+                      title={`${movieDetails.title} - Stream`}
+                      className="w-full h-full rounded-xl"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                      scrolling="no"
+                      frameBorder="0"
+                      style={{
+                        border: "none",
+                        overflow: "hidden",
+                        scrollbarWidth: "none",
+                        msOverflowStyle: "none",
+                      }}
+                    />
+                  </SignedIn>
+
+                  <SignedOut>
+                    <SignUpButton mode="modal">
+                      <div>
+                        <Image
+                          src={`https://image.tmdb.org/t/p/w1280${movieDetails.backdrop_path}`}
+                          alt={movieDetails.title}
+                          fill
+                          className="object-cover"
+                          priority
+                        />
+                        <FaPlay className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 size-15 text-red-500 cursor-pointer hover:scale-105 transition-all duration-200 hover:text-white" />
+                      </div>
+                    </SignUpButton>
+                  </SignedOut>
+                </div>
+                <div className="mt-4 text-center">
+                  <p className="text-gray-400 text-sm">
+                    ⚡ Streaming powered by VidSrc and used here for educational purposes only • VPN recommended when
+                    streaming ⚡
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
@@ -365,6 +424,21 @@ export default function MovieDetailsPage({ params }: MovieDetailsPageProps) {
 
         .scrollbar-hide::-webkit-scrollbar {
           display: none;
+        }
+
+        /* Hide scrollbars in iframes */
+        iframe {
+          scrollbar-width: none; /* Firefox */
+          -ms-overflow-style: none; /* IE and Edge */
+        }
+
+        iframe::-webkit-scrollbar {
+          display: none; /* Chrome, Safari, Opera */
+        }
+
+        /* Prevent iframe content from scrolling */
+        iframe body {
+          overflow: hidden !important;
         }
 
         .text-shadow-glow {
