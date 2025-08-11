@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { FaFilter, FaSearch, FaTimes, FaStar, FaCalendarAlt, FaGlobe, FaTags, FaSort } from "react-icons/fa";
+import { FaFilter, FaSearch, FaTimes, FaStar, FaCalendarAlt, FaGlobe, FaTags } from "react-icons/fa";
 import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 import Image from "next/image";
@@ -50,14 +50,6 @@ export default function SearchMovies() {
     { code: "ko", name: "Korean" },
     { code: "zh", name: "Chinese" },
     { code: "hi", name: "Hindi" },
-  ];
-
-  const sortOptions = [
-    { value: "popularity.desc", label: "Most Popular" },
-    { value: "vote_average.desc", label: "Highest Rated" },
-    { value: "release_date.desc", label: "Latest Release" },
-    { value: "title.asc", label: "A-Z" },
-    { value: "vote_count.desc", label: "Most Reviewed" },
   ];
 
   const currentYear = new Date().getFullYear();
@@ -180,15 +172,12 @@ export default function SearchMovies() {
           <div className="p-6">
             <div className="flex flex-wrap items-center gap-4">
               {/*--------- Genre Filter ----------*/}
-              <div className="space-y-1">
-                <label className="flex items-center gap-1 text-xs font-semibold text-gray-300">
-                  <FaTags className="text-purple-400" />
-                  Genre
-                </label>
+              <div className="flex items-center gap-1 border border-gray-600/50 rounded-xl px-1">
+                <FaTags className="text-purple-400" />
                 <select
                   value={filters.genre}
                   onChange={(e) => handleFilterChange("genre", e.target.value)}
-                  className="w-fit min-w-32 bg-gray-800/50 border border-gray-600/50 rounded-lg px-3 py-2 text-white text-sm focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-200 outline-none">
+                  className="w-fit min-w-32 bg-gray-800/50 px-1 py-2 text-white text-sm outline-none cursor-pointer">
                   <option value="">All Genres</option>
                   {genres.map((genre) => (
                     <option key={genre} value={genre.toLowerCase()}>
@@ -199,15 +188,12 @@ export default function SearchMovies() {
               </div>
 
               {/*--------- Release Year ----------*/}
-              <div className="space-y-1">
-                <label className="flex items-center gap-1 text-xs font-semibold text-gray-300">
-                  <FaCalendarAlt className="text-green-400" />
-                  Year
-                </label>
+              <div className="flex items-center gap-1 border border-gray-600/50 rounded-xl px-1">
+                <FaCalendarAlt className="text-green-400" />
                 <select
                   value={filters.year}
                   onChange={(e) => handleFilterChange("year", e.target.value)}
-                  className="w-fit min-w-24 bg-gray-800/50 border border-gray-600/50 rounded-lg px-3 py-2 text-white text-sm focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-200 outline-none">
+                  className="w-fit min-w-32 bg-gray-800/50 px-1 py-2 text-white text-sm outline-none cursor-pointer">
                   <option value="">Any Year</option>
                   {years.map((year) => (
                     <option key={year} value={year}>
@@ -218,15 +204,12 @@ export default function SearchMovies() {
               </div>
 
               {/*--------- Language ----------*/}
-              <div className="space-y-1">
-                <label className="flex items-center gap-1 text-xs font-semibold text-gray-300">
-                  <FaGlobe className="text-blue-400" />
-                  Language
-                </label>
+              <div className="flex items-center gap-1 border border-gray-600/50 rounded-xl px-1">
+                <FaGlobe className="text-blue-400" />
                 <select
                   value={filters.language}
                   onChange={(e) => handleFilterChange("language", e.target.value)}
-                  className="w-fit min-w-28 bg-gray-800/50 border border-gray-600/50 rounded-lg px-3 py-2 text-white text-sm focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-200 outline-none">
+                  className="w-fit min-w-32 bg-gray-800/50 px-1 py-2 text-white text-sm outline-none cursor-pointer">
                   <option value="">All Languages</option>
                   {languages.map((lang) => (
                     <option key={lang.code} value={lang.code}>
@@ -236,66 +219,51 @@ export default function SearchMovies() {
                 </select>
               </div>
 
-              {/*--------- Sort By ----------*/}
-              <div className="space-y-1">
-                <label className="flex items-center gap-1 text-xs font-semibold text-gray-300">
-                  <FaSort className="text-orange-400" />
-                  Sort By
-                </label>
+              {/*--------- Rating From ----------*/}
+              <div className="flex items-center gap-1 border border-gray-600/50 rounded-xl px-1">
+                <FaStar className="text-yellow-400" />
                 <select
-                  value={filters.sortBy}
-                  onChange={(e) => handleFilterChange("sortBy", e.target.value)}
-                  className="w-fit min-w-32 bg-gray-800/50 border border-gray-600/50 rounded-lg px-3 py-2 text-white text-sm focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-200 outline-none">
-                  {sortOptions.map((option) => (
-                    <option key={option.value} value={option.value}>
-                      {option.label}
+                  value={filters.minRating}
+                  onChange={(e) => {
+                    const value = parseFloat(e.target.value);
+                    // Ensure min doesn't exceed current max
+                    if (value > filters.maxRating) {
+                      setFilters((prev) => ({ ...prev, minRating: value, maxRating: value }));
+                    } else {
+                      handleFilterChange("minRating", value);
+                    }
+                  }}
+                  className="w-fit min-w-22 bg-gray-800/50 px-1 py-2 text-white text-sm outline-none cursor-pointer">
+                  {Array.from({ length: 21 }, (_, i) => i * 0.5).map((rating) => (
+                    <option key={rating} value={rating}>
+                      {rating.toFixed(1)}+
                     </option>
                   ))}
                 </select>
               </div>
 
-              {/*--------- Rating Dropdown ----------*/}
-              <div className="space-y-1">
-                <label className="flex items-center gap-1 text-xs font-semibold text-gray-300">
-                  <FaStar className="text-yellow-400" />
-                  Rating
-                </label>
+              {/*--------- Rating To ----------*/}
+              <div className="flex items-center gap-1 border border-gray-600/50 rounded-xl px-1">
+                <FaStar className="text-yellow-400" />
                 <select
-                  value={`${filters.minRating}-${filters.maxRating}`}
+                  value={filters.maxRating}
                   onChange={(e) => {
-                    const [min, max] = e.target.value.split("-").map(Number);
-                    setFilters((prev) => ({ ...prev, minRating: min, maxRating: max }));
+                    const value = parseFloat(e.target.value);
+                    // Ensure max isn't below current min
+                    if (value < filters.minRating) {
+                      setFilters((prev) => ({ ...prev, minRating: value, maxRating: value }));
+                    } else {
+                      handleFilterChange("maxRating", value);
+                    }
                   }}
-                  className="w-fit min-w-24 bg-gray-800/50 border border-gray-600/50 rounded-lg px-3 py-2 text-white text-sm focus:border-yellow-500 focus:ring-2 focus:ring-yellow-500/20 transition-all duration-200 outline-none">
-                  <option value="0-10">Any Rating</option>
-                  <option value="8-10">8.0+ Excellent</option>
-                  <option value="7-10">7.0+ Very Good</option>
-                  <option value="6-10">6.0+ Good</option>
-                  <option value="5-10">5.0+ Average</option>
-                  <option value="4-10">4.0+ Below Average</option>
-                  <option value="0-5">Poor (Under 5.0)</option>
-                  <option value="9-10">9.0+ Masterpiece</option>
-                  <option value="7.5-10">7.5+ Highly Rated</option>
-                  <option value="6.5-10">6.5+ Worth Watching</option>
+                  className="w-fit min-w-22 bg-gray-800/50 px-1 py-2 text-white text-sm outline-none cursor-pointer">
+                  {Array.from({ length: 21 }, (_, i) => i * 0.5).map((rating) => (
+                    <option key={rating} value={rating}>
+                      {rating.toFixed(1)}
+                    </option>
+                  ))}
                 </select>
               </div>
-            </div>
-
-            {/*--------- Action Buttons ----------*/}
-            <div className="flex justify-end gap-3 mt-6 pt-4 border-t border-gray-700/50">
-              <button
-                onClick={() => setIsFilterOpen(false)}
-                className="px-4 py-2 text-gray-400 hover:text-white transition-colors duration-200 font-medium">
-                Cancel
-              </button>
-              <button
-                onClick={() => {
-                  handleSearch();
-                  setIsFilterOpen(false);
-                }}
-                className="px-6 py-2 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl">
-                Apply Filters
-              </button>
             </div>
           </div>
         </div>
