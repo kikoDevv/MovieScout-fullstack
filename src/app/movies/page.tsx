@@ -15,7 +15,6 @@ export default function page() {
           <HeaderMovies />
         </section>
       </SmoothScrolling>
-      <SearchMovies />
       {/*--------- Top 10 movies section ----------*/}
       <section>
         <TopTeenMovies />
@@ -25,8 +24,11 @@ export default function page() {
         <Upcoming />
       </section>
       {/*--------- Top Rated Movies section ----------*/}
-      <section className="mb-100">
+      <section>
         <TopRated />
+      </section>
+      <section className="mb-100">
+        <SearchMovies />
       </section>
     </div>
   );

@@ -1,11 +1,16 @@
 "use client";
 import React, { useState } from "react";
 import { FaFilter, FaSearch, FaTimes, FaStar, FaCalendarAlt, FaGlobe, FaTags, FaSort } from "react-icons/fa";
+import { useQuery } from "@tanstack/react-query";
+import Link from "next/link";
+import Image from "next/image";
+import { searchAndDiscoverMovies, SearchFilters, Movie } from "./searchMoviesApi";
 
 export default function SearchMovies() {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [filters, setFilters] = useState({
+  const [searchTrigger, setSearchTrigger] = useState("");
+  const [filters, setFilters] = useState<SearchFilters>({
     genre: "",
     year: "",
     language: "",
@@ -58,6 +63,22 @@ export default function SearchMovies() {
   const currentYear = new Date().getFullYear();
   const years = Array.from({ length: 30 }, (_, i) => currentYear - i);
 
+  // Search query with React Query
+  const {
+    data: searchResults,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["movieSearch", searchTrigger, filters],
+    queryFn: () => searchAndDiscoverMovies(searchTrigger, filters),
+    enabled:
+      !!searchTrigger ||
+      Object.values(filters).some(
+        (value) => value !== "" && value !== "popularity.desc" && !(value === 0 || value === 10)
+      ),
+    staleTime: 5 * 60 * 1000, // 5 minutes
+  });
+
   const handleFilterChange = (key: string, value: string | number) => {
     setFilters((prev) => ({ ...prev, [key]: value }));
   };
@@ -74,7 +95,7 @@ export default function SearchMovies() {
   };
 
   const handleSearch = () => {
-    {/*--------- handle search ----------*/}
+    setSearchTrigger(searchQuery.trim());
   };
 
   const activeFiltersCount = Object.values(filters).filter(
@@ -289,6 +310,101 @@ export default function SearchMovies() {
           </div>
         </div>
       </div>
+
+      {/*--------- Search Results ----------*/}
+      {(searchTrigger || activeFiltersCount > 0) && (
+        <div className="mt-8">
+          {/*--------- Results Header ----------*/}
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <h2 className="text-2xl font-bold text-white">
+                {searchTrigger ? `Search Results for "${searchTrigger}"` : "Filtered Results"}
+              </h2>
+              {searchResults && (
+                <p className="text-gray-400 mt-1">Found {searchResults.total_results.toLocaleString()} movies</p>
+              )}
+            </div>
+            {searchTrigger && (
+              <button
+                onClick={() => {
+                  setSearchTrigger("");
+                  setSearchQuery("");
+                }}
+                className="text-gray-400 hover:text-white transition-colors duration-200">
+                Clear Search
+              </button>
+            )}
+          </div>
+
+          {/*--------- Loading State ----------*/}
+          {isLoading && (
+            <div className="flex items-center justify-center py-20">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-500"></div>
+            </div>
+          )}
+
+          {/*--------- Error State ----------*/}
+          {error && (
+            <div className="text-center py-20">
+              <p className="text-red-400 text-lg">Error loading movies. Please try again.</p>
+            </div>
+          )}
+
+          {/*--------- Results Grid ----------*/}
+          {searchResults && searchResults.results && (
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+              {searchResults.results.map((movie: Movie) => (
+                <Link
+                  key={movie.id}
+                  href={`/movie/${movie.id}`}
+                  className="group relative bg-gradient-to-br from-gray-900/50 to-gray-800/50 rounded-xl overflow-hidden border border-gray-700/30 hover:border-purple-500/50 transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                  <div className="aspect-[2/3] relative overflow-hidden">
+                    {movie.poster_path ? (
+                      <Image
+                        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                        alt={movie.title}
+                        fill
+                        className="object-cover transition-transform duration-300 group-hover:scale-110"
+                        sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, (max-width: 1280px) 20vw, 16vw"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-gray-700 flex items-center justify-center">
+                        <span className="text-gray-400">No Image</span>
+                      </div>
+                    )}
+
+                    {/* Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                    {/* Rating Badge */}
+                    <div className="absolute top-2 right-2 bg-black/70 rounded-full px-2 py-1 flex items-center gap-1">
+                      <FaStar className="text-yellow-400 text-xs" />
+                      <span className="text-white text-xs font-semibold">{movie.vote_average.toFixed(1)}</span>
+                    </div>
+                  </div>
+
+                  {/*--------- Movie Info ----------*/}
+                  <div className="p-3">
+                    <h3 className="text-white font-semibold text-sm line-clamp-2 group-hover:text-purple-300 transition-colors duration-200">
+                      {movie.title}
+                    </h3>
+                    <p className="text-gray-400 text-xs mt-1">
+                      {movie.release_date ? new Date(movie.release_date).getFullYear() : "TBA"}
+                    </p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          )}
+
+          {/*--------- No Results ----------*/}
+          {searchResults && searchResults.results.length === 0 && (
+            <div className="text-center py-20">
+              <p className="text-gray-400 text-lg">No movies found. Try adjusting your search or filters.</p>
+            </div>
+          )}
+        </div>
+      )}
 
       {/*--------- Custom Slider Styles ----------*/}
       <style jsx>{`
