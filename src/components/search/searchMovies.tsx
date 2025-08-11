@@ -6,7 +6,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { searchAndDiscoverMovies, SearchFilters, Movie } from "./searchMoviesApi";
 
-export default function SearchMovies() {
+interface SearchMoviesProps {
+  children?: React.ReactNode;
+}
+
+export default function SearchMovies({ children }: SearchMoviesProps) {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchTrigger, setSearchTrigger] = useState("");
@@ -94,10 +98,12 @@ export default function SearchMovies() {
     (value) => value !== "" && value !== "popularity.desc" && !(value === 0 || value === 10)
   ).length;
 
+  const hasActiveSearch = !!searchTrigger || activeFiltersCount > 0;
+
   return (
-    <section className="w-full max-w-4xl mx-auto px-4">
+    <section className="w-full py-2 px-10">
       {/*--------- Search Bar ----------*/}
-      <div className="relative mb-1">
+      <div className="relative mb-1 mx-5 justify-self-center sm:min-w-120">
         <div className="flex items-center bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 rounded-xl sm:rounded-3xl overflow-hidden border border-gray-700/50 shadow-2xl backdrop-blur-sm h-9 mx-5 sm:mx-0 sm:h-12">
           <div className="flex-1 relative">
             <input
@@ -141,7 +147,7 @@ export default function SearchMovies() {
 
       {/*--------- Advanced Filters Panel ----------*/}
       <div
-        className={`transition-all duration-500 ease-out overflow-hidden ${
+        className={`transition-all duration-500 ease-out overflow-hidden max-w-210 place-self-center ${
           isFilterOpen ? "max-h-screen opacity-100 mb-6" : "max-h-0 opacity-0"
         }`}>
         <div className="bg-gradient-to-br from-gray-900/95 via-gray-800/95 to-gray-900/95 rounded-2xl border border-gray-700/50 shadow-2xl backdrop-blur-sm">
@@ -362,6 +368,8 @@ export default function SearchMovies() {
           )}
         </div>
       )}
+
+      {!hasActiveSearch && children}
     </section>
   );
 }

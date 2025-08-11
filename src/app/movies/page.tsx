@@ -6,7 +6,7 @@ import TopRated from "@/components/topRated/topRatedMovies";
 import SmoothScrolling from "@/components/UI/smothScroll";
 import SearchMovies from "@/components/search/searchMovies";
 
-export default function page() {
+export default function Page() {
   return (
     <div>
       {/*--------- Movie galery hilight ----------*/}
@@ -15,20 +15,22 @@ export default function page() {
           <HeaderMovies />
         </section>
       </SmoothScrolling>
-      {/*--------- Top 10 movies section ----------*/}
+
       <section>
-        <TopTeenMovies />
-      </section>
-      {/*--------- Upcoming Movies Section ----------*/}
-      <section>
-        <Upcoming />
-      </section>
-      {/*--------- Top Rated Movies section ----------*/}
-      <section>
-        <TopRated />
-      </section>
-      <section className="mb-100">
-        <SearchMovies />
+        <SearchMovies>
+          {/* Default movie sections - will be hidden when search is active */}
+          <section>
+            <TopTeenMovies />
+          </section>
+          {/*--------- Upcoming Movies Section ----------*/}
+          <section>
+            <Upcoming />
+          </section>
+          {/*--------- Top Rated Movies section ----------*/}
+          <section>
+            <TopRated />
+          </section>
+        </SearchMovies>
       </section>
     </div>
   );
