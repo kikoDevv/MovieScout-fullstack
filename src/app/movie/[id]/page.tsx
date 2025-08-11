@@ -154,14 +154,9 @@ export default function MovieDetailsPage({ params }: MovieDetailsPageProps) {
                     }}
                   />
                   {/*--------- Stream buttons  ----------*/}
-                  <SignedOut>
-                    <SignUpButton mode="modal">
-                      <Button text={"Stream now"} icon={<FaPlay />} />
-                    </SignUpButton>
-                  </SignedOut>
                   <SignedIn>
                     <Button
-                      text={"Stream Movie"}
+                      text={"Watch Now"}
                       icon={<FaPlay />}
                       onClick={() => {
                         setActiveTab("stream");
@@ -410,7 +405,7 @@ export default function MovieDetailsPage({ params }: MovieDetailsPageProps) {
                 </div>
                 <div className="mt-4 text-center">
                   <p className="text-gray-400 text-sm">
-                    ⚡ Streaming powered by VidSrc and used here for educational purposes only • VPN recommended when
+                    ⚡ Streaming powered by vidsrc.icu and used here for educational purposes only • VPN recommended when
                     streaming ⚡
                   </p>
                 </div>
