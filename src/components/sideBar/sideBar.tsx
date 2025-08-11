@@ -3,6 +3,7 @@ import styles from "./sideBar.module.css";
 import { FaTimes } from "react-icons/fa";
 import { FaFilm, FaTv, FaEnvelope, FaSignInAlt, FaHome } from "react-icons/fa";
 import Link from "next/link";
+import { SignInButton, SignedIn, SignedOut } from "@clerk/nextjs";
 
 export default function SideBar({ onClose }: { onClose?: () => void }) {
   return (
@@ -19,14 +20,28 @@ export default function SideBar({ onClose }: { onClose?: () => void }) {
       </div>
       <section className="py-6 px-3">
         <nav className="flex flex-col gap-2">
-          <Link
-            href="/login"
-            className="mt-4 flex items-center gap-3 p-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-lg transition-all duration-200">
-            <FaSignInAlt size={18} />
-            <span className="font-medium">Login</span>
-          </Link>
+          <SignedOut>
+            <SignInButton mode="modal">
+              <Link
+                href="#"
+                className="mt-4 flex items-center gap-3 p-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-lg transition-all duration-200">
+                <FaSignInAlt size={18} />
+                <span className="font-medium">Login</span>
+              </Link>
+            </SignInButton>
+          </SignedOut>
+          <SignedIn>
+            <Link
+              href="/dashboard"
+              onClick={onClose}
+              className="mt-4 flex items-center gap-3 p-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-lg transition-all duration-200">
+              <FaSignInAlt size={18} />
+              <span className="font-medium">Dashboard</span>
+            </Link>
+          </SignedIn>
           <Link
             href="/"
+            onClick={onClose}
             className="flex items-center gap-3 text-gray-300 hover:text-white p-3 rounded-lg hover:bg-gray-700/50 transition-all duration-200">
             <span className="bg-gradient-to-br from-blue-500 to-purple-600 p-2 rounded-md">
               <FaHome size={18} className="text-white" />
@@ -36,6 +51,7 @@ export default function SideBar({ onClose }: { onClose?: () => void }) {
 
           <Link
             href="/movies"
+            onClick={onClose}
             className="flex items-center gap-3 text-gray-300 hover:text-white p-3 rounded-lg hover:bg-gray-700/50 transition-all duration-200">
             <span className="bg-gradient-to-br from-red-500 to-orange-600 p-2 rounded-md">
               <FaFilm size={18} className="text-white" />
@@ -44,7 +60,8 @@ export default function SideBar({ onClose }: { onClose?: () => void }) {
           </Link>
 
           <Link
-            href="/tv-shows"
+            href="/movies"
+            onClick={onClose}
             className="flex items-center gap-3 text-gray-300 hover:text-white p-3 rounded-lg hover:bg-gray-700/50 transition-all duration-200">
             <span className="bg-gradient-to-br from-green-500 to-emerald-600 p-2 rounded-md">
               <FaTv size={18} className="text-white" />
@@ -53,7 +70,8 @@ export default function SideBar({ onClose }: { onClose?: () => void }) {
           </Link>
 
           <Link
-            href="/contact"
+            href="/contactPage"
+            onClick={onClose}
             className="flex items-center gap-3 text-gray-300 hover:text-white p-3 rounded-lg hover:bg-gray-700/50 transition-all duration-200">
             <span className="bg-gradient-to-br from-yellow-500 to-amber-600 p-2 rounded-md">
               <FaEnvelope size={18} className="text-white" />
