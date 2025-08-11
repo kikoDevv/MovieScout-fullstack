@@ -8,7 +8,7 @@ import CastSlider from "@/components/UI/CastSlider";
 import { FaYoutube, FaHeart, FaBookmark, FaShare, FaClock, FaCalendar, FaGlobe, FaPlay } from "react-icons/fa";
 import { getMovieDetails, getMovieCredits, getMovieVideos } from "../movieDetailsApi";
 import Button from "@/components/UI/Button";
-import { SignInButton, SignedOut, SignedIn, SignUpButton } from "@clerk/nextjs";
+import { SignedOut, SignedIn, SignUpButton } from "@clerk/nextjs";
 
 interface MovieDetailsPageProps {
   params: Promise<{
@@ -169,14 +169,14 @@ export default function MovieDetailsPage({ params }: MovieDetailsPageProps) {
                   />
                 </SignedIn>
 
-                <button className="p-3 bg-gray-800/80 hover:bg-gray-700/80 rounded-full transition-all duration-300 transform hover:scale-110">
-                  <FaHeart className="text-red-500" />
+                <button className="p-3 bg-gray-800/80 hover:bg-gray-700/80 rounded-full transition-all duration-300 transform hover:scale-110 cursor-pointer">
+                  <FaHeart className="text-white" />
                 </button>
-                <button className="p-3 bg-gray-800/80 hover:bg-gray-700/80 rounded-full transition-all duration-300 transform hover:scale-110">
-                  <FaBookmark className="text-blue-400" />
+                <button className="p-3 bg-gray-800/80 hover:bg-gray-700/80 rounded-full transition-all duration-300 transform hover:scale-110 cursor-pointer">
+                  <FaBookmark className="text-white" />
                 </button>
-                <button className="p-3 bg-gray-800/80 hover:bg-gray-700/80 rounded-full transition-all duration-300 transform hover:scale-110">
-                  <FaShare className="text-green-400" />
+                <button className="p-3 bg-gray-800/80 hover:bg-gray-700/80 rounded-full transition-all duration-300 transform hover:scale-110 cursor-pointer">
+                  <FaShare className="text-white" />
                 </button>
               </div>
             </div>

@@ -225,7 +225,7 @@
 
 @media screen and (max-width: 768px) {
 	.linksContainer a {
-		font-size: 1.2em;
+		font-size: 1em;
 		padding: 0.3rem 0.8rem;
 	}
 
