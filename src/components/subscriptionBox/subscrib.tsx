@@ -26,16 +26,16 @@ export default function SubscriptionBox() {
           quality={75}
         />
         {/*--------- container left ----------*/}
-        <div className="grid gap-15 w-full max-w-3xl">
+        <div className="grid gap-5 sm:gap-15 w-full max-w-3xl">
           <div>
-            <h1 className="text-4xl lg:text-4xl font-bold leading-tight">Unlock</h1>
-            <span className="text-4xl lg:text-4xl font-bold leading-tight bg-gradient-to-r from-purple-400 via-pink-500 to-blue-400 bg-clip-text text-transparent">
+            <h1 className="text-xl lg:text-4xl font-bold leading-tight">Unlock</h1>
+            <span className="text-xl lg:text-4xl font-bold leading-tight bg-gradient-to-r from-purple-400 via-pink-500 to-blue-400 bg-clip-text text-transparent">
               Your Login benifit
             </span>
           </div>
           <div className="grid gap-2">
             <div className="flex select-none gap-2">
-              <div className="flex w-12 h-12 bg-gradient-to-r from-purple-500 to-blue-500 rounded-xl items-center justify-center hover:scale-200">
+              <div className="flex w-12 h-12 bg-gradient-to-r from-purple-500 to-blue-500 rounded-xl items-center justify-center hover:scale-200 min-w-12">
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
                     strokeLinecap="round"
@@ -52,7 +52,7 @@ export default function SubscriptionBox() {
             </div>
 
             <div className="flex gap-2 select-none group">
-              <div className="flex w-12 h-12 bg-gradient-to-r from-pink-500 to-purple-500 rounded-xl items-center justify-center group-hover:scale-105 transition-all duration-200">
+              <div className="flex w-12 h-12 bg-gradient-to-r from-pink-500 to-purple-500 rounded-xl items-center justify-center group-hover:scale-105 transition-all duration-200 min-w-12">
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
                     strokeLinecap="round"
@@ -69,7 +69,7 @@ export default function SubscriptionBox() {
             </div>
 
             <div className="flex gap-2 select-none group">
-              <div className="flex w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl items-center justify-center group-hover:scale-105 transition-all duration-200">
+              <div className="flex w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl items-center justify-center group-hover:scale-105 transition-all duration-200 min-w-12">
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
                     strokeLinecap="round"
@@ -87,7 +87,7 @@ export default function SubscriptionBox() {
               </div>
               <div className="grid text-white">
                 <h3 className="text-lg font-semibold">Watch movies</h3>
-                <p className="text-gray-400">Beta, VPN is recominded when watching!</p>
+                <p className="text-gray-400">Watch movies for free, VPN is recominded!</p>
               </div>
             </div>
           </div>
@@ -106,7 +106,7 @@ export default function SubscriptionBox() {
               {/*--------- if user is signed out ----------*/}
               <SignedOut>
                 <SignUpButton mode="modal">
-                  <button className="relative overflow-hidden bg-gradient-to-r from-blue-600 to-purple-600 py-2 px-4 rounded-full cursor-pointer group hover:scale-101 transition-all duration-200">
+                  <button className="relative overflow-hidden bg-gradient-to-r from-blue-600 to-purple-600 py-2 px-4 rounded-full cursor-pointer group hover:scale-101 transition-all duration-200 mb-2 sm:mb-0">
                     <div className="absolute inset-0 bg-gradient-to-l from-blue-600 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     <span className="relative flex items-center gap-2">
                       Get Started Free
@@ -140,7 +140,7 @@ export default function SubscriptionBox() {
           </div>
         </div>
         {/*--------- container right ----------*/}
-        <div className="relative bg-black/85 rounded-3xl p-5 w-full max-w-100">
+        <div className="relative bg-black/85 rounded-3xl p-5 w-full max-w-100 hidden sm:block">
           <div className="grid text-white gap-5">
             <div className="flex items-center mb-5 justify-between">
               <h3>My watchlist</h3>
