@@ -13,7 +13,7 @@ export default function SubscriptionBox() {
   }, []);
   if (!mounted) return null;
   return (
-    <section className="mt-30 mb-70 md:mx-20 text-white select-none">
+    <section className="mt-30 mb-70 md:mx-20 text-white select-none place-self-center lg:min-w-250">
       {/*--------- the actual subsciption car ----------*/}
       <div className="relative lg:flex p-10 rounded-3xl items-center justify-between overflow-hidden border border-gray-600/30 shadow-2xl shadow-neutral-800/10">
         <div className="absolute top-0 right-0 w-72 h-72 bg-purple-500/20 rounded-full blur-2xl -translate-y-10 translate-x-10 will-change-transform"></div>

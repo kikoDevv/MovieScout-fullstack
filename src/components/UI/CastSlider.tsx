@@ -55,7 +55,7 @@ const CastSlider: React.FC<CastSliderProps> = ({ cast }) => {
     dotsClass: "slick-dots custom-dots",
     appendDots: (dots: React.ReactNode) => (
       <div className="mt-8 flex justify-center">
-        <div className="flex items-center gap-6 bg-black/30 backdrop-blur-sm px-1 py-1 rounded-full border border-white/10 w-fit place-self-center">
+        <div className="flex items-center gap-6 bg-black/30 backdrop-blur-sm px-1 py-1 rounded-full border border-white/10 w-fit place-self-center hidden sm:flex">
           <PrevArrow onClick={() => sliderRef.current?.slickPrev()} />
           <div className="flex gap-3">{dots}</div>
           <NextArrow onClick={() => sliderRef.current?.slickNext()} />

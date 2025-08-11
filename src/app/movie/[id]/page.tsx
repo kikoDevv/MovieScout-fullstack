@@ -100,7 +100,7 @@ export default function MovieDetailsPage({ params }: MovieDetailsPageProps) {
                   src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
                   alt={movieDetails.title}
                   fill
-                  className="object-cover"
+                  className="object-cover hidden sm:block"
                 />
               </div>
             </div>
@@ -143,41 +143,45 @@ export default function MovieDetailsPage({ params }: MovieDetailsPageProps) {
               </div>
 
               {/*--------- trailer Buttons ----------*/}
-              <div className="flex items-center gap-4 pt-4">
-                <Button
-                  text="Watch Trailer"
-                  icon={<FaYoutube />}
-                  onClick={() => {
-                    setActiveTab("videos");
-                    document.getElementById("trailer-section")?.scrollIntoView({ behavior: "smooth" });
-                  }}
-                />
-                {/*--------- Stream buttons  ----------*/}
-                <SignedOut>
-                  <SignUpButton mode="modal">
-                    <Button text={"Stream now"} icon={<FaPlay />} />
-                  </SignUpButton>
-                </SignedOut>
-                <SignedIn>
+              <div className="sm:flex items-center gap-4 pt-4">
+                <div className="flex space-x-3">
                   <Button
-                    text={"Stream Movie"}
-                    icon={<FaPlay />}
+                    text="Watch Trailer"
+                    icon={<FaYoutube />}
                     onClick={() => {
-                      setActiveTab("stream");
-                      document.getElementById("stream-section")?.scrollIntoView({ behavior: "smooth" });
+                      setActiveTab("videos");
+                      document.getElementById("trailer-section")?.scrollIntoView({ behavior: "smooth" });
                     }}
                   />
-                </SignedIn>
-
-                <button className="p-3 bg-gray-800/80 hover:bg-gray-700/80 rounded-full transition-all duration-300 transform hover:scale-110 cursor-pointer">
-                  <FaHeart className="text-white" />
-                </button>
-                <button className="p-3 bg-gray-800/80 hover:bg-gray-700/80 rounded-full transition-all duration-300 transform hover:scale-110 cursor-pointer">
-                  <FaBookmark className="text-white" />
-                </button>
-                <button className="p-3 bg-gray-800/80 hover:bg-gray-700/80 rounded-full transition-all duration-300 transform hover:scale-110 cursor-pointer">
-                  <FaShare className="text-white" />
-                </button>
+                  {/*--------- Stream buttons  ----------*/}
+                  <SignedOut>
+                    <SignUpButton mode="modal">
+                      <Button text={"Stream now"} icon={<FaPlay />} />
+                    </SignUpButton>
+                  </SignedOut>
+                  <SignedIn>
+                    <Button
+                      text={"Stream Movie"}
+                      icon={<FaPlay />}
+                      onClick={() => {
+                        setActiveTab("stream");
+                        document.getElementById("stream-section")?.scrollIntoView({ behavior: "smooth" });
+                      }}
+                    />
+                  </SignedIn>
+                </div>
+                {/*--------- btns ----------*/}
+                <div className="flex justify-around mt-4 sm:mt-0 sm:gap-3">
+                  <button className="p-3 bg-gray-800/80 hover:bg-gray-700/80 rounded-full transition-all duration-300 transform hover:scale-110 cursor-pointer">
+                    <FaHeart className="text-white" />
+                  </button>
+                  <button className="p-3 bg-gray-800/80 hover:bg-gray-700/80 rounded-full transition-all duration-300 transform hover:scale-110 cursor-pointer">
+                    <FaBookmark className="text-white" />
+                  </button>
+                  <button className="p-3 bg-gray-800/80 hover:bg-gray-700/80 rounded-full transition-all duration-300 transform hover:scale-110 cursor-pointer">
+                    <FaShare className="text-white" />
+                  </button>
+                </div>
               </div>
             </div>
           </div>
