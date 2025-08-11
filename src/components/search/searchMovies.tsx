@@ -97,15 +97,15 @@ export default function SearchMovies() {
   return (
     <section className="w-full max-w-4xl mx-auto px-4">
       {/*--------- Search Bar ----------*/}
-      <div className="relative mb-6">
-        <div className="flex items-center bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 rounded-2xl overflow-hidden border border-gray-700/50 shadow-2xl backdrop-blur-sm">
+      <div className="relative mb-1">
+        <div className="flex items-center bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 rounded-xl sm:rounded-3xl overflow-hidden border border-gray-700/50 shadow-2xl backdrop-blur-sm h-9 mx-5 sm:mx-0 sm:h-12">
           <div className="flex-1 relative">
-            <FaSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-lg" />
             <input
+
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               onKeyPress={(e) => e.key === "Enter" && handleSearch()}
-              className="w-full bg-transparent text-white placeholder-gray-400 pl-12 pr-4 py-4 outline-none font-medium text-lg"
+              className="w-full bg-transparent text-white placeholder-gray-400 pl-5 py-2 outline-none font-medium text-lg"
               placeholder="Search for movies, shows, actors..."
               type="search"
             />
@@ -114,14 +114,14 @@ export default function SearchMovies() {
           {/*--------- Filter Toggle Button ----------*/}
           <button
             onClick={() => setIsFilterOpen(!isFilterOpen)}
-            className={`relative px-6 py-4 transition-all duration-300 ${
+            className={`relative px-3 py-4 transition-all duration-300 ${
               isFilterOpen
-                ? "bg-gradient-to-r from-purple-600 to-blue-600"
-                : "bg-gray-700/50 hover:bg-gradient-to-r hover:from-purple-600/50 hover:to-blue-600/50"
-            } border-l border-gray-600/50`}>
+                ? "bg-gradient-to-l from-blue-600 to-purple-500"
+                : "bg-gray-700/50"
+            } cursor-pointer`}>
             <FaFilter
-              className={`text-lg transition-all duration-300 ${
-                isFilterOpen ? "text-white" : "text-gray-300 hover:text-white"
+              className={`transition-all duration-300 ${
+                isFilterOpen ? "text-amber-300" : "text-gray-300 hover:text-amber-300"
               }`}
             />
             {activeFiltersCount > 0 && (
@@ -130,12 +130,11 @@ export default function SearchMovies() {
               </span>
             )}
           </button>
-
           {/*--------- Search Button ----------*/}
-          <button
-            onClick={handleSearch}
-            className="px-6 py-4 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-medium transition-all duration-300 shadow-lg hover:shadow-xl">
-            <FaSearch className="text-lg" />
+           <button
+           onClick={handleSearch}
+            className="bg-gradient-to-r bg-gradient-to-r from-blue-600 to-purple-600 p-4 text-white opacity-80 hover:scale-104 hover:opacity-100 transition-all duration-300 cursor-pointer group">
+            <FaSearch className="group-hover:text-yellow-300" />
           </button>
         </div>
       </div>
