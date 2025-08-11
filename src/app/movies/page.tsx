@@ -10,7 +10,7 @@ export default function page() {
     <div>
       {/*--------- Movie galery hilight ----------*/}
       <SmoothScrolling>
-        <section>
+        <section className="hidden sm:block">
           <HeaderMovies />
         </section>
       </SmoothScrolling>

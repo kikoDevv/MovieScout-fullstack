@@ -19,7 +19,7 @@ export default function TopTeen() {
 
   return (
     <div className="m-10">
-      <h1 className="text-3xl text-white font-bold pl-4 pb-1">Top Movies to Watch</h1>
+      <h1 className="text-xl sm:text-2xl text-white font-bold pl-4 pb-1">Top Movies to Watch</h1>
       <MovieSlider movies={movieData || []} />
     </div>
   );
