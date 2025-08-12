@@ -5,6 +5,8 @@ import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 import Image from "next/image";
 import { searchAndDiscoverMovies, SearchFilters, Movie } from "./searchMoviesApi";
+import { IoIosCloseCircleOutline } from "react-icons/io";
+
 
 interface SearchMoviesProps {
   children?: React.ReactNode;
@@ -88,6 +90,8 @@ export default function SearchMovies({ children }: SearchMoviesProps) {
       minRating: 0,
       maxRating: 10,
     });
+    setSearchQuery("");
+    setSearchTrigger("");
   };
 
   const handleSearch = () => {
@@ -101,7 +105,7 @@ export default function SearchMovies({ children }: SearchMoviesProps) {
   const hasActiveSearch = !!searchTrigger || activeFiltersCount > 0;
 
   return (
-    <section className="w-full py-2 px-10">
+    <section className="w-full py-2 px-10 mb-50">
       {/*--------- Search Bar ----------*/}
       <div className="relative mb-1 mx-5 justify-self-center sm:min-w-120">
         <div className="flex items-center bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 rounded-xl sm:rounded-3xl overflow-hidden border border-gray-700/50 shadow-2xl backdrop-blur-sm h-9 mx-5 sm:mx-0 sm:h-12">
@@ -152,7 +156,7 @@ export default function SearchMovies({ children }: SearchMoviesProps) {
         }`}>
         <div className="bg-gradient-to-br from-gray-900/95 via-gray-800/95 to-gray-900/95 rounded-2xl border border-gray-700/50 shadow-2xl backdrop-blur-sm">
           {/*--------- Filter Header ----------*/}
-          <div className="flex items-center justify-between p-6 border-b border-gray-700/50">
+          <div className="flex items-center justify-between p-2 border-b border-gray-700/50">
             <div className="flex items-center gap-3">
               <div className="p-2 bg-gradient-to-br from-purple-500 to-blue-500 rounded-lg">
                 <FaTags className="text-white text-lg" />
@@ -162,13 +166,13 @@ export default function SearchMovies({ children }: SearchMoviesProps) {
             <div className="flex items-center gap-3">
               <button
                 onClick={clearFilters}
-                className="text-gray-400 hover:text-red-400 font-medium transition-colors duration-200">
+                className="text-gray-400 hover:text-red-400 font-medium transition-colors duration-200 cursor-pointer">
                 Clear All
               </button>
               <button
                 onClick={() => setIsFilterOpen(false)}
                 className="p-2 text-gray-400 hover:text-white transition-colors duration-200">
-                <FaTimes />
+                <IoIosCloseCircleOutline className="text-2xl hover:scale-105 hover:rotate-135 transition-all duration-300 cursor-pointer hover:text-red-500" />
               </button>
             </div>
           </div>
