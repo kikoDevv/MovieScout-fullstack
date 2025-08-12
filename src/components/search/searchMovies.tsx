@@ -1,12 +1,11 @@
 "use client";
 import React, { useState } from "react";
-import { FaFilter, FaSearch, FaTimes, FaStar, FaCalendarAlt, FaGlobe, FaTags } from "react-icons/fa";
+import { FaFilter, FaSearch, FaStar, FaCalendarAlt, FaGlobe, FaTags } from "react-icons/fa";
 import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 import Image from "next/image";
 import { searchAndDiscoverMovies, SearchFilters, Movie } from "./searchMoviesApi";
 import { IoIosCloseCircleOutline } from "react-icons/io";
-
 
 interface SearchMoviesProps {
   children?: React.ReactNode;
@@ -105,13 +104,12 @@ export default function SearchMovies({ children }: SearchMoviesProps) {
   const hasActiveSearch = !!searchTrigger || activeFiltersCount > 0;
 
   return (
-    <section className="w-full py-2 px-10 mb-50">
+    <section className="w-full py-2 sm:px-10 mb-50">
       {/*--------- Search Bar ----------*/}
       <div className="relative mb-1 mx-5 justify-self-center sm:min-w-120">
         <div className="flex items-center bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 rounded-xl sm:rounded-3xl overflow-hidden border border-gray-700/50 shadow-2xl backdrop-blur-sm h-9 mx-5 sm:mx-0 sm:h-12">
           <div className="flex-1 relative">
             <input
-
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               onKeyPress={(e) => e.key === "Enter" && handleSearch()}
@@ -125,9 +123,7 @@ export default function SearchMovies({ children }: SearchMoviesProps) {
           <button
             onClick={() => setIsFilterOpen(!isFilterOpen)}
             className={`relative px-3 py-4 transition-all duration-300 ${
-              isFilterOpen
-                ? "bg-gradient-to-l from-blue-600 to-purple-500"
-                : "bg-gray-700/50"
+              isFilterOpen ? "bg-gradient-to-l from-blue-600 to-purple-500" : "bg-gray-700/50"
             } cursor-pointer`}>
             <FaFilter
               className={`transition-all duration-300 ${
@@ -135,14 +131,14 @@ export default function SearchMovies({ children }: SearchMoviesProps) {
               }`}
             />
             {activeFiltersCount > 0 && (
-              <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">
+              <span className="absolute top-0.5 right-0 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">
                 {activeFiltersCount}
               </span>
             )}
           </button>
           {/*--------- Search Button ----------*/}
-           <button
-           onClick={handleSearch}
+          <button
+            onClick={handleSearch}
             className="bg-gradient-to-r bg-gradient-to-r from-blue-600 to-purple-600 p-4 text-white opacity-80 hover:scale-104 hover:opacity-100 transition-all duration-300 cursor-pointer group">
             <FaSearch className="group-hover:text-yellow-300" />
           </button>
@@ -151,7 +147,7 @@ export default function SearchMovies({ children }: SearchMoviesProps) {
 
       {/*--------- Advanced Filters Panel ----------*/}
       <div
-        className={`transition-all duration-500 ease-out overflow-hidden max-w-210 place-self-center ${
+        className={`transition-all duration-500 ease-out overflow-hidden max-w-210 place-self-center mx-4 md:mx-0 ${
           isFilterOpen ? "max-h-screen opacity-100 mb-6" : "max-h-0 opacity-0"
         }`}>
         <div className="bg-gradient-to-br from-gray-900/95 via-gray-800/95 to-gray-900/95 rounded-2xl border border-gray-700/50 shadow-2xl backdrop-blur-sm">
@@ -319,19 +315,19 @@ export default function SearchMovies({ children }: SearchMoviesProps) {
 
           {/*--------- Results Grid ----------*/}
           {searchResults && searchResults.results && (
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2 sm:gap-4 mx-2 sm:mx-0">
               {searchResults.results.map((movie: Movie) => (
                 <Link
                   key={movie.id}
                   href={`/movie/${movie.id}`}
-                  className="group relative bg-gradient-to-br from-gray-900/50 to-gray-800/50 rounded-xl overflow-hidden border border-gray-700/30 hover:border-purple-500/50 transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                  className="group relative bg-gradient-to-br from-gray-900/50 to-gray-800/50 rounded-xl overflow-hidden border border-gray-700/30 hover:border-purple-500/50 transition-all duration-300 hover:scale-103 hover:shadow-2xl">
                   <div className="aspect-[2/3] relative overflow-hidden">
                     {movie.poster_path ? (
                       <Image
                         src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                         alt={movie.title}
                         fill
-                        className="object-cover transition-transform duration-300 group-hover:scale-110"
+                        className="object-cover transition-transform duration-300 group-hover:scale-102"
                         sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, (max-width: 1280px) 20vw, 16vw"
                       />
                     ) : (
@@ -340,13 +336,15 @@ export default function SearchMovies({ children }: SearchMoviesProps) {
                       </div>
                     )}
 
-                    {/* Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
                     {/* Rating Badge */}
                     <div className="absolute top-2 right-2 bg-black/70 rounded-full px-2 py-1 flex items-center gap-1">
-                      <FaStar className="text-yellow-400 text-xs" />
-                      <span className="text-white text-xs font-semibold">{movie.vote_average.toFixed(1)}</span>
+                      <span className="text-white text-xs font-semibold">
+                        {movie.release_date ? new Date(movie.release_date).getFullYear() : "TBA"}
+                      </span>
+                      <div className="flex items-center">
+                        <FaStar className="text-yellow-400 text-xs mb-0.5" />
+                        <span className="text-white text-xs font-semibold">{movie.vote_average.toFixed(1)}</span>
+                      </div>
                     </div>
                   </div>
 
@@ -355,9 +353,6 @@ export default function SearchMovies({ children }: SearchMoviesProps) {
                     <h3 className="text-white font-semibold text-sm line-clamp-2 group-hover:text-purple-300 transition-colors duration-200">
                       {movie.title}
                     </h3>
-                    <p className="text-gray-400 text-xs mt-1">
-                      {movie.release_date ? new Date(movie.release_date).getFullYear() : "TBA"}
-                    </p>
                   </div>
                 </Link>
               ))}

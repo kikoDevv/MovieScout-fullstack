@@ -18,7 +18,6 @@ export default function Page() {
 
       <section>
         <SearchMovies>
-          {/* Default movie sections - will be hidden when search is active */}
           <section>
             <TopTeenMovies />
           </section>
