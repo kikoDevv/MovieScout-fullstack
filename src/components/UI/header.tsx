@@ -40,7 +40,7 @@ export default function Header() {
           <div className={styles.logo}>
             <Link href="/">
               <Image
-                className={styles.movieScoutLogo}
+                className={`${styles.movieScoutLogo}  w-15 sm:w-40`}
                 src="/MovieScout.svg"
                 alt="Main logo not found!"
                 width={375}
