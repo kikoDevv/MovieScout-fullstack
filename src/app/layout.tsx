@@ -5,9 +5,9 @@ import Footer from "@/components/UI/footer";
 import { Work_Sans } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import { TanstackProvider } from "@/components/providers/tanstackProvider";
+import { Analytics } from "@vercel/analytics/react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
 
 const workSans = Work_Sans({
   subsets: ["latin"],
@@ -35,6 +35,7 @@ export default function RootLayout({
           <Header />
           <TanstackProvider>{children}</TanstackProvider>
           <Footer />
+          <Analytics />
         </body>
       </html>
     </ClerkProvider>
