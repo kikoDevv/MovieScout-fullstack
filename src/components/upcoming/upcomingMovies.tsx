@@ -18,7 +18,7 @@ export default function Upcoming() {
   if (error) return <div>Error loading movies</div>;
 
   return (
-    <div className="m-10">
+    <div className="sm:m-10 m-2">
       <h1 className="text-xl sm:text-2xl text-white font-bold pl-4 pb-1">Upcoming Movies</h1>
       <MovieSlider movies={movieData || []} showIndex={false} hoverOpacity={true} />
     </div>
