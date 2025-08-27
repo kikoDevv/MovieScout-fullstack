@@ -194,7 +194,7 @@ export default function MovieDetailsPage({ params }: MovieDetailsPageProps) {
       </div>
 
       {/*--------- Content Section ----------*/}
-      <div className="container mx-auto px-8 py-12">
+      <div className="container mx-auto sm:px-8 px-2 py-12">
         {/*--------- Tab Navigation ----------*/}
         <div className="overflow-x-auto scrollbar-hide tab-backdrop inset-0 bg-black/30 backdrop-blur-md mx-2 rounded-full sm:w-fit sm:place-self-center">
           <div className="flex justify-center w-fit">
