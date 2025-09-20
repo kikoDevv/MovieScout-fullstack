@@ -12,6 +12,7 @@
 <div align="center">
   <img width="1422" alt="Screenshot 2025-06-07 at 01 50 44" src="https://github.com/user-attachments/assets/0ce79435-7e06-433a-ab17-c3f3509bf697" />
 <img width="1422" alt="Screenshot 2025-06-07 at 02 37 26" src="https://github.com/user-attachments/assets/81a492af-72ca-4244-9fc1-7b87992e2c70" />
+<img width="1915" height="987" alt="Screenshot 2025-09-21 at 00 59 01" src="https://github.com/user-attachments/assets/9b13221d-a5e4-4b5a-98a3-16e80840cb73" />
 
 </div>
 
